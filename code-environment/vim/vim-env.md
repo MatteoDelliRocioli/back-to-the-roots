@@ -15,3 +15,6 @@ bel vert term
 - __set number__ shows the line index number at the left side while editing a file in vim
 - __set tabstop=2__ sets the tab to occupy 2 spaces
 - __bel vert term__ splits the screen when opening vim to show a terminal on the right side of your screen, to switch focus between terminals use the _"**CTRL+W+W**"_ command
+
+Result example (using wsl2 on Win10)
+![image](https://user-images.githubusercontent.com/37411225/148401421-4ae6937f-5a41-4dd5-a103-142ee08177fd.png)
