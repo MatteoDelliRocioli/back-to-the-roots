@@ -9,6 +9,8 @@ syntax off
 set number
 set tabstop=2
 bel vert term
+set hls is
+hi Search cterm=NONE ctermfg=black ctermbg=gray
 ```
 
 - __syntax off__ is to program in vim without any syntax aid, that is in order to better learn the specific language syntax
