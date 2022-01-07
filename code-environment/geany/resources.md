@@ -1,4 +1,4 @@
-Here is the list of resources that I used to set up my Geany configuration, the result is -> (screenshot)
+Here is the list of resources that I used to set up my Geany configuration, the result is ![image](https://user-images.githubusercontent.com/37411225/148621295-1a393b0d-3308-4901-ab95-0fc2a7626677.png)
 
 ---
 
