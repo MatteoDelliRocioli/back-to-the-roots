@@ -18,13 +18,17 @@ should return true;
 
 #include <iostream>
 #include <vector>
+#include <tr1/unordered_map>
+
+using namespace std::tr1;
 
 using namespace std;
 
 bool solQuadratic(
 	char *array1, size_t arr1Size, char *array2, size_t arr2Size);
 
-//bool solConstant();
+bool solLinear(
+	char *array1, size_t arr1Size, char *array2, size_t arr2Size);
 
 int main()
 {
@@ -41,15 +45,15 @@ int main()
 	/*The most bruteforce approach would be to iterate the two arrays and
 	 then return as soon there is a common item
 	 this would be a quadratic time solution and constant space solution*/
-	result = solQuadratic(array1, array1Size, array2, array2Size);
+	//result = solQuadratic(array1, array1Size, array2, array2Size);
 
 	/*A more efficient approach would be to use a hash table, that would
 	 * mean that we have to loop the first array to populate the hash
 	 * table, then loop the second array to look for any match with first
 	 * array. Since the look up operation on hash table (unordered_map in
-	 * cpp) is constant time, then we would finally have two separate
+	 * cpp) is constant time, we would finally have two separate
 	 * loops meaning a O(a + b) solution time complexity*/
-	//result = solLinear();
+	result = solLinear(array1, array1Size, array2, array2Size);
 
 	if (result)
 	{
@@ -80,13 +84,23 @@ bool solQuadratic(
 	return result;
 }
 
-//bool solLinear(vector<char> &array1, vector<char> &array2)
-//{
-	//bool result {false};
+/*A more efficient approach would be to use a hash table, that would
+ * mean that we have to loop the first array to populate the hash
+ * table, then loop the second array to look for any match with first
+ * array. Since the look up operation on hash table (unordered_map in
+ * cpp) is constant time, we would finally have two separate
+ * loops meaning a O(a + b) solution time complexity*/
+bool solLinear(
+	char *array1, size_t arr1Size, char *array2, size_t arr2Size)
+{
+	bool result {false};
 
-	////We have to loop
+	//Create the hash table
+	unordered_map<char, bool> arr1Map ({});
 
-	//for (auto)
+	//for(auto x : (* array1))
 
-	//return result;
-//}
+	//loop the second array to look up for values
+
+	return result;
+}
