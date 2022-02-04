@@ -104,15 +104,23 @@ bool solLinear(
 		arr1Map[array1[i]] = true;
 	}
 
-	for (auto &x : arr1Map)
-	{
-		cout << std::boolalpha;
-		cout << x.first << " " << x.second << endl;
-	}
-
-	//for(auto x : (* array1))
+	//for (auto &x : arr1Map)
+	//{
+		//cout << std::boolalpha;
+		//cout << x.first << " " << x.second << endl;
+	//}
 
 	//loop the second array to look up for values
+	for (size_t i {0}; i < arr2Size; i++)
+	{
+		auto element = arr1Map.find(array2[i]);
+		if (element != arr1Map.end())
+		{
+			result = true;
+			return result;
+		}
+	}
+
 
 	return result;
 }
