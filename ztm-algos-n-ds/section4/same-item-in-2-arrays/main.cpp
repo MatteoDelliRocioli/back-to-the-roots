@@ -18,9 +18,10 @@ should return true;
 
 #include <iostream>
 #include <vector>
-#include <tr1/unordered_map>
+#include <unordered_map>
+//#include <tr1/unordered_map>
 
-using namespace std::tr1;
+//using namespace std::tr1;
 
 using namespace std;
 
@@ -91,12 +92,23 @@ bool solQuadratic(
  * cpp) is constant time, we would finally have two separate
  * loops meaning a O(a + b) solution time complexity*/
 bool solLinear(
-	char *array1, size_t arr1Size, char *array2, size_t arr2Size)
+	char* array1, size_t arr1Size, char* array2, size_t arr2Size)
 {
 	bool result {false};
 
 	//Create the hash table
-	unordered_map<char, bool> arr1Map ({});
+	unordered_map<char, bool> arr1Map;
+
+	for (size_t i {0}; i < arr1Size; i++)
+	{
+		arr1Map[array1[i]] = true;
+	}
+
+	for (auto &x : arr1Map)
+	{
+		cout << std::boolalpha;
+		cout << x.first << " " << x.second << endl;
+	}
 
 	//for(auto x : (* array1))
 
