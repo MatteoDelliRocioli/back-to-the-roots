@@ -77,6 +77,11 @@ bool linearSolve(int *arr, int arrSize, int sumTarget)
 	int low = 0;
 	int high = arrSize - 1;
 
+	if (arrSize < 1)
+	{
+		return result;
+	}
+
 	for (int i {0}; i < arrSize; i++)
 	{
 		int sum = arr[low] + arr[high];
