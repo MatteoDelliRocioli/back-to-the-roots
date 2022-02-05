@@ -148,16 +148,16 @@ bool sortedArrLinearSolveV2(int *arr, int arrSize, int sumTarget)
 /*
  * If the array to compute is NOT parsed then we may look for every
  * element in the array one time and for each element populate an hash
- * table so that we can look if we already encountered the complement
+ * set so that we can look if we already encountered the complement
  * (sumTarget - element) of the element itself
  * If yes then we know that a pair in the array sums up to the target
  *
  * The time complexity of this solution would be O(n) since we are
- * at worst iterating the array once and since the hash table look up
+ * at worst iterating the array once and since the hash set look up
  * takes only constant time
  *
  * The space complexity would be linear as well (O(n)) since in the
- * worst case we are populating the hash table once with all the
+ * worst case we are populating the hash set once with all the
  * elements of the input array. If that is the case than we know that
  * there is no pair that sums up to the target.
  * */
