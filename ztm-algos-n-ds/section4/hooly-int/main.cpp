@@ -50,11 +50,14 @@
  * The will eventually sum up to the target or cross each other
  * */
 #include <iostream>
+#include <unordered_map>
 
 using namespace std;
 
 bool sortedArrLinearSolve(int *arr, int arrSize, int sumTarget);
 bool sortedArrLinearSolveV2(int *arr, int arrSize, int sumTarget);
+
+bool unSortedArrLinearSolve(int *arr, int arrSize, int sumTarget);
 
 int main()
 {
@@ -65,7 +68,8 @@ int main()
 	size_t arrSize = sizeof(array1) / sizeof(array1[0]);
 
 	//bool result = sortedArrLinearSolve(array1, arrSize, sumTarget);
-	bool result = sortedArrLinearSolveV2(array1, arrSize, sumTarget);
+	//bool result = sortedArrLinearSolveV2(array1, arrSize, sumTarget);
+	bool result = unSortedArrLinearSolve(array1, arrSize, sumTarget);
 
 	cout << boolalpha << result << endl;
 
@@ -136,6 +140,38 @@ bool sortedArrLinearSolveV2(int *arr, int arrSize, int sumTarget)
 		{
 			high -= 1;
 		}
+	}
+
+	return false;
+}
+
+/*
+ * If the array to compute is NOT parsed then we may look for every
+ * element in the array one time and for each element populate an hash
+ * table so that we can look if we already encountered the complement
+ * (sumTarget - element) of the element itself
+ * If yes then we know that a pair in the array sums up to the target
+ *
+ * The time complexity of this solution would be O(n) since we are
+ * at worst iterating the array once and since the hash table look up
+ * takes only constant tie
+ * */
+bool unSortedArrLinearSolve(int *arr, int arrSize, int sumTarget)
+{
+	unordered_map<int, bool> complements;
+
+	for (int i {0}; i < arrSize; i++)
+	{
+
+		int complementToSearch = sumTarget - arr[i];
+		auto complement = complements.find(complementToSearch);
+
+		if (complement != complements.end())
+		{
+			return true;
+		}
+
+		complements[arr[i]] = true;
 	}
 
 	return false;
