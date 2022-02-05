@@ -53,25 +53,26 @@
 
 using namespace std;
 
-bool linearSolve(int *arr, int arrSize, int sumTarget);
+bool sortedArrLinearSolve(int *arr, int arrSize, int sumTarget);
+bool sortedArrLinearSolveV2(int *arr, int arrSize, int sumTarget);
 
 int main()
 {
 	int array1 [] {1, 2, 3, 9};
 	//int array1 [] {1, 2, 4, 4};
-	int sumTarget = 12;
+	int sumTarget = 21;
 
 	size_t arrSize = sizeof(array1) / sizeof(array1[0]);
 
-	bool result = linearSolve(array1, arrSize, sumTarget);
-	//result = linearSolve(array2, sumTarget);
+	//bool result = sortedArrLinearSolve(array1, arrSize, sumTarget);
+	bool result = sortedArrLinearSolveV2(array1, arrSize, sumTarget);
 
 	cout << boolalpha << result << endl;
 
 	return 0;
 }
 
-bool linearSolve(int *arr, int arrSize, int sumTarget)
+bool sortedArrLinearSolve(int *arr, int arrSize, int sumTarget)
 {
 	bool result {false};
 	int low = 0;
@@ -111,4 +112,31 @@ bool linearSolve(int *arr, int arrSize, int sumTarget)
 	}
 
 	return result;
+}
+
+bool sortedArrLinearSolveV2(int *arr, int arrSize, int sumTarget)
+{
+	int low = 0;
+	int high = arrSize - 1;
+
+	while(low < high)
+	{
+		int sum = arr[low] + arr[high];
+		if(sum == sumTarget)
+		{
+			return true;
+		}
+
+		if (sum < sumTarget)
+		{
+			low += 1;
+		}
+
+		if (sum > sumTarget)
+		{
+			high -= 1;
+		}
+	}
+
+	return false;
 }
