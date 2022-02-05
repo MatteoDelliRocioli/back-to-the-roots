@@ -50,7 +50,7 @@
  * The will eventually sum up to the target or cross each other
  * */
 #include <iostream>
-#include <unordered_map>
+#include <unordered_set>
 
 using namespace std;
 
@@ -61,9 +61,9 @@ bool unSortedArrLinearSolve(int *arr, int arrSize, int sumTarget);
 
 int main()
 {
-	int array1 [] {1, 2, 3, 9};
+	int array1 [] {1, 2, 3, 9, 4};
 	//int array1 [] {1, 2, 4, 4};
-	int sumTarget = 21;
+	int sumTarget = 13;
 
 	size_t arrSize = sizeof(array1) / sizeof(array1[0]);
 
@@ -154,11 +154,16 @@ bool sortedArrLinearSolveV2(int *arr, int arrSize, int sumTarget)
  *
  * The time complexity of this solution would be O(n) since we are
  * at worst iterating the array once and since the hash table look up
- * takes only constant tie
+ * takes only constant time
+ *
+ * The space complexity would be linear as well (O(n)) since in the
+ * worst case we are populating the hash table once with all the
+ * elements of the input array. If that is the case than we know that
+ * there is no pair that sums up to the target.
  * */
 bool unSortedArrLinearSolve(int *arr, int arrSize, int sumTarget)
 {
-	unordered_map<int, bool> complements;
+	unordered_set<int> complements;
 
 	for (int i {0}; i < arrSize; i++)
 	{
@@ -171,7 +176,7 @@ bool unSortedArrLinearSolve(int *arr, int arrSize, int sumTarget)
 			return true;
 		}
 
-		complements[arr[i]] = true;
+		complements.insert(arr[i]);
 	}
 
 	return false;
