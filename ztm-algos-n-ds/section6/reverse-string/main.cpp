@@ -15,6 +15,10 @@ using namespace std;
  * iterate the string backwords saving each element (char) in reverse
  * order in a new array with the same size of the original, returning it
  * at the end
+ *
+ * Since we iterate the array for its length then the time complexity
+ * would be linear (O(n))
+ * Since we are conc
  * */
 string reverseString(string string);
 
