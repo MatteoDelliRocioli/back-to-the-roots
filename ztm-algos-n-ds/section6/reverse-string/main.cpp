@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
@@ -18,7 +17,8 @@ using namespace std;
  *
  * Since we iterate the array for its length then the time complexity
  * would be linear (O(n))
- * Since we are conc
+ * Since we are concatenating a string with same length of the input,
+ * the space complexity would also be linear
  * */
 string reverseString(string string);
 
