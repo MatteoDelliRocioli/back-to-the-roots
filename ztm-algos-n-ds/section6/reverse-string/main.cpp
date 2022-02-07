@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ using namespace std;
  * order in a new array with the same size of the original, returning it
  * at the end
  * */
-//char* reverseString(char* string, stringSize);
+string reverseString(string string);
 
 int main()
 {
@@ -26,10 +27,23 @@ int main()
 
 	cout << stringInput << endl;
 
+	string reversedString = reverseString(stringInput);
+
+	cout << reversedString << endl;
+
 	return 0;
 }
 
-//char* reverseString(char* string, stringSize)
-//{
+string reverseString(string input)
+{
+	string result = "";
 
-//}
+	for (int i {static_cast<int>(input.length() - 1)}; i > -1; i--)
+	{
+		//cout << i << " | " << input.length() << endl;
+		//cout << result << endl;
+		result += input[i];
+	}
+
+	return result;
+}
