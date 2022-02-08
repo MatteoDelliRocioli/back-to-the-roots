@@ -12,16 +12,10 @@ using namespace std;
  * */
 
 /*
- * A naive way of solving this problem would be to iterate the 2 inputs
- * while we compare the elements from the first array and the second
- * array starting both from left to right (smaller elements of each
- * array).
- * If the left element is lesser than the right one then we add it to
- * the new forming collection, otherwise we add the right one. Repeating
- * this comparizon with all the elements of the two arrays we will
- * eventually have a new merged sorted array.
- *
- * That would be O(n^2) solution, so certainly improvable
+ * We can iterate through the combined lenght of the two inputs and
+ * check for each element who is the smallest and add it to the final
+ * collection, which will be sorted
+ * That would be O(n) solution
  * */
 vector<int> mergeArrays(int *arr1, int a1S, int* arr2, int a2S);
 void printCollection(int* arr, int arrLength);
@@ -29,8 +23,8 @@ void printCollection(vector<int> vec);
 
 int main()
 {
-	int arr1[] {4, 5, 7, 9};
-	int arr2[] {6, 8, 10};
+	int arr2[] {4, 5, 7, 9};
+	int arr1[] {6, 8, 20};
 
 	int arr1Size = sizeof(arr1)/sizeof(arr1[0]);
 	int arr2Size = sizeof(arr2)/sizeof(arr2[0]);
@@ -61,24 +55,38 @@ vector<int> mergeArrays(int* arr1, int a1S, int* arr2, int a2S)
 
 	while (resultSize > 0)
 	{
-		if (i > a1S || arr1[i] < arr2[j])
+		bool hasOverflownLeftArr {i > (a1S - 1)};
+		bool hasOverflownRightArr {j > (a2S - 1)};
+
+		cout << boolalpha;
+		cout << "--> " << i << " , " << j << endl;
+		cout << "hasOverflownLeftArr ? " << hasOverflownLeftArr << endl;
+		cout << "hasOverflownRightArr ? " << hasOverflownRightArr << endl;
+		cout << "arr1[i] < arr2[j] ? " << (arr1[i] < arr2[j]) << endl;
+		cout << "i | arr1[i]: " << i << " | " << arr1[i] << endl;
+		cout << "j | arr2[j]: " << j << " | " << arr2[j] << endl;
+
+		if (!hasOverflownLeftArr && arr1[i] < arr2[j])
+			hasToInsertLeft = true;
+
+		if (hasOverflownRightArr)
 			hasToInsertLeft = true;
 
 		if (hasToInsertLeft)
 		{
+			cout << "inserting left (" << arr1[i] << ")" << endl;
 			result.push_back(arr1[i]);
 			i++;
 		}
 		else
 		{
+			cout << "inserting right (" << arr2[j] << ")" << endl;
 			result.push_back(arr2[j]);
 			j++;
 		}
 
-		cout << "i | arr1[i]: " << i << " | " << arr1[i] << endl;
-		cout << "j | arr2[j]: " << j << " | " << arr2[j] << endl;
-		cout << boolalpha;
 		cout << "hasToInsertLeft: " << hasToInsertLeft << endl;
+		cout << "//--------------------------------------------//" << endl;
 
 		hasToInsertLeft = false;
 		resultSize--;
