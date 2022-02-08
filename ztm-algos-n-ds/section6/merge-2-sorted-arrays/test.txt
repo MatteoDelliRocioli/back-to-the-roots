@@ -1,10 +1,10 @@
 [ 6 8 20 ]
 
-[ 4 5 7 9 ]
+[ 4 5 7 9 40 ]
 
 a1S: 3
-a2S: 4
-resultSize: 7
+a2S: 5
+resultSize: 8
 
 --> 0 , 0
 hasOverflownLeftArr ? false
@@ -62,12 +62,21 @@ hasToInsertLeft: false
 //--------------------------------------------//
 --> 2 , 4
 hasOverflownLeftArr ? false
-hasOverflownRightArr ? true
-arr1[i] < arr2[j] ? false
+hasOverflownRightArr ? false
+arr1[i] < arr2[j] ? true
 i | arr1[i]: 2 | 20
-j | arr2[j]: 4 | 0
+j | arr2[j]: 4 | 40
 inserting left (20)
 hasToInsertLeft: true
 //--------------------------------------------//
-[ 4 5 6 7 8 9 20 ]
+--> 3 , 4
+hasOverflownLeftArr ? true
+hasOverflownRightArr ? false
+arr1[i] < arr2[j] ? true
+i | arr1[i]: 3 | 4
+j | arr2[j]: 4 | 40
+inserting right (40)
+hasToInsertLeft: false
+//--------------------------------------------//
+[ 4 5 6 7 8 9 20 40 ]
 

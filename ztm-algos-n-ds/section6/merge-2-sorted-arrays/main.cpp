@@ -23,7 +23,7 @@ void printCollection(vector<int> vec);
 
 int main()
 {
-	int arr2[] {4, 5, 7, 9};
+	int arr2[] {4, 5, 7, 9, 40};
 	int arr1[] {6, 8, 20};
 
 	int arr1Size = sizeof(arr1)/sizeof(arr1[0]);
