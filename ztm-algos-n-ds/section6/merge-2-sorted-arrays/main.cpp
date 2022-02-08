@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -22,49 +23,48 @@ using namespace std;
  *
  * That would be O(n^2) solution, so certainly improvable
  * */
-int[] mergeArrays(arr1, arr2);
+vector<int> mergeArrays(int *arr1, int a1S, int* arr2, int a2S);
+void printCollection(int* arr, int arrLength);
+void printCollection(vector<int> vec);
 
 int main()
 {
 	int arr1[] {4, 5, 7, 9};
 	int arr2[] {6, 8, 10};
 
-	int mergedArray[] = mergeArrays(arr1, arr2);
+	int arr1Size = sizeof(arr1)/sizeof(arr1[0]);
+	int arr2Size = sizeof(arr2)/sizeof(arr2[0]);
+
+	vector<int> mergedArray = mergeArrays(arr1, arr1Size, arr2, arr2Size);
+
+	printCollection(mergedArray);
 
 	return 0;
 }
 
-int [] mergeArrays(int* arr1, int a1S, int* arr2, int a2S)
+vector<int> mergeArrays(int* arr1, int a1S, int* arr2, int a2S)
 {
 	vector<int> result {};
 
-	for (int i {0}; i < a1S; i++)
-	{
-		for (int j {0}; j < a2S; j++)
-		{
-			if (arr1[i] < arr2[j])
-			{
-				result.push_back(arr1[i]);
-				i++;
-			}
-			else
-			{
-				result.push_back(arr2[j]);
-				j++;
-			}
-		}
-	}
+	printCollection(arr1, a1S);
+	printCollection(arr2, a2S);
 
 	int resultSize = a1S + a2S;
+	bool hasToInsertLeft {false};
 
+	cout << "a1S: " << a1S << endl;
+	cout << "a2S: " << a2S << endl;
+	cout << "resultSize: " << resultSize << endl << endl;
 
+	int i {0};
+	int j {0};
 
 	while (resultSize > 0)
 	{
-		if (i > a1S || )
+		if (i > a1S || arr1[i] < arr2[j])
+			hasToInsertLeft = true;
 
-
-		if (arr1[i] < arr2[j])
+		if (hasToInsertLeft)
 		{
 			result.push_back(arr1[i]);
 			i++;
@@ -75,6 +75,34 @@ int [] mergeArrays(int* arr1, int a1S, int* arr2, int a2S)
 			j++;
 		}
 
+		cout << "i | arr1[i]: " << i << " | " << arr1[i] << endl;
+		cout << "j | arr2[j]: " << j << " | " << arr2[j] << endl;
+		cout << boolalpha;
+		cout << "hasToInsertLeft: " << hasToInsertLeft << endl;
+
+		hasToInsertLeft = false;
 		resultSize--;
 	}
+
+	return result;
+}
+
+void printCollection(int* arr, int arrLength)
+{
+	cout << "[ ";
+	for (int i{0}; i < arrLength; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << "]" << endl << endl;;
+}
+
+void printCollection(vector<int> vec)
+{
+	cout << "[ ";
+	for (auto x : vec)
+	{
+		cout << x << " ";
+	}
+	cout << "]" << endl << endl;
 }
