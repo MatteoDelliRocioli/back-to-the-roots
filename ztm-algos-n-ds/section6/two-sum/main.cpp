@@ -4,6 +4,18 @@
 
 using namespace std;
 
+/*
+ * Given an array of ints, a way to find the pair that sums up to a
+ * given target is to iterate the array in order to store its elements
+ * in an unordered_map. By doing that we take trace of the seen elements
+ * thus we can look up into them (in a costant time manner) when we are
+ * searching for a complement of the next array element.
+ * When we find a complement, we store its index and the current element's
+ * index and then we return the collection.
+ *
+ * Given the above circumnstances, the time complexity would be O(n)
+ * and the space complexity would be O(n) as well
+ * */
 vector<int> findPairSumUpToTarget(int *arr1, int aS, int target);
 void printArr(int *arr1, int size);
 void printVector(vector<int> vec);
