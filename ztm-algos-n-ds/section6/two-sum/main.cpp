@@ -25,13 +25,14 @@ vector<int> twoSum(vector<int>& nums, int target);
 int main()
 {
 	//int arr1 [] {};
-	int arr1 [] {3, 2, 4};
-	int target {6};
-	int arr1Size = sizeof(arr1) / sizeof(arr1[0]);
+	//int arr1 [] {3, 2, 4};
+	int target {11};
+	//int arr1Size = sizeof(arr1) / sizeof(arr1[0]);
 
-	vector<int> vec1 {3, 3};
+	vector<int> vec1 {-11,7,3,2,1,7,-10,11,21,3};
 
-	printArr(arr1, arr1Size);
+	//printArr(arr1, arr1Size);
+	printVector(vec1);
 
 	//vector<int> result = findPairSumUpToTarget(arr1, arr1Size, target);
 	vector<int> result = twoSum(vec1, target);
@@ -47,13 +48,22 @@ vector<int> twoSum(vector<int>& nums, int target)
 	vector<int> result {};
 
 	unordered_map<int, int> compMap{{}};
-	compMap.insert({nums.at(0), 0});
 
-	for (int i {1}; i < static_cast<int>(nums.size()); i++)
+	for (int i {0}; i < static_cast<int>(nums.size()); i++)
 	{
 		cout << "i: " << i << endl;
 
 		compMap.insert({nums.at(i), i});
+
+		//int complement {};
+		//if (nums.at(i) < 0)
+		//{
+			//complement = target + nums.at(i);
+		//}
+		//else
+		//{
+			//complement = target - nums.at(i);
+		//}
 
 		int complement = target - nums.at(i);
 
@@ -69,7 +79,7 @@ vector<int> twoSum(vector<int>& nums, int target)
 			cout << "i: " << i << endl;
 		}
 
-		if (got != compMap.end())
+		if (got != compMap.end() && got->second != i)
 		{
 			result.push_back((*got).second);
 			result.push_back(i);
