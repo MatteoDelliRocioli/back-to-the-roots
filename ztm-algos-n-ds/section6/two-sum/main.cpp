@@ -22,20 +22,15 @@ void printVector(vector<int> vec);
 
 vector<int> twoSum(vector<int>& nums, int target);
 vector<int> twoSum01(vector<int>& nums, int target);
+vector<int> twoSum_02(vector<int>& nums, int target);
 
 int main()
 {
-	//int arr1 [] {};
-	//int arr1 [] {3, 2, 4};
 	int target {11};
-	//int arr1Size = sizeof(arr1) / sizeof(arr1[0]);
-
 	vector<int> vec1 {-11,7,3,2,1,7,-10,11,21,3};
 
-	//printArr(arr1, arr1Size);
 	printVector(vec1);
 
-	//vector<int> result = findPairSumUpToTarget(arr1, arr1Size, target);
 	vector<int> result = twoSum01(vec1, target);
 
 	cout << "result: ";
@@ -49,13 +44,11 @@ vector<int> twoSum01(vector<int>& nums, int target)
 	vector<int> result {};
 
 	//value, index (index to return)
-	unordered_map<int, int> compMap{{}};
+	unordered_map<int, int> compMap;
 
 	for (int i {0}; i < static_cast<int>(nums.size()); i++)
 	{
 		int currentElement = nums.at(i);
-
-		compMap.insert({currentElement, i});
 
 		if (i == 0)
 		{
@@ -68,120 +61,19 @@ vector<int> twoSum01(vector<int>& nums, int target)
 		cout << "complement: " << complement << endl << endl;
 
 		auto got = compMap.find(complement);
-		auto got_01 = compMap.find(-11);
-		//bool test = compMap.count(complement) != 0;
-		//if (got != compMap.end())
-		//{
-			//cout << "got->first: " << got->first << ", got->second: " <<
-				//got->second << endl;
-		//}
 
-		//if (test && got->second != i)
-
-		if (got == compMap.end())
-		{
-			continue;
-		}
-
-		//if (got != compMap.end() && got->second != i && complement != 0)
-		if (got->second != i && (got->second == complement))
+		if (got != compMap.end() && got->second != i)
 		{
 
 			cout << "[ " << got->first << " " << got->second << " ]" << endl;
 			cout << "complement: " << complement << endl;
-			cout << "[ " << got_01->first << " " << got_01->second << " ]" << endl;
 
-			result.push_back(got->second);
+			result.push_back(compMap[complement]);
 			result.push_back(i);
 			return result;
 		}
-	}
 
-	return result;
-}
-
-vector<int> twoSum(vector<int>& nums, int target)
-{
-	vector<int> result {};
-
-	unordered_map<int, int> compMap{{}};
-
-	for (int i {0}; i < static_cast<int>(nums.size()); i++)
-	{
-		cout << "i: " << i << endl;
-
-		compMap.insert({nums.at(i), i});
-
-		//int complement {};
-		//if (nums.at(i) < 0)
-		//{
-			//complement = target + nums.at(i);
-		//}
-		//else
-		//{
-			//complement = target - nums.at(i);
-		//}
-
-		int complement = target - nums.at(i);
-
-		cout << "complement: " << complement << endl;
-
-		auto got = compMap.find(complement);
-
-		if (got != compMap.end())
-		{
-			cout << "got->first: " << (*got).first << endl;
-			cout << "got->second: " << got->second << endl;
-			cout << "arr1[i]: " << nums.at(i) << endl;
-			cout << "i: " << i << endl;
-		}
-
-		if (got != compMap.end() && got->second != i)
-		{
-			result.push_back((*got).second);
-			result.push_back(i);
-
-			return result;
-		}
-	}
-
-	return result;
-}
-
-vector<int> findPairSumUpToTarget(int *arr1, int aS, int target)
-{
-	vector<int> result {};
-
-	unordered_map<int, int> compMap{{}};
-
-	for (int i {0}; i < aS; i++)
-	{
-
-		cout << "i: " << i << endl;
-
-		compMap.insert({arr1[i], i});
-
-		int complement = target - arr1[i];
-
-		cout << "complement: " << complement << endl;
-
-		auto got = compMap.find(complement);
-
-		if (got != compMap.end())
-		{
-			cout << "got->first: " << (*got).first << endl;
-			cout << "got->second: " << got->second << endl;
-			cout << "arr1[i]: " << arr1[i] << endl;
-			cout << "i: " << i << endl;
-		}
-
-		if (got != compMap.end())
-		{
-			result.push_back((*got).second);
-			result.push_back(i);
-
-			return result;
-		}
+		compMap.insert({currentElement, i});
 	}
 
 	return result;
