@@ -11,8 +11,10 @@ void printVector(vector<int>& nums);
 
 int main()
 {
-	vector<int> vec {-2,1,-3,4,-1,2,1,-5,4};
+	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,4};
+	vector<int> vec {-2,1,-3,4,-1,2,1,-5,-11,4};
 	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,4, -2, 6};
+
 	printVector(vec);
 
 	int result = maxSubArray(vec);
@@ -44,6 +46,7 @@ int maxSubArray(vector<int>& nums)
 	//unordered_map<int, int> lowExtremeFirstElements;
 	//nums index, nums value
 	unordered_map<int, int> lowExtremeFirstElements;
+	//unordered_map<int, int> highExtremeLastElement;
 
 	for (int i {0}; i < vecSize; i++)
 	{
@@ -56,6 +59,10 @@ int maxSubArray(vector<int>& nums)
 
 		if (currentElement > 0)
 		{
+
+			cout << endl << "lowExtremeFirstElements.size(): " <<
+				lowExtremeFirstElements.size() << endl;
+
 			lowExtremeFirstElement = currentElement;
 
 			cout << "lowExtremeFirstElement: " << lowExtremeFirstElement
@@ -75,16 +82,20 @@ int maxSubArray(vector<int>& nums)
 			//if()
 		}
 
-		//if (currentElement < 0)
+		if (nums.at(i) < 0)
+		{
+			cout << nums.at(i) << endl;
+		}
+
+		//while(nums.at(i) < 0)
 		//{
-			//while(nums.at(i) < 0)
+			//cout << nums.at(i) << endl;
+
+			//if (i == vecSize - 1)
 			//{
-				//if (i == vecSize - 1)
-				//{
-					//break;
-				//}
-				//i++;
+				//break;
 			//}
+			//i++;
 		//}
 
 	}
@@ -115,3 +126,6 @@ void printVector(vector<int>& nums)
 	}
 	cout << "]" << endl << endl;
 }
+
+//TODO: handle when all elements are negative numbers
+//TODO: handle when only one positive number
