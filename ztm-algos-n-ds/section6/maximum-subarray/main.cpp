@@ -7,6 +7,7 @@ using namespace std;
 
 int maxSubArray(vector<int>& nums);
 int maxSubArray_01(vector<int>& nums);
+int maxSubArray_02(vector<int>& nums);
 void printpositiveStreakFirstElements(unordered_map<int, int> & map);
 void printVector(vector<int>& nums);
 
@@ -19,13 +20,37 @@ int main()
 	printVector(vec);
 
 	//int result = maxSubArray(vec);
-	int result = maxSubArray_01(vec);
+	//int result = maxSubArray_01(vec);
+	int result = maxSubArray_02(vec);
 
 	cout << "result: " << result << endl;
 
 	return 0;
 }
 
+int maxSubArray_02(vector<int>& nums)
+{
+	int i {0};
+
+	while (i < (int)nums.size())
+	{
+		//loop positives
+		while(i < (int)nums.size() && nums.at(i) > 0)
+		{
+			cout << "positive" << endl;
+			i++;
+		}
+
+		//loop negatives
+		while(i < (int)nums.size() && nums.at(i) < 0)
+		{
+			cout << "negative" << endl;
+			i++;
+		}
+	}
+
+	return 0;
+}
 
 int maxSubArray_01(vector<int>& nums)
 {
@@ -85,6 +110,8 @@ int maxSubArray_01(vector<int>& nums)
 		cout << "high_left: (index | value) " << high_left << " | " <<
 			nums.at(high_left) << endl;
 
+		cout << "nums.at(i) after seen positives: " << nums.at(i) << endl;
+
 //2nd block
 		while (nums.at(i) < 0)
 		{
@@ -92,28 +119,28 @@ int maxSubArray_01(vector<int>& nums)
 			i++;
 		}
 
-		cout << "eh: " << nums.at(i) << endl;
+		cout << "nums.at(i) after seen negatives: " << nums.at(i) << endl;
 
 //3rd block
-		if (nums.at(i) > highestNumber)
-		{
-			highestNumber = nums.at(i);
-		}
+		//if (nums.at(i) > highestNumber)
+		//{
+			//highestNumber = nums.at(i);
+		//}
 
-		if (nums.at(i) > 0)
-		{
-			low_left = i;
+		//if (nums.at(i) > 0)
+		//{
+			//low_left = i;
 
-			while(nums.at(i) > 0)
-			{
-				high_left = i;
-				if (i == vecSize - 1)
-				{
-					break;
-				}
-				i++;
-			}
-		}
+			//while(nums.at(i) > 0)
+			//{
+				//high_left = i;
+				//if (i == vecSize - 1)
+				//{
+					//break;
+				//}
+				//i++;
+			//}
+		//}
 	}
 
 	cout << endl << "highestNumber: " << highestNumber << endl << endl;
