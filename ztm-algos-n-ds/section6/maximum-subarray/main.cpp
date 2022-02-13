@@ -14,8 +14,9 @@ void printVector(vector<int>& nums);
 int main()
 {
 	vector<int> vec {-2,1,-3,4,-1,2,1,-5,4};
+	//vector<int> vec {1};
 	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,-11,4};
-	//vector<int> vec {-1,4,-1,2,1,-5,-11,4};
+	//vector<int> vec {5,4,-1,7,8};
 	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,4, -2, 6};
 
 	printVector(vec);
@@ -25,6 +26,8 @@ int main()
 	int result = maxSubArray_02(vec);
 
 	cout << "result: " << result << endl;
+	
+	cin.get();
 
 	return 0;
 }
@@ -40,6 +43,7 @@ int maxSubArray_02(vector<int>& nums)
 	//int initialPositiveIndex_right {-1};
 	//int lastPositiveIndex_right {-1};
 	int largestSum {INT_MIN};
+	bool hasFoundMiddleNegatives {false};
 
 	if (nums.size() > 0)
 	{
@@ -60,7 +64,7 @@ int maxSubArray_02(vector<int>& nums)
 
 			//If we already found positive numbers then we compare last positive
 			// streak sum with the next one
-			if (positiveSum > 0)
+			if (positiveSum > 0 && hasFoundMiddleNegatives)
 			{
 				secondStreakPositiveSum += nums.at(i);
 			}
@@ -81,45 +85,43 @@ int maxSubArray_02(vector<int>& nums)
 
 		//Check if summing extremes and middle negative numbers we obtain a
 		// result greater than each one of the single positive extremes
-		// taken alone
-		if (negativeStreakSum > 0)
+		// taken alone		
+		if (positiveSum > 0 || secondStreakPositiveSum > 0)
 		{
-			int positivesAndNegatives =
-				positiveSum + negativeStreakSum + secondStreakPositiveSum;
-
-			largestSum = positivesAndNegatives;
-			cout << "l: " << largestSum << endl;
-
-			if (positiveSum > positivesAndNegatives &&
-				positiveSum > secondStreakPositiveSum)
+			int newLargest = positiveSum > secondStreakPositiveSum ?
+				positiveSum : secondStreakPositiveSum;
+			
+			if (newLargest > largestSum)
 			{
-				largestSum = positiveSum;
-			}
-
-			if (secondStreakPositiveSum > positivesAndNegatives &&
-				secondStreakPositiveSum > positiveSum)
-			{
-				largestSum = secondStreakPositiveSum;
+				largestSum = newLargest;
 			}
 		}
-		else
+		
+		int positivesAndNegatives =
+			positiveSum + negativeStreakSum + secondStreakPositiveSum;
+
+		int newLargest = positivesAndNegatives;
+		
+		if (newLargest > largestSum)
 		{
-			largestSum = positiveSum > secondStreakPositiveSum ?
-				positiveSum : secondStreakPositiveSum;
+			largestSum = newLargest;
+		}
+
+		if (positiveSum > positivesAndNegatives &&
+			positiveSum > secondStreakPositiveSum && 
+			positiveSum > largestSum)
+		{
+			largestSum = positiveSum;
+		}
+
+		if (secondStreakPositiveSum > positivesAndNegatives &&
+			secondStreakPositiveSum > positiveSum && 
+			secondStreakPositiveSum > largestSum)
+		{
+			largestSum = secondStreakPositiveSum;
 		}
 
 		cout << "largestSum: " << largestSum << endl;
-
-		//loop negatives
-		negativeStreakSum = 0;
-		while(i < (int)nums.size() && nums.at(i) < 0)
-		{
-			cout << "negative: " << nums.at(i) << endl << endl;
-			negativeStreakSum += nums.at(i);
-			i++;
-		}
-
-		cout << "negativeStreakSum: " << negativeStreakSum << endl;
 
 		if (positiveSum > 0 && secondStreakPositiveSum > 0)
 		{
@@ -127,10 +129,23 @@ int maxSubArray_02(vector<int>& nums)
 			secondStreakPositiveSum = 0;
 		}
 
+		//loop negatives
+		hasFoundMiddleNegatives = false;
+		negativeStreakSum = 0;
+		while(i < (int)nums.size() && nums.at(i) < 0)
+		{
+			hasFoundMiddleNegatives = true;
+			cout << "negative: " << nums.at(i) << endl << endl;
+			negativeStreakSum += nums.at(i);
+			i++;
+		}
+
+		cout << "negativeStreakSum: " << negativeStreakSum << endl;
+
 		cout << "--------------------------------------------" << endl;
 	}
 
-	return 0;
+	return largestSum;
 }
 
 int maxSubArray_01(vector<int>& nums)
@@ -272,7 +287,6 @@ int maxSubArray(vector<int>& nums)
 
 			cout << "lowExtremeFirstElement: " << lowExtremeFirstElement
 				<< endl;
-			cout << "i: " << i << endl;
 
 			positiveStreakFirstElements[i] = lowExtremeFirstElement;
 
@@ -298,8 +312,6 @@ int maxSubArray(vector<int>& nums)
 		}
 
 	}
-
-	//if ()
 
 	printpositiveStreakFirstElements(positiveStreakFirstElements);
 
