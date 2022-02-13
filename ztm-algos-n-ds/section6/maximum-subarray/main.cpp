@@ -31,28 +31,45 @@ int main()
 int maxSubArray_02(vector<int>& nums)
 {
 	int i {0};
-	int positiveSum {0};
-	int initialPositiveIndex {-1};
-	int lastPositiveIndex {-1};
+	int positiveSum {-1};
+	int secondStreakPositiveSum {-1};
+	int initialPositiveIndex_left {-1};
+	int lastPositiveIndex_left {-1};
+	//int initialPositiveIndex_right {-1};
+	//int lastPositiveIndex_right {-1};
 
 	while (i < (int)nums.size())
 	{
 		//loop positives
 		if (nums.at(i) > 0)
 		{
-			initialPositiveIndex = i;
+			initialPositiveIndex_left = i;
 		}
 
 		while(i < (int)nums.size() && nums.at(i) > 0)
 		{
 			cout << "positive: " << nums.at(i) << endl << endl;
-			positiveSum += nums.at(i);
-			lastPositiveIndex = i;
+
+			//If we already found positive numbers then we compare last positive
+			// streak sum with the next one
+			if (positiveSum > -1)
+			{
+				secondStreakPositiveSum += nums.at(i);
+			}
+			else
+			{
+				positiveSum += nums.at(i);
+			}
+			lastPositiveIndex_left = i;
 			i++;
 		}
 
-		cout << "initialPositiveIndex: " << initialPositiveIndex << endl;
-		cout << "lastPositiveIndex: " << lastPositiveIndex << endl;
+		cout << "initialPositiveIndex_left: " << initialPositiveIndex_left << endl;
+		cout << "lastPositiveIndex_left: " << lastPositiveIndex_left << endl;
+
+		cout << "positiveSum: " << positiveSum << endl;
+		cout << "secondStreakPositiveSum: " << secondStreakPositiveSum
+			<< endl;
 
 		//loop negatives
 		while(i < (int)nums.size() && nums.at(i) < 0)
@@ -60,6 +77,8 @@ int maxSubArray_02(vector<int>& nums)
 			cout << "negative: " << nums.at(i) << endl << endl;
 			i++;
 		}
+
+		cout << "--------------------------------------------" << endl;
 	}
 
 	return 0;
