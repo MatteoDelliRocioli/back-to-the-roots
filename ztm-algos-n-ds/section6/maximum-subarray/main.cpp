@@ -14,7 +14,8 @@ void printVector(vector<int>& nums);
 int main()
 {
 	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,4};
-	vector<int> vec {-2,1,-3,4,-1,2,1,-5,-11,4};
+	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,-11,4};
+	vector<int> vec {-1,4,-1,2,1,-5,-11,4};
 	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,4, -2, 6};
 
 	printVector(vec);
@@ -31,8 +32,9 @@ int main()
 int maxSubArray_02(vector<int>& nums)
 {
 	int i {0};
-	int positiveSum {-1};
-	int secondStreakPositiveSum {-1};
+	int positiveSum {0};
+	int secondStreakPositiveSum {0};
+	int negativeStreakSum {0};
 	int initialPositiveIndex_left {-1};
 	int lastPositiveIndex_left {-1};
 	//int initialPositiveIndex_right {-1};
@@ -52,7 +54,7 @@ int maxSubArray_02(vector<int>& nums)
 
 			//If we already found positive numbers then we compare last positive
 			// streak sum with the next one
-			if (positiveSum > -1)
+			if (positiveSum > 0)
 			{
 				secondStreakPositiveSum += nums.at(i);
 			}
@@ -71,12 +73,21 @@ int maxSubArray_02(vector<int>& nums)
 		cout << "secondStreakPositiveSum: " << secondStreakPositiveSum
 			<< endl;
 
+		//Check if summing extremes and middle negative numbers we obtain a
+		// result greater than each one of the single positive extremes
+		// taken alone
+		//if ()
+
 		//loop negatives
+		negativeStreakSum = 0;
 		while(i < (int)nums.size() && nums.at(i) < 0)
 		{
 			cout << "negative: " << nums.at(i) << endl << endl;
+			negativeStreakSum += nums.at(i);
 			i++;
 		}
+
+		cout << "negativeStreakSum: " << negativeStreakSum << endl;
 
 		cout << "--------------------------------------------" << endl;
 	}
