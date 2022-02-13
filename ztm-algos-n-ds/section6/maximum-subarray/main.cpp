@@ -31,20 +31,33 @@ int main()
 int maxSubArray_02(vector<int>& nums)
 {
 	int i {0};
+	int positiveSum {0};
+	int initialPositiveIndex {-1};
+	int lastPositiveIndex {-1};
 
 	while (i < (int)nums.size())
 	{
 		//loop positives
+		if (nums.at(i) > 0)
+		{
+			initialPositiveIndex = i;
+		}
+
 		while(i < (int)nums.size() && nums.at(i) > 0)
 		{
-			cout << "positive" << endl;
+			cout << "positive: " << nums.at(i) << endl << endl;
+			positiveSum += nums.at(i);
+			lastPositiveIndex = i;
 			i++;
 		}
+
+		cout << "initialPositiveIndex: " << initialPositiveIndex << endl;
+		cout << "lastPositiveIndex: " << lastPositiveIndex << endl;
 
 		//loop negatives
 		while(i < (int)nums.size() && nums.at(i) < 0)
 		{
-			cout << "negative" << endl;
+			cout << "negative: " << nums.at(i) << endl << endl;
 			i++;
 		}
 	}
