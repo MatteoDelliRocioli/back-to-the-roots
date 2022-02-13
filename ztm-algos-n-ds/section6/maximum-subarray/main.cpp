@@ -6,7 +6,7 @@
 using namespace std;
 
 int maxSubArray(vector<int>& nums);
-void printLowExtremeFirstElements(unordered_map<int, int> & map);
+void printpositiveStreakFirstElements(unordered_map<int, int> & map);
 void printVector(vector<int>& nums);
 
 int main()
@@ -43,9 +43,9 @@ int maxSubArray(vector<int>& nums)
 	int highestNumber = nums.at(0);
 
 	//nums value, nums index
-	//unordered_map<int, int> lowExtremeFirstElements;
+	//unordered_map<int, int> positiveStreakFirstElements;
 	//nums index, nums value
-	unordered_map<int, int> lowExtremeFirstElements;
+	unordered_map<int, int> positiveStreakFirstElements;
 	//unordered_map<int, int> highExtremeLastElement;
 
 	for (int i {0}; i < vecSize; i++)
@@ -60,8 +60,8 @@ int maxSubArray(vector<int>& nums)
 		if (currentElement > 0)
 		{
 
-			cout << endl << "lowExtremeFirstElements.size(): " <<
-				lowExtremeFirstElements.size() << endl;
+			cout << endl << "positiveStreakFirstElements.size(): " <<
+				positiveStreakFirstElements.size() << endl;
 
 			lowExtremeFirstElement = currentElement;
 
@@ -69,7 +69,7 @@ int maxSubArray(vector<int>& nums)
 				<< endl;
 			cout << "i: " << i << endl;
 
-			lowExtremeFirstElements[i] = lowExtremeFirstElement;
+			positiveStreakFirstElements[i] = lowExtremeFirstElement;
 
 			while(nums.at(i) > 0)
 			{
@@ -80,7 +80,7 @@ int maxSubArray(vector<int>& nums)
 				i++;
 			}
 
-			if (lowExtremeFirstElements.size() > 1 && i != vecSize - 1)
+			if (positiveStreakFirstElements.size() > 1 && i != vecSize - 1)
 			{
 				cout << "High extreme last number: " << nums.at(i - 1) << endl;
 			}
@@ -96,12 +96,12 @@ int maxSubArray(vector<int>& nums)
 
 	//if ()
 
-	printLowExtremeFirstElements(lowExtremeFirstElements);
+	printpositiveStreakFirstElements(positiveStreakFirstElements);
 
 	return 0;
 }
 
-void printLowExtremeFirstElements(unordered_map<int, int>& map)
+void printpositiveStreakFirstElements(unordered_map<int, int>& map)
 {
 	cout << "[ ";
 	for (auto x : map)
