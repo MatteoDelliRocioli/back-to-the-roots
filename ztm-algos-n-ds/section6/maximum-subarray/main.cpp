@@ -79,24 +79,18 @@ int maxSubArray(vector<int>& nums)
 				}
 				i++;
 			}
-			//if()
+
+			if (lowExtremeFirstElements.size() > 1 && i != vecSize - 1)
+			{
+				cout << "High extreme last number: " << nums.at(i - 1) << endl;
+			}
+
 		}
 
 		if (nums.at(i) < 0)
 		{
 			cout << nums.at(i) << endl;
 		}
-
-		//while(nums.at(i) < 0)
-		//{
-			//cout << nums.at(i) << endl;
-
-			//if (i == vecSize - 1)
-			//{
-				//break;
-			//}
-			//i++;
-		//}
 
 	}
 
