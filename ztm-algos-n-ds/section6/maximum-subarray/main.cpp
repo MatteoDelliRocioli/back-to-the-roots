@@ -6,6 +6,7 @@
 using namespace std;
 
 int maxSubArray(vector<int>& nums);
+int maxSubArray_01(vector<int>& nums);
 void printpositiveStreakFirstElements(unordered_map<int, int> & map);
 void printVector(vector<int>& nums);
 
@@ -17,9 +18,105 @@ int main()
 
 	printVector(vec);
 
-	int result = maxSubArray(vec);
+	//int result = maxSubArray(vec);
+	int result = maxSubArray_01(vec);
 
-	cout << result << endl;
+	cout << "result: " << result << endl;
+
+	return 0;
+}
+
+
+int maxSubArray_01(vector<int>& nums)
+{
+	int vecSize = (int) nums.size();
+	int low_left {0};
+	int high_left {0};
+
+	int tempSum {0};
+	int sumLeft {0};
+
+	vector<int> indexes {};
+
+	if (vecSize == 0)
+	{
+		return 0;
+	}
+
+	if (vecSize == 1)
+	{
+		return nums.at(0);
+	}
+
+	//int lowExtremeFirstElement = INT_MIN;
+	int highestNumber = nums.at(0);
+
+	for (int i {0}; i < vecSize; i++)
+	{
+//1st block
+		if (nums.at(i) > highestNumber)
+		{
+			highestNumber = nums.at(i);
+		}
+
+		if (nums.at(i) > 0)
+		{
+			low_left = i;
+
+			while(nums.at(i) > 0)
+			{
+				cout << "adding " << nums.at(i) << endl;
+				tempSum += nums.at(i);
+
+				if (i == vecSize - 1)
+				{
+					break;
+				}
+				i++;
+			}
+			sumLeft = tempSum;
+			tempSum = 0;
+		}
+
+		cout << endl << "sumLeft: " << sumLeft << endl;
+
+		cout << "low_left: (index | value) " << low_left << " | " <<
+			nums.at(low_left) << endl;
+		cout << "high_left: (index | value) " << high_left << " | " <<
+			nums.at(high_left) << endl;
+
+//2nd block
+		while (nums.at(i) < 0)
+		{
+			cout << nums.at(i) << endl;
+			i++;
+		}
+
+		cout << "eh: " << nums.at(i) << endl;
+
+//3rd block
+		if (nums.at(i) > highestNumber)
+		{
+			highestNumber = nums.at(i);
+		}
+
+		if (nums.at(i) > 0)
+		{
+			low_left = i;
+
+			while(nums.at(i) > 0)
+			{
+				high_left = i;
+				if (i == vecSize - 1)
+				{
+					break;
+				}
+				i++;
+			}
+		}
+	}
+
+	cout << endl << "highestNumber: " << highestNumber << endl << endl;
 
 	return 0;
 }
