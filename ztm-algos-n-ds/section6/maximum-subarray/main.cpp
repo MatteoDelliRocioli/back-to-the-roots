@@ -41,6 +41,11 @@ int maxSubArray_02(vector<int>& nums)
 	//int lastPositiveIndex_right {-1};
 	int largestSum {INT_MIN};
 
+	if (nums.size() > 0)
+	{
+		largestSum = nums.at(0);
+	}
+
 	while (i < (int)nums.size())
 	{
 		//loop positives
@@ -83,13 +88,13 @@ int maxSubArray_02(vector<int>& nums)
 				positiveSum + negativeStreakSum + secondStreakPositiveSum;
 
 			largestSum = positivesAndNegatives;
+			cout << "l: " << largestSum << endl;
 
 			if (positiveSum > positivesAndNegatives &&
 				positiveSum > secondStreakPositiveSum)
 			{
 				largestSum = positiveSum;
 			}
-
 
 			if (secondStreakPositiveSum > positivesAndNegatives &&
 				secondStreakPositiveSum > positiveSum)
@@ -115,6 +120,12 @@ int maxSubArray_02(vector<int>& nums)
 		}
 
 		cout << "negativeStreakSum: " << negativeStreakSum << endl;
+
+		if (positiveSum > 0 && secondStreakPositiveSum > 0)
+		{
+			positiveSum = secondStreakPositiveSum;
+			secondStreakPositiveSum = 0;
+		}
 
 		cout << "--------------------------------------------" << endl;
 	}
