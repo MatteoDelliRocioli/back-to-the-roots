@@ -12,7 +12,8 @@ void printVector(vector<int>& nums);
 
 int main()
 {
-	vector<int> vec {-2,1,-3,4,-1,2,1,-5,4};
+	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,4};
+	vector<int> vec {-1,1,2,1};
 	//vector<int> vec {0};
 	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,-11,4};
 	//vector<int> vec {5,4,-1,7,8};
@@ -120,7 +121,10 @@ int maxSubArray(vector<int>& nums)
 		negativeStreakSum = 0;
 		while(i < static_cast<int>(nums.size()) && nums.at(i) < 0)
 		{
-			hasFoundMiddleNegatives = true;
+			if (positiveSum > 0)
+			{
+				hasFoundMiddleNegatives = true;
+			}
 			negativeStreakSum += nums.at(i);
 			if (nums.at(i) > biggestNumber)
 			{
