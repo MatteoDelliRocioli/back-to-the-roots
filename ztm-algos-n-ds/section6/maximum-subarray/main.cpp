@@ -13,7 +13,8 @@ void printVector(vector<int>& nums);
 int main()
 {
 	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,4};
-	vector<int> vec {-1,1,2,1};
+	//vector<int> vec {-1,1,2,1};
+	vector<int> vec {2, -1, 0, 0, -1, 2, 2, -2, 2};
 	//vector<int> vec {0};
 	//vector<int> vec {-2,1,-3,4,-1,2,1,-5,-11,4};
 	//vector<int> vec {5,4,-1,7,8};
@@ -41,6 +42,7 @@ int maxSubArray(vector<int>& nums)
 	int negativeStreakSum {0};
 	int largestSum {INT_MIN};
 	bool hasFoundMiddleNegatives {false};
+	bool hasSecondPositiveStrike {false};
 	int biggestNumber {INT_MIN};
 
 	if (nums.size() > 0)
@@ -58,7 +60,8 @@ int maxSubArray(vector<int>& nums)
 			 // streak sum with the next one
 			 if (positiveSum > 0 && hasFoundMiddleNegatives)
 			 {
-				  secondStreakPositiveSum += nums.at(i);
+					secondStreakPositiveSum += nums.at(i);
+					hasSecondPositiveStrike = true;
 			 }
 			 else
 			 {
@@ -110,7 +113,8 @@ int maxSubArray(vector<int>& nums)
 			largestSum = secondStreakPositiveSum;
 		}
 
-		if (positiveSum > 0 && secondStreakPositiveSum > 0)
+		if ((positiveSum > 0 && secondStreakPositiveSum > 0) ||
+			hasSecondPositiveStrike)
 		{
 			positiveSum = secondStreakPositiveSum;
 			secondStreakPositiveSum = 0;
