@@ -15,8 +15,6 @@ int main()
 
 	printVector(vec);
 
-	//int result = maxSubArray(vec);
-	//int result = maxSubArray_01(vec);
 	int result = maxSubArray(vec);
 
 	cout << "result: " << result << endl;
@@ -160,6 +158,3 @@ void printVector(vector<int>& nums)
 	}
 	cout << "]" << endl << endl;
 }
-
-//TODO: handle when all elements are negative numbers
-//TODO: handle when only one positive number
