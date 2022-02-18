@@ -7,14 +7,14 @@ void rotate(vector<int>& nums, int k);
 
 int main()
 {
-	vector<int> nums {1,2,3,4,5,6,7};
+	//vector<int> nums {1,2,3,4,5,6,7};
+	vector<int> nums {-1};
 	int k {3};
 
 	rotate(nums, k);
 
 	return 0;
 }
-
 
 //We can take the last k elements from the array and copy them into
 // a new array. The remaining part of the new array would be a copy of
@@ -24,6 +24,12 @@ int main()
 void rotate(vector<int>& nums, int k)
 {
 	vector<int> res;
+
+	//Edge cases: what if k is more than nums.size() ?
+	if (k > (int)nums.size())
+	{
+		k = k % (int)nums.size();
+	}
 
 	for (int i {(int)nums.size() - k}; i < (int)nums.size(); i++)
 	{
