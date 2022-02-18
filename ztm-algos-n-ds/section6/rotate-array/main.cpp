@@ -25,7 +25,7 @@ void rotate(vector<int>& nums, int k)
 {
 	vector<int> res;
 
-	for (int i {nums.size() - k}; i < nums.size(); i++)
+	for (int i {(int)nums.size() - k}; i < (int)nums.size(); i++)
 	{
 		cout << nums.at(i) << " ";
 		res.push_back(nums.at(i));
@@ -33,7 +33,7 @@ void rotate(vector<int>& nums, int k)
 
 	cout << endl << endl;
 
-	for (int i {0}; i < (nums.size() - k); i++)
+	for (int i {0}; i < ((int)nums.size() - k); i++)
 	{
 		cout << nums.at(i) << " ";
 		res.push_back(nums.at(i));
