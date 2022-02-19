@@ -4,16 +4,45 @@
 using namespace std;
 
 void rotate(vector<int>& nums, int k);
+void rotate_01(vector<int>& nums, int k);
+void printVector(const vector<int>& nums);
 
 int main()
 {
-	//vector<int> nums {1,2,3,4,5,6,7};
-	vector<int> nums {-1};
+	vector<int> nums {1,2,3,4,5,6,7};
+	//vector<int> nums {-1};
 	int k {3};
-
 	rotate(nums, k);
 
 	return 0;
+}
+
+void rotate(vector<int>& nums, int k)
+{
+	k = k % (int)nums.size();
+
+	printVector(nums);
+
+	vector<int> res;
+
+	//We create a new empty vector result and start pushing to it
+	// the last k elements and then we push the remaining elements of the original collection
+	// from index 0(zero) to nums.size() - k
+	for (int i {(int)nums.size() - k}; i < (int)nums.size(); i++)
+	{
+		res.push_back(nums.at(i));
+	}
+
+	for (int i {0}; i < ((int)nums.size() -k); i++)
+	{
+		res.push_back(nums.at(i));
+	}
+
+	printVector(res);
+
+	nums = res;
+	
+	printVector(nums);
 }
 
 //We can take the last k elements from the array and copy them into
@@ -21,7 +50,7 @@ int main()
 // the original array elements (index from 0 to arr.length - k)
 //
 //That solution would be O(n) space complexity and O(n) time complexity
-void rotate(vector<int>& nums, int k)
+void rotate_01(vector<int>& nums, int k)
 {
 	vector<int> res;
 
@@ -52,4 +81,14 @@ void rotate(vector<int>& nums, int k)
 	{
 		cout << x << " ";
 	}
+}
+
+void printVector(const vector<int>& nums)
+{
+	cout << "[ ";
+	for(int x: nums)
+	{
+		cout << x << " ";
+	}
+	cout << "]" << endl;
 }
