@@ -17,24 +17,39 @@ string LongestWord(string sen)
 
 	int i {0};
 	int initCharIndex {0};
+	int lastCharIndex {0};
 	vector<string> res;
+
+	cout << "(int)sen.size(): " << (int)sen.size() << endl;
 
 	while(i < (int)sen.size())
 	{
-		initCharIndex = i;
-		while(validChars.find(sen[i]) != validChars.end())
+		if(validChars.find(sen[i]) != validChars.end())
 		{
-			cout << "char: " << sen[i] << " " << endl;
 			i++;
+			lastCharIndex = i;
+			continue;
 		}
 
-		cout << "char: " << sen[i] << " " << endl;
-		res.push_back(sen.substr(initCharIndex, i));
+		cout << "char: " << sen[i] << " ,i: " << i << endl;
+		cout << "initCharIndex: " << initCharIndex << endl;
+		cout << "lastCharIndex: " << lastCharIndex << endl;
+		cout << "sen.substr(initCharIndex, (lastCharIndex - initCharIndex)): " << sen.substr(initCharIndex, (lastCharIndex - initCharIndex)) << endl;
 
 		while(validChars.find(sen[i]) == validChars.end())
 		{
+			cout << "->" << i << endl;
 			i++;
 		}
+		i--;
+
+		cout << "-->" << i << endl;
+
+		res.push_back(sen.substr(initCharIndex, (lastCharIndex - initCharIndex)));
+		i++;
+		initCharIndex = i;
+
+		cout << "//-------------------------------------//" << endl << endl;
 	}
 
 	printVector(res);
@@ -45,7 +60,7 @@ string LongestWord(string sen)
 int main(void) 
 {
 	// keep this function call here
-	cout << LongestWord("example/test//miao");
+	cout << LongestWord("example/test///miao");
 	//cout << LongestWord(coderbyteInternalStdinFunction(stdin));
 	return 0;
 }
