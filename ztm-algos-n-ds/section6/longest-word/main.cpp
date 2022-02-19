@@ -7,7 +7,44 @@ using namespace std;
 
 void printVector(const vector<string>& vec);
 
-string LongestWord(string sen) {
+string LongestWord(string sen)
+{
+	// code goes here 
+	unordered_set<char> validChars {
+		'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','w','x','y','z',
+		'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','W','X','Y','Z'
+	};
+
+	int i {0};
+	int initCharIndex {0};
+	int lastCharIndex {0};
+	vector<string> res;
+
+	while(i < (int)sen.size())
+	{
+		initCharIndex = i;
+		while(validChars.find(sen[i]) != validChars.end())
+		{
+			cout << "char: " << sen[i] << " " << endl;
+			lastCharIndex++;
+			i++;
+		}
+
+		res.push_back(sen.substr(initCharIndex, lastCharIndex));
+
+		while(validChars.find(sen[i]) == validChars.end())
+		{
+			i++;
+		}
+	}
+
+	printVector(res);
+
+	return sen;
+}
+
+
+string LongestWord_01(string sen) {
 
 	// code goes here 
 	unordered_set<char> validChars {
@@ -49,10 +86,19 @@ string LongestWord(string sen) {
 			}
 		}
 
+        cout << "char '" << sen[i] << "' not found, is it new word?" << endl;
+
 		if ((currentMaxChars >= maxChars && currentMaxChars > 0) || (i == (int)sen.size() -1))
 		{
+		    cout << "pushing back" << endl;
 			maxChars = currentMaxChars;
 			res.push_back(sen.substr(initCharIndex, lastCharIndex));
+		}
+		
+		
+		while(validChars.find(sen[i]) == validChars.end())
+		{
+		    i++;
 		}
 
 		isNewWord = true;
@@ -67,7 +113,7 @@ string LongestWord(string sen) {
 int main(void) 
 {
 	// keep this function call here
-	cout << LongestWord("example");
+	cout << LongestWord("example/test//miao");
 	//cout << LongestWord(coderbyteInternalStdinFunction(stdin));
 	return 0;
 }
