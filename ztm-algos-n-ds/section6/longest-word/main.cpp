@@ -5,6 +5,8 @@
 
 using namespace std;
 
+void printVector(const vector<string>& vec);
+
 string LongestWord(string sen) {
 
 	// code goes here 
@@ -24,22 +26,34 @@ string LongestWord(string sen) {
 	int initCharIndex = 0;
 	int lastCharIndex = 0;
 
+	bool isNewWord {false};
+
 	for (int i {0}; i < (int)sen.size(); i++)
 	{
 		if(validChars.find(sen[i]) != validChars.end())
 		{
 			currentMaxChars++;
+			lastCharIndex++;
+
+			if (isNewWord)
+			{
+				initCharIndex = i;
+				isNewWord = false;
+			}
+
+			continue;
 		}
 
-		if (currentMaxChars > maxChars)
+		if (currentMaxChars >= maxChars && currentMaxChars > 0 || (i == sen.size() -1))
 		{
 			maxChars = currentMaxChars;
-
 			res.push_back(sen.substr(initCharIndex, lastCharIndex));
 		}
+
+		isNewWord = true;
 	}
 
-	
+	printVector(res);
 
 	return sen;
 
@@ -51,4 +65,15 @@ int main(void)
 	cout << LongestWord("example");
 	//cout << LongestWord(coderbyteInternalStdinFunction(stdin));
 	return 0;
+}
+
+
+void printVector(const vector<string>& vec)
+{
+	cout << "[ ";
+	for (string x: vec)
+	{
+		cout << x << " ";
+	}
+	cout << "]" << endl;
 }
