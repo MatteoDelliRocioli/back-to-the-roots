@@ -18,6 +18,7 @@ string LongestWord(string sen)
 	int i {0};
 	int initCharIndex {0};
 	int lastCharIndex {0};
+	int longestStringSize {0};
 	vector<string> res;
 
 	cout << "(int)sen.size(): " << (int)sen.size() << endl;
@@ -36,10 +37,12 @@ string LongestWord(string sen)
 			}
 		}
 
+		int currentStringLenght = lastCharIndex - initCharIndex;
+
 		cout << "char: " << sen[i] << " ,i: " << i << endl;
 		cout << "initCharIndex: " << initCharIndex << endl;
 		cout << "lastCharIndex: " << lastCharIndex << endl;
-		cout << "sen.substr(initCharIndex, (lastCharIndex - initCharIndex)): " << sen.substr(initCharIndex, (lastCharIndex - initCharIndex)) << endl;
+		cout << "sen.substr(initCharIndex, (currentStringLenght)): " << sen.substr(currentStringLenght) << endl;
 
 		while(validChars.find(sen[i]) == validChars.end())
 		{
@@ -56,7 +59,11 @@ string LongestWord(string sen)
 
 		cout << "-->" << i << endl;
 
-		res.push_back(sen.substr(initCharIndex, (lastCharIndex - initCharIndex)));
+		//Check last inserted string length before inserting the string
+		/*if (((int)res.size() == 0) || (((int)res.size() > 0) && ((int)res.at(i).size() <= currentStringLenght)))
+		{*/
+			res.push_back(sen.substr(initCharIndex, currentStringLenght));
+		//}
 
 		if (i < (int)sen.size() - 1)
 		{
