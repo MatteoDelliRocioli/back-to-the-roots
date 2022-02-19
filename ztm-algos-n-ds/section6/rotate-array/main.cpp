@@ -5,6 +5,7 @@ using namespace std;
 
 void rotate(vector<int>& nums, int k);
 void rotate_01(vector<int>& nums, int k);
+void rotate_02(vector<int>& nums, int k);
 void printVector(const vector<int>& nums);
 
 int main()
@@ -45,12 +46,58 @@ void rotate(vector<int>& nums, int k)
 	printVector(nums);
 }
 
+void rotate_01(vector<int>& nums, int k)
+{
+	
+	int n = nums.size();
+	k = k%n;
+	int i = (n-k);
+	int j = n-1;
+	int temp;
+	while(i<j)
+	{
+		temp = nums[i];
+		nums[i] = nums[j];
+		nums[j] = temp;
+		++i;
+		--j;
+	}
+
+	printVector(nums);
+	
+	i = 0;j = n-k-1;
+	while(i<j)
+	{
+		temp = nums[i];
+		nums[i] = nums[j];
+		nums[j] = temp;
+		++i;
+		--j;
+		
+	}
+
+
+	printVector(nums);
+
+	i = 0; j = n-1;
+	while(i < j)
+	{
+		temp = nums[i];
+		nums[i] = nums[j];
+		nums[j] = temp;
+		++i;
+		--j;
+	}
+	
+	printVector(nums);
+}
+
 //We can take the last k elements from the array and copy them into
 // a new array. The remaining part of the new array would be a copy of
 // the original array elements (index from 0 to arr.length - k)
 //
 //That solution would be O(n) space complexity and O(n) time complexity
-void rotate_01(vector<int>& nums, int k)
+void rotate_02(vector<int>& nums, int k)
 {
 	vector<int> res;
 
