@@ -42,7 +42,7 @@ string LongestWord(string sen)
 		cout << "char: " << sen[i] << " ,i: " << i << endl;
 		cout << "initCharIndex: " << initCharIndex << endl;
 		cout << "lastCharIndex: " << lastCharIndex << endl;
-		cout << "sen.substr(initCharIndex, (currentStringLenght)): " << sen.substr(currentStringLenght) << endl;
+		cout << "sen.substr(initCharIndex, (currentStringLenght)): " << sen.substr(initCharIndex, (currentStringLenght)) << endl;
 
 		while(validChars.find(sen[i]) == validChars.end())
 		{
@@ -60,11 +60,11 @@ string LongestWord(string sen)
 		cout << "-->" << i << endl;
 
 		//Check last inserted string length before inserting the string
-		/*if (((int)res.size() == 0) || (((int)res.size() > 0) && ((int)res.at(i).size() <= currentStringLenght)))
-		{*/
+		if (res.empty() || currentStringLenght >= res.at(0).size())
+		{
 			res.push_back(sen.substr(initCharIndex, currentStringLenght));
-		//}
-
+		}
+		
 		if (i < (int)sen.size() - 1)
 		{
 			i++;
