@@ -26,9 +26,14 @@ string LongestWord(string sen)
 	{
 		if(validChars.find(sen[i]) != validChars.end())
 		{
+			cout << "here" << endl;
 			i++;
 			lastCharIndex = i;
-			continue;
+
+			if (i < (int)sen.size())
+			{
+				continue;
+			}
 		}
 
 		cout << "char: " << sen[i] << " ,i: " << i << endl;
@@ -39,15 +44,25 @@ string LongestWord(string sen)
 		while(validChars.find(sen[i]) == validChars.end())
 		{
 			cout << "->" << i << endl;
+
 			i++;
+			
+			if (i >= (int)sen.size())
+			{
+				break;
+			}
 		}
 		i--;
 
 		cout << "-->" << i << endl;
 
 		res.push_back(sen.substr(initCharIndex, (lastCharIndex - initCharIndex)));
-		i++;
-		initCharIndex = i;
+
+		if (i < (int)sen.size() - 1)
+		{
+			i++;
+			initCharIndex = i;
+		}
 
 		cout << "//-------------------------------------//" << endl << endl;
 	}
