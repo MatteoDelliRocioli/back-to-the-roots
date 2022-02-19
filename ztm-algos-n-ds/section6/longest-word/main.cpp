@@ -35,16 +35,21 @@ string LongestWord(string sen) {
 			currentMaxChars++;
 			lastCharIndex++;
 
+			cout << boolalpha << "i: " << i << ", " << isNewWord << endl;
+
 			if (isNewWord)
 			{
 				initCharIndex = i;
 				isNewWord = false;
 			}
 
-			continue;
+			if ((i != (int)sen.size() -1))
+			{
+				continue;
+			}
 		}
 
-		if (currentMaxChars >= maxChars && currentMaxChars > 0 || (i == sen.size() -1))
+		if ((currentMaxChars >= maxChars && currentMaxChars > 0) || (i == (int)sen.size() -1))
 		{
 			maxChars = currentMaxChars;
 			res.push_back(sen.substr(initCharIndex, lastCharIndex));
