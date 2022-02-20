@@ -12,7 +12,8 @@ string LongestWord(string sen)
 	// code goes here 
 	unordered_set<char> validChars {
 		'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-		'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
+		'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+		'0','1','2','3','4','5','6','7','8','9'
 	};
 
 	int i {0};
@@ -27,7 +28,6 @@ string LongestWord(string sen)
 	{
 		if(validChars.find(sen[i]) != validChars.end())
 		{
-			cout << "here" << endl;
 			i++;
 			lastCharIndex = i;
 
@@ -59,13 +59,16 @@ string LongestWord(string sen)
 
 		cout << "-->" << i << endl;
 
-		//TODO: check with the last elements being numbers
-
 		//Check last inserted string length before inserting the string
 		//if ((res.empty() || currentStringLenght >= res.at(0).size()) &&
 		//	res.at(0).compare(sen.substr(initCharIndex, currentStringLenght)) != 0)
 		if ((res.empty() || (int)currentStringLenght >= (int)res.at(0).size()))
 		{
+			if (!res.empty() && (int)currentStringLenght > (int)res.at(0).size())
+			{
+				res.clear();
+			}
+
 			res.push_back(sen.substr(initCharIndex, currentStringLenght));
 		}
 		
@@ -80,7 +83,7 @@ string LongestWord(string sen)
 
 	printVector(res);
 
-	return sen;
+	return res.at(0);
 }
 
 int main(void) 
