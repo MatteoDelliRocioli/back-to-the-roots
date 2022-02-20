@@ -59,8 +59,12 @@ string LongestWord(string sen)
 
 		cout << "-->" << i << endl;
 
+		//TODO: check with the last elements being numbers
+
 		//Check last inserted string length before inserting the string
-		if (res.empty() || currentStringLenght >= res.at(0).size())
+		//if ((res.empty() || currentStringLenght >= res.at(0).size()) &&
+		//	res.at(0).compare(sen.substr(initCharIndex, currentStringLenght)) != 0)
+		if ((res.empty() || currentStringLenght >= res.at(0).size()))
 		{
 			res.push_back(sen.substr(initCharIndex, currentStringLenght));
 		}
