@@ -1,19 +1,21 @@
-#include "HashTable.h"
+#include "hashTable.h"
+#include <iostream>
 
-using namespace personalImplementation;
 using namespace std;
 
-HashTable()
+// Implementations of methods have to reference to the relative 
+// header file with the syntax <header.h>::<method_name>
+hashTable::hashTable()
 {
-	cout << "Created hashTable obj" << endl;
+	cout << "Created a new hashtable obj" << endl;
 }
 
-~HashTable()
+hashTable::~hashTable()
 {
-	cout << "Destroyed hashTable obj" << endl;
+	cout << "Destroyed a hashtable obj" << endl;
 }
 
-/*void HashTable::_hash(string key)
+/*void hashTable::_hash(string key)
 {
 	long long hash {};
 
@@ -23,9 +25,9 @@ HashTable()
 	}
 	return hash;
 
-	/*let hash = 0;
+	let hash = 0;
 	for (let i =0; i < key.length; i++){
 			hash = (hash + key.charCodeAt(i) * i) % this.data.length
 	}
-	return hash;*/
+	return hash;
 }*/

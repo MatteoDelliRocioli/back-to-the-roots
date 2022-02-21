@@ -1,13 +1,10 @@
-#include "HashTable.h"
-#include <iostream>
-
-using namespace personalImplementation;
-using namespace std;
+#include "hashTable.h"
 
 int main()
 {
 
-	cout << "here" << endl;
-	HashTable t ();
+	hashTable t;
+
+	//cout << t.n << endl;
 	return 0;
 }
