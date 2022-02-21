@@ -6,11 +6,11 @@ namespace personalImplementation
 {
 	class HashTable
 	{
-		public:
+		/*public:
 			int get(string key);
 			void set(string key, int value);
 
 		private:
-			void _hash(string key);
-	}
+			void _hash(string key);*/
+	};
 }
