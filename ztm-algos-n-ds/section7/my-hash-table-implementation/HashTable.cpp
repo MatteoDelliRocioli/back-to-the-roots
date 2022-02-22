@@ -15,7 +15,7 @@ hashTable::hashTable()
 hashTable::hashTable(int size = 0)
 {
 	cout << "second type constructor called, size: " << size << endl;
-	data = vector<int> (size);
+	data = vector<vector<int>> (size);
 }
 
 hashTable::~hashTable()
@@ -38,19 +38,28 @@ void hashTable::_hash(string key)
 	//return hash;
 }
 
-/*void hashTable::_hash(string key)
+/*int get(string key)
 {
-	long long hash {};
-
-	for (int i {0}; i < (int)key.size(); i++)
+	for (int i {0}; i < (int)data.size(); i++)
 	{
-		hash = (hash + key[i] * i) % data.size();
+		if ()
 	}
-	return hash;
 
-	let hash = 0;
-	for (let i =0; i < key.length; i++){
-			hash = (hash + key.charCodeAt(i) * i) % this.data.length
+
+	for (string x : data)
+	{
+		if (x == key)
+		{
+			return data
+		}
 	}
-	return hash;
+	return 0;
+}*/
+
+//The data should be organized in a two dimensional matrix where one 
+// collection is of keys and for each key (in the form of an hash) a collection of 
+// ints is associated
+/*void hashTable::set(string key, int value)
+{
+	
 }*/

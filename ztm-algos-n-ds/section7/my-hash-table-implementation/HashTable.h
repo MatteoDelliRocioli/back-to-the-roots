@@ -10,14 +10,14 @@
 class hashTable
 {
 	public:
-		std::vector<int> data;
+		std::vector<std::vector<int>> data;
 
 		hashTable();
 		hashTable(int size);
 		~hashTable();
 
-		/* get(string key);
-		void set(string key, int value);*/
+		//int get(std::string key);
+		void set(std::string key, int value);
 
 	private:
 		void _hash(std::string key);
