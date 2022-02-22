@@ -6,11 +6,8 @@ using namespace std;
 int main()
 {
 
-	hashTable t {};
+	hashTable t (3);
 
-	hashTable t1(3);
-
-	cout << t.n << endl;
-	cout << t1.n << endl;
+	cout << "t.size: " << t.data.size() << endl;
 	return 0;
 }

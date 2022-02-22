@@ -1,19 +1,20 @@
 #include "hashTable.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 // Implementations of methods have to reference to the relative 
-// header file with the syntax <header.h>::<method_name>
+// header file with the syntax <header_name>::<method_name>
 hashTable::hashTable()
 {
 	cout << "Created a new hashtable obj" << endl;
-	n = 5;
 }
 
-hashTable::hashTable(int n) : n(n)
+hashTable::hashTable(int size = 0)
 {
-	cout << "second type constructor called" << endl;
+	cout << "second type constructor called, size: " << size << endl;
+	data = vector<int> (size);
 }
 
 hashTable::~hashTable()

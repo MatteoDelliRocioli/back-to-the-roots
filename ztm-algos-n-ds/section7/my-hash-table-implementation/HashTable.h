@@ -4,13 +4,15 @@
 
 #pragma once
 
+#include <vector>
+
 class hashTable
 {
 	public:
-		int n;
+		std::vector<int> data;
 
 		hashTable();
-		hashTable(int n);
+		hashTable(int size);
 		~hashTable();
 
 		/* get(string key);
