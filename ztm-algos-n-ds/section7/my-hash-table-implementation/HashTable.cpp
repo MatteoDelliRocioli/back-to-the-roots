@@ -8,7 +8,13 @@ using namespace std;
 hashTable::hashTable()
 {
 	cout << "Created a new hashtable obj" << endl;
+	n = 5;
 }
+
+/*hashTable::hashTable(int n) : n(2)
+{
+	
+}*/
 
 hashTable::~hashTable()
 {
