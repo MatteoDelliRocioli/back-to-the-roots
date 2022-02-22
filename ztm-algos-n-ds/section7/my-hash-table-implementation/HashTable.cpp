@@ -59,7 +59,7 @@ void hashTable::_hash(string key)
 //The data should be organized in a two dimensional matrix where one 
 // collection is of keys and for each key (in the form of an hash) a collection of 
 // ints is associated
-/*void hashTable::set(string key, int value)
+void hashTable::set(string key, int value)
 {
 	
-}*/
+}
