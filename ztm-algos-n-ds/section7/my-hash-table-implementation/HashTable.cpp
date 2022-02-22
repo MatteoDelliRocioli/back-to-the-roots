@@ -35,26 +35,20 @@ int hashTable::_hash(string key)
 	}
 	cout << "hash: " << hash << endl << endl;
 
+	cout << "//---------------------------------------------------//" << endl;
+
 	return hash;
 }
 
-/*int get(string key)
+//We return the values associated to a particular index
+// The index was initially decided by the _hash function
+vector<int> hashTable::get(string key)
 {
-	for (int i {0}; i < (int)data.size(); i++)
-	{
-		if ()
-	}
+	//We first have to calculate the hash
+	int index = _hash(key);
 
-
-	for (string x : data)
-	{
-		if (x == key)
-		{
-			return data
-		}
-	}
-	return 0;
-}*/
+	return data[index];
+}
 
 //The data should be organized in a two dimensional matrix where one 
 // collection is of keys and for each key (in the form of an hash) a collection of 

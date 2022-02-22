@@ -16,7 +16,7 @@ class hashTable
 		hashTable(int size);
 		~hashTable();
 
-		//int get(std::string key);
+		std::vector<int> get(std::string key);
 		void set(std::string key, int value);
 
 	private:
