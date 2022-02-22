@@ -23,7 +23,7 @@ hashTable::~hashTable()
 	cout << "Destroyed a hashtable obj" << endl;
 }
 
-void hashTable::_hash(string key)
+int hashTable::_hash(string key)
 {
 	cout << "in hash generation: " << endl;
 	long long hash {};
@@ -35,7 +35,7 @@ void hashTable::_hash(string key)
 	}
 	cout << "hash: " << hash << endl << endl;
 
-	//return hash;
+	return hash;
 }
 
 /*int get(string key)
@@ -61,5 +61,24 @@ void hashTable::_hash(string key)
 // ints is associated
 void hashTable::set(string key, int value)
 {
-	
+	cout << "hash: ";
+	int index = _hash(key);
+	cout << endl;
+
+	data[index].push_back(value);
+
+	cout << "here's the hashTable data: " << endl;
+
+	int i {0};
+
+	for (vector<int> x : data)
+	{
+		cout << i << " : " << "[ ";
+		for (int y : x)
+		{
+			cout << y << ", ";
+		}
+		cout << "]" << endl;
+		i++;
+	}
 }

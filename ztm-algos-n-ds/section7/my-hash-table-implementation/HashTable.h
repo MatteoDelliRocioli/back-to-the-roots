@@ -20,5 +20,5 @@ class hashTable
 		void set(std::string key, int value);
 
 	private:
-		void _hash(std::string key);
+		int _hash(std::string key);
 };
