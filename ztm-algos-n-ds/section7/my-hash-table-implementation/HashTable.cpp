@@ -11,10 +11,10 @@ hashTable::hashTable()
 	n = 5;
 }
 
-/*hashTable::hashTable(int n) : n(2)
+hashTable::hashTable(int n) : n(n)
 {
-	
-}*/
+	cout << "second type constructor called" << endl;
+}
 
 hashTable::~hashTable()
 {

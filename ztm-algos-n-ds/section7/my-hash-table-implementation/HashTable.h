@@ -4,14 +4,13 @@
 
 #pragma once
 
-//TODO: try to add namespace
 class hashTable
 {
 	public:
 		int n;
 
 		hashTable();
-		//hashTable(int n);
+		hashTable(int n);
 		~hashTable();
 
 		/* get(string key);
