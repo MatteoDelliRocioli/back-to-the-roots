@@ -1,6 +1,7 @@
 #include "hashTable.h"
 #include <iostream>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -20,6 +21,21 @@ hashTable::hashTable(int size = 0)
 hashTable::~hashTable()
 {
 	cout << "Destroyed a hashtable obj" << endl;
+}
+
+void hashTable::_hash(string key)
+{
+	cout << "in hash generation: " << endl;
+	long long hash {};
+
+	for (int i {0}; i < (int)key.size(); i++)
+	{
+		cout << key[i] << endl;
+		hash = (hash + (char)key[i] * i) % data.size();
+	}
+	cout << "hash: " << hash << endl << endl;
+
+	//return hash;
 }
 
 /*void hashTable::_hash(string key)

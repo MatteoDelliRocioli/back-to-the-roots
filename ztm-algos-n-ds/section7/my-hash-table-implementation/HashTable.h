@@ -5,6 +5,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 
 class hashTable
 {
@@ -16,8 +17,8 @@ class hashTable
 		~hashTable();
 
 		/* get(string key);
-		void set(string key, int value);
+		void set(string key, int value);*/
 
 	private:
-		void _hash(string key);*/
+		void _hash(std::string key);
 };
