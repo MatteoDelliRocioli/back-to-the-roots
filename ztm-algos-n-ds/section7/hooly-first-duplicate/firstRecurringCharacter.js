@@ -10,7 +10,7 @@
 //It should return undefined
 
 
-function firstRecurringCharacter(input) 
+function firstRecurringNumber(input) {
 }
 
 //Bonus... What if we had this:
