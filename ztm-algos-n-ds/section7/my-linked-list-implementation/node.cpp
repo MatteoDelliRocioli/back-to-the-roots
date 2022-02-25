@@ -3,14 +3,23 @@
 
 using namespace std;
 
-node::node(const int &value)
+node::node(const int &value) : value(value), link(&value)
 {
 	cout << "new node" << endl;
 	cout << "value: " << value << endl;
 	cout << "link: " << std::hex << &value << endl << endl;
+
+	//this->value = value;
+	//this->link = &value;
 }
 
 node::~node()
 {
 	cout << "destroyed node" << endl;
+	this->link = nullptr;
+}
+
+int node::getValue()
+{
+	return this->value;
 }

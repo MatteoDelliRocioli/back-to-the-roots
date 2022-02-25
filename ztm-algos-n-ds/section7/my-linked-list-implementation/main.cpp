@@ -9,5 +9,9 @@ int main()
 	cout << "value address in main: " << std::hex << &value << endl;
 
 	node n (value);
+
+	int returnedValue = n.getValue();
+
+	cout << "returnedValue: " << returnedValue << endl;
 	return 0;
 }

@@ -6,7 +6,9 @@ class node
 		node(const int &value);
 		~node();
 
+		int getValue();
+
 	private:
 		int value;
-		long long link;
+		const int* link;
 };
