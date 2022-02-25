@@ -5,6 +5,7 @@
 	- remove(int position)
 	- get(int position)
 	- update(int value, int position)
+- have the reference to the head and tail nodes at least
 
 value1
  hex1 --> value2
@@ -12,3 +13,8 @@ value1
  					 					 hex3 --> etc... valueN
  					 					 								 nullptr
 */
+
+class my_linked_list 
+{
+	
+}
