@@ -5,6 +5,9 @@ using namespace std;
 
 int main()
 {
-	node n;
+	int value = 2;
+	cout << "value address in main: " << std::hex << &value << endl;
+
+	node n (value);
 	return 0;
 }

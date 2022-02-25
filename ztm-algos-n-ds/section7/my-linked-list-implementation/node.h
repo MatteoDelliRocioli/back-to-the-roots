@@ -3,7 +3,7 @@
 class node
 {
 	public:
-		node();
+		node(const int &value);
 		~node();
 
 	private:
