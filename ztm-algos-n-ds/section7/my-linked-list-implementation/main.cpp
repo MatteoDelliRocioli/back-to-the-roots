@@ -15,6 +15,7 @@ int main()
 
 	const int* returnedLinkToValue = n.getLink();
 	cout << "returnedLinkToValue: " << returnedLinkToValue << endl;
+	cout << "returnedLinkToValue_Value: " << (*returnedLinkToValue) << endl;
 
 	return 0;
 }
