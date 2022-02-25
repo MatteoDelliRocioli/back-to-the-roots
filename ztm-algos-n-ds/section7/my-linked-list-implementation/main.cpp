@@ -11,7 +11,10 @@ int main()
 	node n (value);
 
 	int returnedValue = n.getValue();
-
 	cout << "returnedValue: " << returnedValue << endl;
+
+	const int* returnedLinkToValue = n.getLink();
+	cout << "returnedLinkToValue: " << returnedLinkToValue << endl;
+
 	return 0;
 }

@@ -23,3 +23,8 @@ int node::getValue()
 {
 	return this->value;
 }
+
+const int* node::getLink()
+{
+	return this->link;
+}
