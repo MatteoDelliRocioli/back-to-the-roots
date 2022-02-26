@@ -13,7 +13,7 @@ int main()
 	int returnedValue = n.getValue();
 	cout << "returnedValue: " << returnedValue << endl;
 
-	const int* returnedLinkToValue = n.getLink();
+	int* returnedLinkToValue = n.getLink();
 	cout << "returnedLinkToValue: " << returnedLinkToValue << endl;
 	cout << "returnedLinkToValue_Value: " << (*returnedLinkToValue) << endl;
 

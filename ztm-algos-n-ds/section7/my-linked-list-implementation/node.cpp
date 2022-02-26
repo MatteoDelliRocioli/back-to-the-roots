@@ -3,7 +3,7 @@
 
 using namespace std;
 
-node::node(const int &value) : value(value), link(&value)
+node::node(int &value) : value(value), link(nullptr)
 {
 	cout << "new node" << endl;
 	cout << "value: " << value << endl;
@@ -21,7 +21,7 @@ int node::getValue()
 	return this->value;
 }
 
-const int* node::getLink()
+int* node::getLink()
 {
 	return this->link;
 }

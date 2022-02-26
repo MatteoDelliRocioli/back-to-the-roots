@@ -3,13 +3,14 @@
 class node
 {
 	public:
-		node(const int &value);
+		node(int &value);
 		~node();
 
 		int getValue();
-		const int* getLink();
+		int* getLink();
+
 
 	private:
 		int value;
-		const int* link;
+		int* link;
 };
