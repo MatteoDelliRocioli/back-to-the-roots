@@ -13,8 +13,19 @@ value1
  					 					 hex3 --> etc... valueN
  					 					 								 nullptr
 */
+#pragma once
 
-class my_linked_list 
+#include "node.h"
+
+class myLinkedList
 {
-	
-}
+	public:
+		node head;
+		node tail;
+
+		myLinkedList();
+		~myLinkedList();
+
+		//void insert();
+		//void remove();
+};

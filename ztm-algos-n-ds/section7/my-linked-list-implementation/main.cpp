@@ -1,11 +1,12 @@
 #include "node.h"
+#include "myLinkedList.h"
 #include <iostream>
 
 using namespace std;
 
 int main()
 {
-	int value = 2;
+	/*int value = 2;
 	cout << "value address in main: " << std::hex << &value << endl;
 
 	node n (value);
@@ -15,7 +16,9 @@ int main()
 
 	int* returnedLinkToValue = n.getLink();
 	cout << "returnedLinkToValue: " << returnedLinkToValue << endl;
-	cout << "returnedLinkToValue_Value: " << (*returnedLinkToValue) << endl;
+	cout << "returnedLinkToValue_Value: " << (*returnedLinkToValue) << endl;*/
+
+	myLinkedList linkedList;
 
 	return 0;
 }

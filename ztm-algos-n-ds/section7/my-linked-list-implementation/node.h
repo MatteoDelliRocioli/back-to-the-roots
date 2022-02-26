@@ -3,6 +3,7 @@
 class node
 {
 	public:
+		node();
 		node(int &value);
 		~node();
 

@@ -3,6 +3,11 @@
 
 using namespace std;
 
+node::node()
+{
+	cout << "Created node with no value yet" << endl;
+}
+
 node::node(int &value) : value(value), link(nullptr)
 {
 	cout << "new node" << endl;
