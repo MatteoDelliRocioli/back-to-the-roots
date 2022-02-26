@@ -5,28 +5,28 @@ using namespace std;
 
 node::node() : value(INT_MIN), link(nullptr)
 {
-	cout << "Created node with no value yet" << endl;
+  cout << "Created node with no value yet" << endl;
 }
 
 node::node(int &value) : value(value), link(nullptr)
 {
-	cout << "new node" << endl;
-	cout << "value: " << value << endl;
-	cout << "link: " << std::hex << &value << endl << endl;
+  cout << "new node" << endl;
+  cout << "value: " << value << endl;
+  cout << "link: " << std::hex << &value << endl << endl;
 }
 
 node::~node()
 {
-	cout << "destroyed node" << endl;
-	this->link = nullptr;
+  cout << "destroyed node" << endl;
+  this->link = nullptr;
 }
 
 int node::getValue()
 {
-	return this->value;
+  return this->value;
 }
 
 int* node::getLink()
 {
-	return this->link;
+  return this->link;
 }

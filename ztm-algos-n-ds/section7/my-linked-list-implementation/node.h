@@ -2,16 +2,16 @@
 
 class node
 {
-	public:
-		node();
-		node(int &value);
-		~node();
+  public:
+    node();
+    node(int &value);
+    ~node();
 
-		int getValue();
-		int* getLink();
+    int getValue();
+    int* getLink();
 
 
-	private:
-		int value;
-		int* link;
+  private:
+    int value;
+    int* link;
 };
