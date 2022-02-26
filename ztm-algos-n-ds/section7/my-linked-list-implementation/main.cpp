@@ -18,9 +18,18 @@ int main()
   cout << "returnedLinkToValue: " << returnedLinkToValue << endl;
   cout << "returnedLinkToValue_Value: " << (*returnedLinkToValue) << endl;*/
 
-  myLinkedList linkedList;
+  /*myLinkedList linkedList;
 
-  linkedList.print();
+  linkedList.print();*/
+
+  int value {6};
+  cout << "value address in main: " << std::hex << &value << endl;
+
+  node n (value);
+
+  cout << "n->link: " << n.getLink() << endl;
+  n.setLink(value);
+  cout << "n->link: " << n.getLink() << endl;
 
   return 0;
 }

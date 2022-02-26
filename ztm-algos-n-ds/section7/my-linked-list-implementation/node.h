@@ -9,6 +9,7 @@ class node
 
     int getValue();
     int* getLink();
+    void setLink(int &link);
 
 
   private:

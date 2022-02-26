@@ -14,7 +14,12 @@ myLinkedList::~myLinkedList()
   cout << "Destroyed myLinkedList" << endl;
 }
 
-void myLinkedList
+/*void myLinkedList::push_back(int &value)
+{
+  node::node newNode(&value);
+
+
+}*/
 
 /*void myLinkedList::insert(node &node)
 {

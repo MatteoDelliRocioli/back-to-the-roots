@@ -10,9 +10,9 @@ node::node() : value(INT_MIN), link(nullptr)
 
 node::node(int &value) : value(value), link(nullptr)
 {
-  cout << "new node" << endl;
-  cout << "value: " << value << endl;
-  cout << "link: " << std::hex << &value << endl << endl;
+  cout << "new node with { ";
+  cout << "value: " << value << ", ";
+  cout << "link: " << std::hex << "nullptr" << " }" << endl << endl;
 }
 
 node::~node()
@@ -29,4 +29,10 @@ int node::getValue()
 int* node::getLink()
 {
   return this->link;
+}
+
+void node::setLink(int &link)
+{
+  //cout << "address link: " << &link << endl;
+  this->link = &link; 
 }

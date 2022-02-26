@@ -26,7 +26,7 @@ class myLinkedList
     myLinkedList();
     ~myLinkedList();
 
-    void push_back();
+    //void push_back();
     //void insert();
     //void remove();
     void print();
