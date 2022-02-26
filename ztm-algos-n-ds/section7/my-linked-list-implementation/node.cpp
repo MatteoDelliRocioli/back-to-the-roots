@@ -26,6 +26,12 @@ int node::getValue()
   return this->value;
 }
 
+void node::setValue(int value)
+{
+  cout << "value: " << std::dec << value << endl;
+  this->value = value;
+}
+
 int* node::getLink()
 {
   return this->link;
@@ -33,6 +39,6 @@ int* node::getLink()
 
 void node::setLink(int &link)
 {
-  //cout << "address link: " << &link << endl;
+  cout << "address link: " << &link << endl;
   this->link = &link; 
 }

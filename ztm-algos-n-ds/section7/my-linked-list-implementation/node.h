@@ -8,6 +8,7 @@ class node
     ~node();
 
     int getValue();
+    void setValue(int value);
     int* getLink();
     void setLink(int &link);
 
