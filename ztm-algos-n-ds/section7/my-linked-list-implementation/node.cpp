@@ -3,7 +3,7 @@
 
 using namespace std;
 
-node::node()
+node::node() : value(INT_MIN), link(nullptr)
 {
 	cout << "Created node with no value yet" << endl;
 }

@@ -20,3 +20,20 @@ myLinkedList::~myLinkedList()
 }*/
 
 //void myLinkedList::remove();
+
+void myLinkedList::print()
+{
+	cout << "Printing linkedList" << endl;
+	if (head.getLink() == nullptr && head.getValue() == INT_MIN)
+	{
+		cout << "linked list with no elements" << endl;
+		return;
+	}
+
+	/*cout << "[ ";
+	while(currentNode.link != tail.link)
+	{
+		cout << currentNode.value << ", " << currentNode.link;
+	}
+	cout << " ]" << endl;*/
+}

@@ -28,4 +28,5 @@ class myLinkedList
 
 		//void insert();
 		//void remove();
+		void print();
 };

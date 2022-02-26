@@ -20,5 +20,7 @@ int main()
 
 	myLinkedList linkedList;
 
+	linkedList.print();
+
 	return 0;
 }
