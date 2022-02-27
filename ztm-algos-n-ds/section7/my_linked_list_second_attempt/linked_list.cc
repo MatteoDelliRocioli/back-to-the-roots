@@ -8,6 +8,11 @@ LinkedList::LinkedList() : head(new Node()) {
   cout << "LinkedList created" << endl;
 }
 
+LinkedList::LinkedList(int data) : head(new Node()) {
+  cout << "LinkedList created with head->data: " << data << endl;
+  head->data = data;
+}
+
 LinkedList::~LinkedList() {
   cout << "destroyed LinkedList" << endl;
   delete head;
@@ -16,6 +21,11 @@ LinkedList::~LinkedList() {
 void LinkedList::Insert(int data) {
   cout << "Inserting" << endl;
   cout << "head data: " << head->data << endl;
+
+  /*if (head->next == NULL) {
+    cout << "nope!" << endl;
+    head->data = data;
+  }*/
 
   Node* node = head;
 
@@ -44,6 +54,8 @@ void LinkedList::PrintElements() {
     cout << "[ " << node->data << ", " << node->next << " ], ";
     node = node->next;
   }
+
+  cout << "[ " << node->data << ", " << node->next << " ], ";
 
   cout << " }" << endl;
 }

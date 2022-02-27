@@ -6,6 +6,7 @@ class LinkedList {
     Node* head;
 
     LinkedList();
+    LinkedList(int data);
     ~LinkedList();
     void Insert(int data);
     void PrintElements();
