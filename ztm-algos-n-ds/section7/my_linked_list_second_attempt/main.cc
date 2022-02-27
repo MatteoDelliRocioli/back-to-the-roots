@@ -23,6 +23,10 @@ int main() {
 
   linked_list->PrintElements();
 
+  linked_list->Prepend(40);
+
+  linked_list->PrintElements();
+
   delete linked_list;
 
   return 0;

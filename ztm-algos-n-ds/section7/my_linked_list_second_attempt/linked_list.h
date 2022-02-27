@@ -11,5 +11,6 @@ class LinkedList {
     void PushBack(int data);
     void Insert(int data, int index);
     void Delete(int index);
+    void Prepend(int data);
     void PrintElements();
 };

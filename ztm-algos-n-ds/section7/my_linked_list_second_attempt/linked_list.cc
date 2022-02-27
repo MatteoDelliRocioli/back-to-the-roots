@@ -89,6 +89,20 @@ void LinkedList::Delete(int index) {
   }
 }
 
+void LinkedList::Prepend(int data) {
+  Node* node = new Node(data);
+
+  cout << "------------>node: " << node << endl;
+  cout << "------------>node->next: " << node->next << endl;
+  cout << "------------>head: " << head << endl;
+  cout << "------------>head->next: " << head->data << endl;
+
+  //head = node;
+
+  node->next = head;
+  head = node;
+}
+
 void LinkedList::PrintElements() {
   cout << "{ ";
   Node* node = head;
