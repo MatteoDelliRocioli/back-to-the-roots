@@ -4,7 +4,7 @@
 
 using namespace std;
 
-LinkedList::LinkedList() : head(NULL) {
+LinkedList::LinkedList() : head(new Node()) {
   cout << "LinkedList created" << endl;
 }
 
@@ -13,6 +13,9 @@ LinkedList::~LinkedList() {
 }
 
 void LinkedList::Insert(int data) {
+  cout << "Inserting" << endl;
+  cout << "head data: " << head << endl;
+
   Node* node = head;
 
   while (node->next != NULL) {

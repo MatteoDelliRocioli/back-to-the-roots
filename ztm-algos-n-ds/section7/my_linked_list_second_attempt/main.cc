@@ -10,5 +10,7 @@ int main() {
 
   linked_list->Insert(3);
 
+  delete linked_list;
+
   return 0;
 }
