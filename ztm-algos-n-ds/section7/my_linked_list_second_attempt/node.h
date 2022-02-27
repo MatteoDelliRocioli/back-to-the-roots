@@ -6,5 +6,6 @@ class Node {
     Node* next;
 
     Node();
+    Node(int data);
     ~Node();
 };

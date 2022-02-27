@@ -8,6 +8,8 @@ int main() {
 
   linked_list = new LinkedList();
 
+  linked_list->Insert(1);
+  linked_list->Insert(2);
   linked_list->Insert(3);
 
   delete linked_list;
