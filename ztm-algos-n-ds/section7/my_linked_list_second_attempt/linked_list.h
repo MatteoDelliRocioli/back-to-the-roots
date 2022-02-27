@@ -8,4 +8,5 @@ class LinkedList {
     LinkedList();
     ~LinkedList();
     void Insert(int data);
+    void PrintElements();
 };

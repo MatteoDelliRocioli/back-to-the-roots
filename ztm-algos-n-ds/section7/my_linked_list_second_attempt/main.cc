@@ -11,6 +11,10 @@ int main() {
   linked_list->Insert(1);
   linked_list->Insert(2);
   linked_list->Insert(3);
+  linked_list->Insert(4);
+  linked_list->Insert(5);
+
+  linked_list->PrintElements();
 
   delete linked_list;
 

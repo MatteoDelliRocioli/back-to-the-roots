@@ -35,3 +35,15 @@ void LinkedList::Insert(int data) {
 
   cout << "node->next (after assign): " << node->next << endl;
 }
+
+void LinkedList::PrintElements() {
+  cout << "{ ";
+  Node* node = head;
+
+  while (node->next != NULL) {
+    cout << "[ " << node->data << ", " << node->next << " ], ";
+    node = node->next;
+  }
+
+  cout << " }" << endl;
+}
