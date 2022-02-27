@@ -10,6 +10,7 @@ LinkedList::LinkedList() : head(new Node()) {
 
 LinkedList::~LinkedList() {
   cout << "destroyed LinkedList" << endl;
+  delete head;
 }
 
 void LinkedList::Insert(int data) {

@@ -10,4 +10,5 @@ Node::Node() : data (0), next (NULL) {
 
 Node::~Node() {
   cout << "destroyed node" << endl;
+  delete next;
 }
