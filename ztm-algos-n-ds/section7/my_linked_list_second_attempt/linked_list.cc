@@ -18,8 +18,8 @@ LinkedList::~LinkedList() {
   delete head;
 }
 
-void LinkedList::Insert(int data) {
-  cout << "Inserting" << endl;
+void LinkedList::PushBack(int data) {
+  cout << "PushBacking" << endl;
   cout << "head data: " << head->data << endl;
 
   /*if (head->next == NULL) {
@@ -44,6 +44,23 @@ void LinkedList::Insert(int data) {
   node->next = newNode;
 
   cout << "node->next (after assign): " << node->next << endl;
+}
+
+void LinkedList::Insert(int data, int index) {
+  Node* node = head;
+
+  while(node->next != NULL && index >= 1){
+    if (index == 1) {
+      Node* newNode = new Node(data);
+      newNode->next = node->next;
+      node->next = newNode;
+
+      break;
+    }
+
+    node = node->next;
+    index--;
+  }
 }
 
 void LinkedList::PrintElements() {

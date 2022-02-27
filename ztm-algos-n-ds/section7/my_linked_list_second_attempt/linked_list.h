@@ -8,6 +8,7 @@ class LinkedList {
     LinkedList();
     LinkedList(int data);
     ~LinkedList();
-    void Insert(int data);
+    void PushBack(int data);
+    void Insert(int data, int index);
     void PrintElements();
 };
