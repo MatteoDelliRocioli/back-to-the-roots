@@ -63,6 +63,32 @@ void LinkedList::Insert(int data, int index) {
   }
 }
 
+void LinkedList::Delete(int index) {
+  Node* node = head;
+
+  if (index == 0 && head->next == NULL) {
+    Node* node = new Node();
+    head = node;
+    return;
+  }
+
+  while (node->next != NULL && index >= 1) {
+    if (index == 1) {
+      Node* nextNode = node->next;
+      Node* afterNextNode = nextNode->next;
+
+      cout << "nextNode: " << nextNode << endl;
+      cout << "afterNextNode: " << afterNextNode << endl;
+
+      node->next = afterNextNode;
+      //delete nextNode;
+      break;
+    }
+    node = node->next;
+    index--;
+  }
+}
+
 void LinkedList::PrintElements() {
   cout << "{ ";
   Node* node = head;

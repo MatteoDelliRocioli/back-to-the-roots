@@ -19,6 +19,10 @@ int main() {
 
   linked_list->PrintElements();
 
+  linked_list->Delete(1);
+
+  linked_list->PrintElements();
+
   delete linked_list;
 
   return 0;
