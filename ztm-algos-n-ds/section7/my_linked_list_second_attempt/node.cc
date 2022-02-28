@@ -4,11 +4,11 @@
 
 using namespace std;
 
-Node::Node() : data (0), next (NULL) {
+Node::Node() : data(0), next(NULL), previous(NULL) {
   cout << "created node" << endl;
 }
 
-Node::Node(int data) : next (NULL) {
+Node::Node(int data) : next(NULL), previous(NULL) {
   this->data = data;
 }
 
