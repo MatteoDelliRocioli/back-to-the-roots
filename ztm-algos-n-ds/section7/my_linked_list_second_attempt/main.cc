@@ -27,6 +27,10 @@ int main() {
 
   linked_list->PrintElements();
 
+  LinkedList* test = linked_list->Reverse();
+
+  test->PrintElements();
+
   delete linked_list;
 
   return 0;

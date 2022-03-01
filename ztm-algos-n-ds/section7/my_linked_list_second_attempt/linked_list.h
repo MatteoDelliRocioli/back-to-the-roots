@@ -12,5 +12,6 @@ class LinkedList {
     void Insert(int data, int index);
     void Delete(int index);
     void Prepend(int data);
+    LinkedList* Reverse();
     void PrintElements();
 };

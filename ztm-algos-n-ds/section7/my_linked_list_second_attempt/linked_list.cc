@@ -110,6 +110,21 @@ void LinkedList::Prepend(int data) {
   head = node;
 }
 
+LinkedList* LinkedList::Reverse() {
+
+  LinkedList* rev_list = new LinkedList();
+  Node* currentNode = head;
+
+  while (currentNode->next != NULL) {
+    rev_list->Prepend(currentNode->data);
+    currentNode = currentNode->next;
+  }
+
+  rev_list->Prepend(currentNode->data);
+
+  return rev_list;
+}
+
 void LinkedList::PrintElements() {
   cout << "{ ";
   Node* node = head;
