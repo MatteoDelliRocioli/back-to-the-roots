@@ -40,10 +40,13 @@ void LinkedList::PushBack(int data) {
 
   cout << "NewNode address: " << newNode << endl;
   cout << "node->next: " << node->next << endl;
+  cout << "newNode->previous: " << newNode->previous << endl;
 
   node->next = newNode;
+  newNode->previous = node;
 
   cout << "node->next (after assign): " << node->next << endl;
+  cout << "newNode->previous (after assign): " << newNode->previous << endl;
 }
 
 void LinkedList::Insert(int data, int index) {
@@ -53,7 +56,11 @@ void LinkedList::Insert(int data, int index) {
     if (index == 1) {
       Node* newNode = new Node(data);
       newNode->next = node->next;
+      newNode->previous = node;
       node->next = newNode;
+
+      Node* nextToNewNode = newNode->next;
+      nextToNewNode->previous = newNode;
 
       break;
     }
@@ -108,11 +115,13 @@ void LinkedList::PrintElements() {
   Node* node = head;
 
   while (node->next != NULL) {
-    cout << "[ " << node->data << ", " << node->next << " ], ";
+    cout << "[ " << node->data << ", (" << node->next << ", " <<
+      node->previous << ") ], ";
     node = node->next;
   }
 
-  cout << "[ " << node->data << ", " << node->next << " ], ";
+  cout << "[ " << node->data << ", (" << node->next << ", " <<
+    node->previous << ") ], ";
 
   cout << " }" << endl;
 }
