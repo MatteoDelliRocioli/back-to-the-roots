@@ -16,6 +16,12 @@ int main() {
 
   cout << "Peeking last inserted element: " << myLinkedList->Peek() << endl;
 
+  myLinkedList->Print();
+
+  myLinkedList->PopBack();
+
+  myLinkedList->Print();
+
   /*result = myLinkedList->tail->next;
   cout << "result: " << result << endl;*/
   return 0;

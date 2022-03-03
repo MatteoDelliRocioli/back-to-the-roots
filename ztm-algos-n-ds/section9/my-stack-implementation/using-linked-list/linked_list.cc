@@ -41,6 +41,32 @@ int LinkedList::Peek() {
   return tail->data;
 }
 
+int LinkedList::PopBack() {
+  //We have to iterate from the head to the tail
+  // and before pointing to the tail, we delete the tail and
+  // set the previous node to have next = NULL
+
+  if (head == tail) {
+    return tail->data;
+  }
+
+  Node* currentNode = head;
+  while (currentNode->next != NULL) {
+    Node* nextNode = currentNode->next;
+
+    if (nextNode == tail) {
+      int result = nextNode->data;
+      delete nextNode;
+      currentNode->next = NULL;
+      tail = currentNode;
+      return result;
+    }
+
+    currentNode = nextNode;
+  }
+  return INT_MIN;
+}
+
 void LinkedList::Print() {
   Node* currentNode = head;
 
