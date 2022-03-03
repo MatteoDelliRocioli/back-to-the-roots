@@ -7,7 +7,11 @@ using namespace std;
 int main() {
   LinkedList* myLinkedList = new LinkedList();
 
-  myLinkedList->PushBack(4);
+  myLinkedList->PushBack(1);
+  myLinkedList->PushBack(2);
+  myLinkedList->PushBack(3);
+
+  myLinkedList->Print();
 
   /*result = myLinkedList->tail->next;
   cout << "result: " << result << endl;*/
