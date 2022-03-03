@@ -33,7 +33,12 @@ void LinkedList::PushBack(int data) {
 
   cout << "More than 2 nodes in the list, adding one more" << endl;
   tail->next = newNode;
+  tail = newNode;
   return;
+}
+
+int LinkedList::Peek() {
+  return tail->data;
 }
 
 void LinkedList::Print() {
@@ -47,5 +52,5 @@ void LinkedList::Print() {
     cout << "[ data: " << currentNode->data << ", next: "
       << currentNode->next << " ],";
   }
-  cout << " }";
+  cout << " }" << endl;
 }

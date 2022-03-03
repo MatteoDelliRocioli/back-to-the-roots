@@ -10,8 +10,11 @@ int main() {
   myLinkedList->PushBack(1);
   myLinkedList->PushBack(2);
   myLinkedList->PushBack(3);
+  myLinkedList->PushBack(4);
 
   myLinkedList->Print();
+
+  cout << "Peeking last inserted element: " << myLinkedList->Peek() << endl;
 
   /*result = myLinkedList->tail->next;
   cout << "result: " << result << endl;*/
