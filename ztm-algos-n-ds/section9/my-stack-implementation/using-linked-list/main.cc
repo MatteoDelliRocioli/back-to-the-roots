@@ -22,6 +22,10 @@ int main() {
 
   myLinkedList->Print();
 
+  myLinkedList->Reverse();
+
+  myLinkedList->Print();
+
   /*result = myLinkedList->tail->next;
   cout << "result: " << result << endl;*/
   return 0;

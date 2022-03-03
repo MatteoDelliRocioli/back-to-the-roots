@@ -67,6 +67,42 @@ int LinkedList::PopBack() {
   return INT_MIN;
 }
 
+LinkedList* LinkedList::Reverse() {
+  //Instead of pointing to the next right node
+  // point to the previous left node so that the resulting
+  // linked list is the reversed version of the original
+  Node* previous = NULL;
+  Node* current = head;
+  Node* nextNode = current->next;
+
+  //head->next = NULL;
+
+  if (nextNode->next != NULL) {
+
+    cout << "current->next: " << current->next << endl;
+    current->next = previous;
+    cout << "current: " << current << endl;
+    previous = current;
+    cout << "previous: " << previous << endl;
+    current = nextNode;
+    cout << "current: " << current << endl;
+    nextNode = nextNode->next;
+    cout << "nextNode: " << nextNode << endl;
+  }
+
+  /*while (nextNode->next != NULL) {
+    current->next = previous;
+    previous = current;
+    current = nextNode;
+    nextNode = nextNode->next;
+  }*/
+
+  //nextNode->next = current;
+  //head = nextNode;
+
+  return this;
+}
+
 void LinkedList::Print() {
   Node* currentNode = head;
 
