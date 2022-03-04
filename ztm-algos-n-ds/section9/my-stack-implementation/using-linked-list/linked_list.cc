@@ -59,6 +59,7 @@ int LinkedList::PopBack() {
       delete nextNode;
       currentNode->next = NULL;
       tail = currentNode;
+      tail->next = NULL;
       return result;
     }
 
@@ -67,38 +68,63 @@ int LinkedList::PopBack() {
   return INT_MIN;
 }
 
+void PrintLinkedListReversing(Node* previous, Node* current, Node* nextNode) {
+  cout << "//---------------------------------------------//" << endl;
+
+  if (previous != NULL) {
+    cout << "previous: { address: " << previous << ", data: " << previous->data << " }" << endl;
+  }
+  else {
+    cout << "previous is NULL" << endl;
+  }
+
+  if (current != NULL) {
+    cout << "current: { address: " << current << ", data: " << current->data << " }" << endl;
+  }
+  else {
+    cout << "current is NULL" << endl;
+  }
+
+  if (nextNode != NULL) {
+    cout << "nextNode: { address: " << nextNode << ", data: " << nextNode->data << " }" << endl << endl;
+  }
+  else {
+    cout << "nextNode is NULL" << endl;
+  }
+}
+
 LinkedList* LinkedList::Reverse() {
   //Instead of pointing to the next right node
   // point to the previous left node so that the resulting
   // linked list is the reversed version of the original
-  Node* previous = NULL;
+  Node* previous = new Node();
   Node* current = head;
   Node* nextNode = current->next;
 
-  //head->next = NULL;
+  PrintLinkedListReversing(previous, current, nextNode);
 
-  if (nextNode->next != NULL) {
+  tail = current;
 
-    cout << "current->next: " << current->next << endl;
-    current->next = previous;
-    cout << "current: " << current << endl;
+  PrintLinkedListReversing(previous, current, nextNode);
+
+  while (current->next) {
     previous = current;
-    cout << "previous: " << previous << endl;
+    if (nextNode == NULL) {
+      head = current;
+      break;
+    }
     current = nextNode;
-    cout << "current: " << current << endl;
-    nextNode = nextNode->next;
-    cout << "nextNode: " << nextNode << endl;
+    nextNode = current->next;
+    current->next = previous;
+    PrintLinkedListReversing(previous, current, nextNode);
   }
 
-  /*while (nextNode->next != NULL) {
-    current->next = previous;
-    previous = current;
-    current = nextNode;
-    nextNode = nextNode->next;
-  }*/
+  PrintLinkedListReversing(previous, current, nextNode);
 
-  //nextNode->next = current;
-  //head = nextNode;
+  cout << "head: " << head << endl;
+  tail->next = NULL;
+
+  cout << "head: " << head << endl;
 
   return this;
 }
