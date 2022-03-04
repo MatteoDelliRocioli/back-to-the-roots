@@ -2,3 +2,4 @@ main
 main.exe
 *.exe
 *.gch
+.vscode
