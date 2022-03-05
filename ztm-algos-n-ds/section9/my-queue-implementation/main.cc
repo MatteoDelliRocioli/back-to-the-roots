@@ -13,7 +13,11 @@ int main() {
   queue->Enqueue(3);
   queue->Enqueue(4);
 
-  cout << "Queue first inserted node: " << queue->PeekFront() << endl;
+  cout << "Queue first inserted node: " << queue->Peek() << endl;
+
+  int result = queue->Dequeue();
+
+  cout << "Dequeued node with data: " << result << endl;
 
   return 0;
 }

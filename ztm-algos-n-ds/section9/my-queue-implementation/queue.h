@@ -6,6 +6,7 @@ class Queue {
     Queue();
 
     int PeekFront();
+    int Peek();
     void Enqueue(int data);
     int Dequeue();
 

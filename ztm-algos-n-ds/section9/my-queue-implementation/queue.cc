@@ -11,10 +11,14 @@ int Queue::PeekFront() {
   return internalList->PeekFront();
 }
 
+int Queue::Peek() {
+  return internalList->Peek();
+}
+
 void Queue::Enqueue(int data) {
   internalList->PushFront(data);
 }
 
 int Queue::Dequeue() {
-  return internalList->PopFront();
+  return internalList->PopBack();
 }

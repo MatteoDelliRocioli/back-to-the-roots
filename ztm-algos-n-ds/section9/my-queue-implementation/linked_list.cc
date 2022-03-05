@@ -11,9 +11,14 @@ LinkedList::LinkedList() {
 }
 
 void LinkedList::PushFront(int data) {
-  Node* node = new Node();
+  Node* node = new Node(data);
 
-  node->data = data;
+  if (head->data == (int)INT_MIN) {
+    head = node;
+    tail = node;
+    return;
+  }
+
   node->next = head;
   head = node;
 }
