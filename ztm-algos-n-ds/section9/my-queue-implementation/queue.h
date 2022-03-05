@@ -5,8 +5,8 @@ class Queue {
   public:
     Queue();
 
-    int Peek();
-    void Enqueue();
+    int PeekFront();
+    void Enqueue(int data);
     int Dequeue();
 
   private:

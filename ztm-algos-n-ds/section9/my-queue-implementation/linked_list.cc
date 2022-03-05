@@ -10,6 +10,14 @@ LinkedList::LinkedList() {
   head = tail = node;
 }
 
+void LinkedList::PushFront(int data) {
+  Node* node = new Node();
+
+  node->data = data;
+  node->next = head;
+  head = node;
+}
+
 void LinkedList::PushBack(int data) {
   Node* newNode = new Node(data);
 
@@ -35,8 +43,23 @@ void LinkedList::PushBack(int data) {
   return;
 }
 
+int LinkedList::PeekFront() {
+  this->Print();
+  return head->data;
+}
+
 int LinkedList::Peek() {
   return tail->data;
+}
+
+int LinkedList::PopFront() {
+  int result = head->data;
+  Node* toDelete = head;
+
+  head = head->next;
+  delete toDelete;
+
+  return result;
 }
 
 int LinkedList::PopBack() {
