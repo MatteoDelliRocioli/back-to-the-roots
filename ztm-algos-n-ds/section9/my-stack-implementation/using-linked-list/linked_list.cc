@@ -11,8 +11,6 @@ LinkedList::LinkedList() {
 }
 
 void LinkedList::PushBack(int data) {
-  cout << "here" << endl;
-
   Node* newNode = new Node(data);
 
   if (head->next == NULL && head->data == INT_MIN) {

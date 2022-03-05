@@ -1,8 +1,14 @@
 #pragma once
+#include "linked_list.h"
 
 class Stack {
   public:
-    int Pick();
-    void Push();
+    Stack();
+
+    int Peek();
+    void Push(int data);
     int Pop();
+    void Print();
+
+    LinkedList* internalList;
 };
