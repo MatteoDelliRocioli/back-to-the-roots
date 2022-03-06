@@ -1,5 +1,9 @@
+#include <stack>
+
+using namespace std;
+
 class MyQueue {
-public:
+  public:
     MyQueue() {
 
     }
@@ -9,16 +13,20 @@ public:
     }
 
     int pop() {
-
+      return 0;
     }
 
     int peek() {
-
+      return 0;
     }
 
     bool empty() {
-
+      return 0;
     }
+
+  private:
+    stack<int> _stack;
+
 };
 
 /**
