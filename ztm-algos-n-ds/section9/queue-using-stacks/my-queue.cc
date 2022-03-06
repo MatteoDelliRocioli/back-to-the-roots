@@ -11,7 +11,18 @@ class MyQueue {
 
     void push(int x) {
       cout << "adding '" << x << "' to the first stack" << endl;
-      _stack01.push(x);
+
+      if (_stack01.empty() && _stack02.empty()) {
+        _stack01.push(x);
+        return;
+      }
+
+      if (!_stack01.empty()) {
+        _stack01.push(x);
+        return;
+      }
+
+      _stack02.push(x);
     }
 
     int pop() {
