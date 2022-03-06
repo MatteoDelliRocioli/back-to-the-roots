@@ -26,10 +26,10 @@ class MyQueue {
     }
 
     int pop() {
-      return 0;
-    }
+      cout << "popping" << endl;
 
-    int peek() {
+      int result = (int)INT_MIN;
+
       if (!_stack01.empty()) {
         while (!_stack01.empty()) {
           cout << "copying element '" << _stack01.top() << "' from _stack01 "
@@ -39,8 +39,10 @@ class MyQueue {
         }
 
         cout << "queue top is: " << _stack02.top() << endl;
+        result = _stack02.top();
+        _stack02.pop();
 
-        return _stack02.top();
+        return result;
       }
 
       if (!_stack02.empty()) {
@@ -52,11 +54,58 @@ class MyQueue {
         }
 
         cout << "queue top is: " << _stack01.top() << endl;
+        result = _stack01.top();
+        _stack01.pop();
 
-        return _stack01.top();
+        return result;
       }
 
-      return (int)INT_MIN;
+      return result;
+    }
+
+    int peek() {
+      cout << "peeking" << endl;
+      int result = (int)INT_MIN;
+
+      if (!_stack01.empty()) {
+        while (!_stack01.empty()) {
+          cout << "copying element '" << _stack01.top() << "' from _stack01 "
+            << "to _stack02" << endl;
+          _stack02.push(_stack01.top());
+          _stack01.pop();
+        }
+
+        cout << "queue top is: " << _stack02.top() << endl;
+        result = _stack02.top();
+
+        while (!_stack02.empty()) {
+          _stack01.push(_stack02.top());
+          _stack02.pop();
+        }
+
+        return result;
+      }
+
+      if (!_stack02.empty()) {
+        while(!_stack02.empty()) {
+          cout << "copying element '" << _stack02.top() << "' from _stack02 "
+            << "to _stack01" << endl;
+          _stack01.push(_stack02.top());
+          _stack02.pop();
+        }
+
+        cout << "queue top is: " << _stack01.top() << endl;
+        result = _stack01.top();
+
+        while (!_stack01.empty()) {
+          _stack02.push(_stack01.top());
+          _stack01.pop();
+        }
+
+        return result;
+      }
+
+      return result;
 
     }
 
