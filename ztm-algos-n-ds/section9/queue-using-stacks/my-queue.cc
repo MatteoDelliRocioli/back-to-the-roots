@@ -61,7 +61,13 @@ class MyQueue {
     }
 
     bool empty() {
-      return 0;
+      if (!_stack01.empty() || !_stack02.empty()) {
+        cout << "queue is not empty" << endl;
+        return false;
+      }
+
+      cout << "queue is empty" << endl;
+      return true;
     }
 
   private:
