@@ -42,6 +42,11 @@ class MyQueue {
         result = _stack02.top();
         _stack02.pop();
 
+        while (!_stack02.empty()) {
+          _stack01.push(_stack02.top());
+          _stack02.pop();
+        }
+
         return result;
       }
 
@@ -56,6 +61,11 @@ class MyQueue {
         cout << "queue top is: " << _stack01.top() << endl;
         result = _stack01.top();
         _stack01.pop();
+
+        while (!_stack01.empty()) {
+          _stack02.push(_stack01.top());
+          _stack01.pop();
+        }
 
         return result;
       }
