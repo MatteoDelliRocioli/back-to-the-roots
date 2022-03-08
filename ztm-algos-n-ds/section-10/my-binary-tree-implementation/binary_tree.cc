@@ -13,5 +13,24 @@ BinaryTree::~BinaryTree() {
 }
 
 void BinaryTree::Insert(int data) {
-  return;
+  if (root->data == (int)INT_MIN) {
+    cout << "binaryTree was empty, adding value to root" << endl;
+
+    root->data = data;
+    return;
+  }
+
+  if (data == root->data) {
+    return;
+  }
+
+  if (data > root->data) {
+    cout << "going right" << endl;
+    return;
+  }
+
+  if (data < root->data) {
+    cout << "going left" << endl;
+    return;
+  }
 }
