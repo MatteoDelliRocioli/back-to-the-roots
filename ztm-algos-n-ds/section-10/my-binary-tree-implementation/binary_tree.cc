@@ -87,3 +87,8 @@ bool BinaryTree::LookUp(int data, Node* current) {
 
   return false;
 }
+
+void BinaryTree::Remove(int data, Node* current) {
+  //TODO: WIP
+  return;
+}
