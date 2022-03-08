@@ -10,6 +10,7 @@ int main() {
   myTree->Insert(3);
   myTree->Insert(2);
   myTree->Insert(4);
+  myTree->Insert(5);
 
   return 0;
 }
