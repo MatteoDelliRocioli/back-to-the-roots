@@ -89,6 +89,29 @@ bool BinaryTree::LookUp(int data, Node* current) {
 }
 
 void BinaryTree::Remove(int data, Node* current) {
-  //TODO: WIP
+  if (current == NULL) {
+    cout << "starting search from root" << endl;
+    current = root;
+  }
+
+  if (data == current->data) {
+    //Delete logic here
+
+    //does the node has parents? 
+    //if ()
+
+    return;
+  }
+
+  if (data < current->data && current->left != NULL) {
+    return Remove(data, current->left);
+  }
+
+  if (data > current->data && current->right != NULL) {
+    return Remove(data, current->right);
+  }
+
+  return;
+
   return;
 }
