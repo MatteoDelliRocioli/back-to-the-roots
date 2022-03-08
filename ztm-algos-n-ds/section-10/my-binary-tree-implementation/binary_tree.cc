@@ -20,7 +20,7 @@ void BinaryTree::Insert(int data, Node* current) {
     return;
   }
 
-  cout << "current = " << current << endl;
+  cout << "current = (address: " << current << ")"<< endl;
 
   if (current == NULL) {
     cout << "current is NULL, starting from root then..." << endl;
@@ -36,14 +36,14 @@ void BinaryTree::Insert(int data, Node* current) {
     cout << "going right" << endl;
 
     if (current->right == NULL) {
-      cout << "inserting node" << endl;
+      cout << "inserting node right" << endl;
       Node* newNode = new Node(data);
 
       current->right = newNode;
       return;
     }
 
-    cout << "keep searching where to insert with recursion" << endl;
+    cout << "keep searching where to insert with recursion (right)" << endl;
     Insert(data, current->right);
 
     return;
@@ -51,6 +51,18 @@ void BinaryTree::Insert(int data, Node* current) {
 
   if (data < current->data) {
     cout << "going left" << endl;
+
+    if (current->left == NULL) {
+      cout << "inserting node left" << endl;
+      Node* newNode = new Node(data);
+
+      current->left = newNode;
+      return;
+    }
+
+    cout << "keep searching where to insert with recursion (left)" << endl;
+    Insert(data, current->left);
+
     return;
   }
 }

@@ -11,6 +11,8 @@ int main() {
   myTree->Insert(2);
   myTree->Insert(4);
   myTree->Insert(5);
+  myTree->Insert(1);
+  myTree->Insert(-1);
 
   return 0;
 }
