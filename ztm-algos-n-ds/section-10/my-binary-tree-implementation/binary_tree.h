@@ -8,7 +8,7 @@ class BinaryTree {
     BinaryTree();
     ~BinaryTree();
     void Insert(int data, Node* current = NULL);
-    //bool LookUp();
+    bool LookUp(int data, Node* current = NULL);
     //void Remove();
 
     Node* root;

@@ -66,3 +66,24 @@ void BinaryTree::Insert(int data, Node* current) {
     return;
   }
 }
+
+bool BinaryTree::LookUp(int data, Node* current) {
+  if (current == NULL) {
+    cout << "starting search from root" << endl;
+    current = root;
+  }
+
+  if (data == current->data) {
+    return true;
+  }
+
+  if (data < current->data && current->left != NULL) {
+    return LookUp(data, current->left);
+  }
+
+  if (data > current->data && current->right != NULL) {
+    return LookUp(data, current->right);
+  }
+
+  return false;
+}

@@ -14,5 +14,10 @@ int main() {
   myTree->Insert(1);
   myTree->Insert(-1);
 
+  int dataToSearch = -1;
+  bool result = myTree->LookUp(dataToSearch);
+
+  cout << boolalpha << "is " << dataToSearch << " value found? " << result << endl;
+
   return 0;
 }
