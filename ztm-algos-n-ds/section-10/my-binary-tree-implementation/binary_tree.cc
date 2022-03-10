@@ -88,43 +88,45 @@ bool BinaryTree::LookUp(int data, Node* current) {
   return false;
 }
 
-void BinaryTree::Remove(int data) {
-  Node* current = root;
-  Node* parent = root;
+void BinaryTree::Remove(int data, Node* current, Node* parent) {
 
+  if (current == NULL && parent == NULL) {
+    current = parent = root;
+    //cout << current << ", " << parent << ", " << root << endl;
+  }
+
+  //If we found the node with provided data
   if (data == current->data) {
-    if (current->left == NULL && current->right == NULL) {
-      cout << "root has no children, deleting it" << endl;
 
-      root->data = INT_MIN;
+    //Case 1: no children
+    if (current->left == NULL && current->right == NULL) {
+      cout << "node has no children, deleting it" << endl;
+
+      if (current == root) {
+        root->data = INT_MIN;
+        return;
+      }
+
+      delete current;
+    }
+
+    //Case 2: one child
+    if (current->left != NULL && current->right == NULL ||
+       current->right != NULL && current->left == NULL) {
+      cout << "node has only one child" << endl;
     }
   }
 
-  //Decide to go left or right
-
-  if (data == current->data) {
-    //Delete logic here
-
-    //If node is leaf then we can remove it no problem
-    if (current->left == NULL && current->right == NULL) {
-
-    }
-
-    //does the node has parents? 
-    //if ()
-
-    return;
-  }
-
+  //Find the node with data
   if (data < current->data && current->left != NULL) {
-    return Remove(data, current->left);
+    cout << "searching left" << endl;
+    Remove(data, current->left, current);
   }
 
   if (data > current->data && current->right != NULL) {
-    return Remove(data, current->right);
+    cout << "searching right" << endl;
+    Remove(data, current->right, current);
   }
-
-  return;
 
   return;
 }

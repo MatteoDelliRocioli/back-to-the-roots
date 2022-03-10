@@ -19,5 +19,7 @@ int main() {
 
   cout << boolalpha << "is " << dataToSearch << " value found? " << result << endl;
 
+  myTree->Remove(1);
+
   return 0;
 }
