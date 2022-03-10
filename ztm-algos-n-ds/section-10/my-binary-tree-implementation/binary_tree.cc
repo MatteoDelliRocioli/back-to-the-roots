@@ -95,10 +95,10 @@ void BinaryTree::Remove(int data, Node* current, Node* parent) {
     //cout << current << ", " << parent << ", " << root << endl;
   }
 
-  //If we found the node with provided data
+  // If we found the node with provided data
   if (data == current->data) {
 
-    //Case 1: no children
+    // Case 1: no children
     if (current->left == NULL && current->right == NULL) {
       cout << "node has no children, deleting it" << endl;
 
@@ -108,13 +108,29 @@ void BinaryTree::Remove(int data, Node* current, Node* parent) {
       }
 
       delete current;
+      return;
     }
 
-    //Case 2: one child
+    // Case 2: one child
     if (current->left != NULL && current->right == NULL ||
        current->right != NULL && current->left == NULL) {
       cout << "node has only one child" << endl;
+
+      // Link the parent to the nephew
+      if (current->left != NULL) {
+        parent->left = current->left;
+      } else {
+        parent->right = current->right;
+      }
+      // Delete the current
+      delete current;
+
+      return;
     }
+
+    // Case 3: 2 children
+    cout << "node has 2 children" << endl;
+    return;
   }
 
   //Find the node with data
