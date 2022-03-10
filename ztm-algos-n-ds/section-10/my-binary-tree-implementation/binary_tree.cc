@@ -1,6 +1,7 @@
 #include "binary_tree.h"
 #include "node.h"
 #include <iostream>
+#include <tuple>
 
 using namespace std;
 
@@ -88,6 +89,40 @@ bool BinaryTree::LookUp(int data, Node* current) {
   return false;
 }
 
+tuple<Node*, Node*> FindNodeWithSmallestData(Node* current, Node* parent) {
+
+  int minValue = current->data;
+  /*if ()
+
+  if (current->left != NULL) {
+    return FindNodeWithSmallestData(data, current->left, current);
+  }
+
+  if (current-)*/
+
+  while(true) {
+    if (current->left != NULL) {
+      parent = current;
+      current = current->left;
+      minValue = minValue > current->data ? current->data : minValue;
+      continue;
+    }
+
+    if (current->right != NULL) {
+      parent = current;
+      current = current->right;
+      minValue = minValue > current->data ? current->data : minValue;
+      continue;
+    }
+
+    break;
+  }
+
+  cout << "minValue: " << minValue << endl;
+
+  return make_tuple(current, parent);
+}
+
 void BinaryTree::Remove(int data, Node* current, Node* parent) {
 
   if (current == NULL && parent == NULL) {
@@ -130,6 +165,18 @@ void BinaryTree::Remove(int data, Node* current, Node* parent) {
 
     // Case 3: 2 children
     cout << "node has 2 children" << endl;
+    // We go right to find the smallest number, then we
+    // copy that value to the current node;
+    // finally we delete the shifted node
+
+    tuple<Node*, Node*> result = FindNodeWithSmallestData(current, current);
+
+    Node* minValueNode = get<0>(result);
+    Node* minValueParent = get<1>(result);
+
+    cout << "minValueNode -> [ " << minValueNode << ", " << minValueNode->data << " ]" << endl;
+    cout << "minValueParent -> [ " << minValueParent << ", " << minValueParent->data << " ]" << endl;
+
     return;
   }
 
