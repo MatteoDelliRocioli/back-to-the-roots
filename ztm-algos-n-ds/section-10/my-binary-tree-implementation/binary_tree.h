@@ -2,6 +2,7 @@
 
 #include "node.h"
 #include <cstddef>
+#include <tuple>
 
 class BinaryTree {
   public:
@@ -12,4 +13,7 @@ class BinaryTree {
     void Remove(int data, Node* current = NULL, Node* parent = NULL);
 
     Node* root;
+
+  private:
+    std::tuple<Node*, Node*> FindNodeWithSmallestData(Node* current, Node* parent);
 };

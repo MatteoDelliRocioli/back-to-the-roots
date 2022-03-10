@@ -89,16 +89,9 @@ bool BinaryTree::LookUp(int data, Node* current) {
   return false;
 }
 
-tuple<Node*, Node*> FindNodeWithSmallestData(Node* current, Node* parent) {
+tuple<Node*, Node*> BinaryTree::FindNodeWithSmallestData(Node* current, Node* parent) {
 
   int minValue = current->data;
-  /*if ()
-
-  if (current->left != NULL) {
-    return FindNodeWithSmallestData(data, current->left, current);
-  }
-
-  if (current-)*/
 
   while(true) {
     if (current->left != NULL) {
@@ -119,6 +112,8 @@ tuple<Node*, Node*> FindNodeWithSmallestData(Node* current, Node* parent) {
   }
 
   cout << "minValue: " << minValue << endl;
+
+  Remove(current->data, current, parent);
 
   return make_tuple(current, parent);
 }
@@ -176,6 +171,10 @@ void BinaryTree::Remove(int data, Node* current, Node* parent) {
 
     cout << "minValueNode -> [ " << minValueNode << ", " << minValueNode->data << " ]" << endl;
     cout << "minValueParent -> [ " << minValueParent << ", " << minValueParent->data << " ]" << endl;
+
+    current->data = minValueNode->data;
+
+    delete minValueNode;
 
     return;
   }
