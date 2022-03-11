@@ -89,7 +89,7 @@ bool BinaryTree::LookUp(int data, Node* current) {
   return false;
 }
 
-tuple<Node*, Node*> BinaryTree::FindNodeWithSmallestData(Node* current, Node* parent) {
+int BinaryTree::FindNodeWithSmallestData(Node* current, Node* parent) {
 
   int minValue = current->data;
 
@@ -115,7 +115,7 @@ tuple<Node*, Node*> BinaryTree::FindNodeWithSmallestData(Node* current, Node* pa
 
   Remove(current->data, current, parent);
 
-  return make_tuple(current, parent);
+  return minValue;
 }
 
 void BinaryTree::Remove(int data, Node* current, Node* parent) {
@@ -135,6 +135,13 @@ void BinaryTree::Remove(int data, Node* current, Node* parent) {
       if (current == root) {
         root->data = INT_MIN;
         return;
+      }
+
+      if (parent->left == current) {
+        parent->left = NULL;
+      }
+      if (parent->right == current) {
+        parent->right = NULL;
       }
 
       delete current;
@@ -164,17 +171,11 @@ void BinaryTree::Remove(int data, Node* current, Node* parent) {
     // copy that value to the current node;
     // finally we delete the shifted node
 
-    tuple<Node*, Node*> result = FindNodeWithSmallestData(current, current);
+    int minValue = FindNodeWithSmallestData(current->right, current->right);
 
-    Node* minValueNode = get<0>(result);
-    Node* minValueParent = get<1>(result);
+    current->data = minValue;
 
-    cout << "minValueNode -> [ " << minValueNode << ", " << minValueNode->data << " ]" << endl;
-    cout << "minValueParent -> [ " << minValueParent << ", " << minValueParent->data << " ]" << endl;
-
-    current->data = minValueNode->data;
-
-    delete minValueNode;
+    //delete minValueNode;
 
     return;
   }

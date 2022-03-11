@@ -15,5 +15,5 @@ class BinaryTree {
     Node* root;
 
   private:
-    std::tuple<Node*, Node*> FindNodeWithSmallestData(Node* current, Node* parent);
+    int FindNodeWithSmallestData(Node* current, Node* parent);
 };
