@@ -15,7 +15,10 @@ void Graph::AddVertex(char value) {
   std::cout << "adding vertex with value: " << value << std::endl;
 
   if (!IsExistingNode(value)) {
-    nodesList.push_back(value);
+    std::vector<char> emptyAssociations {};
+
+    nodesList[value] = emptyAssociations;
+    //nodesList.push_back(value);
   }
   PrintNodesList();
 }
@@ -38,19 +41,19 @@ void Graph::AddEdge(char vertex1, char vertex2) {
 
 void Graph::PrintConnections() {
   std::cout << "printing graph connections" << std::endl;
+
 }
 
 void Graph::PrintNodesList() {
   std::cout << "[ ";
-  for (char x : nodesList) {
-    std::cout << x << ", ";
+  for (auto x : nodesList) {
+    std::cout << x.first << ", ";
   }
   std::cout << "]" << std::endl;
 }
 
 bool Graph::IsExistingNode(char value) {
-  return std::find(nodesList.begin(), nodesList.end(), value) !=
-    nodesList.end();
+  return nodesList.find(value) != nodesList.end();
 }
 
 void Graph::PrintEdgeList() {

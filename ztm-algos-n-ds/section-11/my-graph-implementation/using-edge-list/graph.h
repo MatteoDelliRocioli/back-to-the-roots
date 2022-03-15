@@ -1,12 +1,13 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <map>
 
 class Graph {
   public:
     int numberOfEdges {0};
     int numberOfNodes {0};
-    std::vector<char> nodesList {};
+    std::map<char, std::vector<char>> nodesList {};
     std::vector<std::pair<char, char>> edgeList {};
 
     Graph();
