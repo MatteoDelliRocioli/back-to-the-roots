@@ -16,9 +16,7 @@ void Graph::AddVertex(char value) {
 
   if (!IsExistingNode(value)) {
     std::vector<char> emptyAssociations {};
-
     nodesList[value] = emptyAssociations;
-    //nodesList.push_back(value);
   }
   PrintNodesList();
 }
@@ -41,6 +39,28 @@ void Graph::AddEdge(char vertex1, char vertex2) {
 
 void Graph::PrintConnections() {
   std::cout << "printing graph connections" << std::endl;
+
+  //add elements to the vector associated to each node
+  // that is to show the nodes neighbours
+  for (auto x : edgeList) {
+    // Update connection for x.first
+    std::vector<char> firstList = nodesList[x.first];
+    firstList.push_back(x.second);
+    nodesList[x.first] = firstList;
+
+    // Update connection for x.second
+    std::vector<char> secondList = nodesList[x.second];
+    secondList.push_back(x.first);
+    nodesList[x.second] = secondList;
+  }
+
+  for (auto x : nodesList) {
+    std::cout << x.first << "--> ";
+    for (auto y : x.second) {
+      std::cout << y << " ";
+    }
+    std::cout << std::endl;
+  }
 
 }
 
