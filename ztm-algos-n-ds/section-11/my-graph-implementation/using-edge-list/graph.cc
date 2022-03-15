@@ -18,6 +18,7 @@ void Graph::AddVertex(char value) {
     std::vector<char> emptyAssociations {};
     nodesList[value] = emptyAssociations;
   }
+  numberOfNodes++;
   PrintNodesList();
 }
 
@@ -34,6 +35,7 @@ void Graph::AddEdge(char vertex1, char vertex2) {
   auto pair = std::make_pair(vertex1, vertex2);
 
   edgeList.push_back(pair);
+  numberOfEdges++;
   PrintEdgeList();
 }
 
