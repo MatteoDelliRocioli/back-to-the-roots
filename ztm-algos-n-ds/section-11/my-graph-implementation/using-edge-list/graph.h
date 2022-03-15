@@ -19,4 +19,5 @@ class Graph {
   private:
     void PrintNodesList();
     bool IsExistingNode(char value);
+    void PrintEdgeList();
 };
