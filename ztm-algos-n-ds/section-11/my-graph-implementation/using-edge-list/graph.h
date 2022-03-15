@@ -6,12 +6,12 @@ class Graph {
   public:
     int numberOfEdges {0};
     int numberOfNodes {0};
-    std::vector<std::pair<int, int>> edgeList {};
+    std::vector<std::pair<char, char>> edgeList {};
 
     Graph();
     ~Graph();
-    void AddVertex(int vertexValue);
+    void AddVertex(char vertexValue);
     //Undirected graph
-    void AddEdge(int valueVertex1, int valueVertex2);
+    void AddEdge(char valueVertex1, char valueVertex2);
     void PrintConnections();
 };

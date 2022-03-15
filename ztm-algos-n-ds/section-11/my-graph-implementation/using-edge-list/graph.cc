@@ -9,11 +9,11 @@ Graph::~Graph() {
   std::cout << "deleting graph" << std::endl;
 }
 
-void Graph::AddVertex(int value) {
+void Graph::AddVertex(char value) {
   std::cout << "adding vertex with value: " << value << std::endl;
 }
 
-void Graph::AddEdge(int vertex1, int vertex2) {
+void Graph::AddEdge(char vertex1, char vertex2) {
   std::cout << "Adding edge between: " << vertex1 << ", " << vertex2 << std::endl;
 }
 
