@@ -14,7 +14,7 @@ Graph::~Graph() {
 void Graph::AddVertex(char value) {
   std::cout << "adding vertex with value: " << value << std::endl;
 
-  if (std::find(nodesList.begin(), nodesList.end(), value) == nodesList.end()) {
+  if (!IsExistingNode(value)) {
     nodesList.push_back(value);
   }
   PrintNodesList();
@@ -34,4 +34,8 @@ void Graph::PrintNodesList() {
     std::cout << x << ", ";
   }
   std::cout << "]" << std::endl;
+}
+
+bool Graph::IsExistingNode(char value) {
+  return std::find(nodesList.begin(), nodesList.end(), value) != nodesList.end();
 }
