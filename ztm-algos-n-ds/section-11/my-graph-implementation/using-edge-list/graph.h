@@ -6,6 +6,7 @@ class Graph {
   public:
     int numberOfEdges {0};
     int numberOfNodes {0};
+    std::vector<char> nodesList {};
     std::vector<std::pair<char, char>> edgeList {};
 
     Graph();
@@ -14,4 +15,7 @@ class Graph {
     //Undirected graph
     void AddEdge(char valueVertex1, char valueVertex2);
     void PrintConnections();
+
+  private:
+    void PrintNodesList();
 };
