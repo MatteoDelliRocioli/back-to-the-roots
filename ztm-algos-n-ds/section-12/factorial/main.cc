@@ -15,16 +15,14 @@ int main() {
   return 0;
 }
 
-
 int FindFactorialRecursive(int number) {
   if (number == 0) {
     return 1;
   }
 
-  int result = number;
-
   if (number >= 1) {
-    return FindFactorialRecursive(number);
+    //std::cout << number << std::endl;
+    return number * FindFactorialRecursive(number - 1);
   }
 
   return 0;
