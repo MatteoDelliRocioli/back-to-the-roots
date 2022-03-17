@@ -8,11 +8,13 @@
 // values, that means that for N=5 -> 2+3
 
 int FibonacciIterative(int valueToSearch);
-int FibonacciRecursive(int valueToSearch);
+int FibonacciRecursive(
+  int valueToSearch, int i = 2, int parent = 1, int grandParent = 0);
+//int FibonacciRecursive(int valueToSearch);
 
 int main() {
-  int result = FibonacciIterative(8);
-  //int result = FibonacciRecursive(7);
+  //int result = FibonacciIterative(8);
+  int result = FibonacciRecursive(9);
 
   std::cout << "result: " << result << std::endl;
   return 0;
@@ -58,6 +60,23 @@ int FibonacciIterative(int valueToSearch) {
   return -1;
 }
 
-int FibonacciRecursive(int valueToSearch) {
-  return 0;
+int FibonacciRecursive(int valueToSearch, int i, int parent, int grandParent) {
+  if (valueToSearch == 0) {
+    return 0;
+  }
+
+  if (valueToSearch == 1) {
+    return 1;
+  }
+
+  int current {parent + grandParent};
+  if (valueToSearch == current) {
+    return i;
+  }
+
+  if (valueToSearch > current) {
+    return FibonacciRecursive(valueToSearch, i + 1, current, parent);
+  }
+
+  return -1;
 }
