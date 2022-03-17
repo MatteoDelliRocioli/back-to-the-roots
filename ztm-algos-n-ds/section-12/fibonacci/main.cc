@@ -10,11 +10,12 @@
 int FibonacciIterative(int valueToSearch);
 int FibonacciRecursive(
   int valueToSearch, int i = 2, int parent = 1, int grandParent = 0);
-//int FibonacciRecursive(int valueToSearch);
+int FibonacciRecursive01(int valueToSearch);
 
 int main() {
   //int result = FibonacciIterative(8);
-  int result = FibonacciRecursive(9);
+  //int result = FibonacciRecursive(9);
+  int result = FibonacciRecursive01(8);
 
   std::cout << "result: " << result << std::endl;
   return 0;
@@ -76,6 +77,17 @@ int FibonacciRecursive(int valueToSearch, int i, int parent, int grandParent) {
 
   if (valueToSearch > current) {
     return FibonacciRecursive(valueToSearch, i + 1, current, parent);
+  }
+
+  return -1;
+}
+
+int FibonacciRecursive01(int valueToSearch) {
+  if (valueToSearch < 2) {
+    return valueToSearch;
+  }
+  else {
+    return FibonacciRecursive01(valueToSearch - 1) + FibonacciRecursive01(valueToSearch - 2);
   }
 
   return -1;
