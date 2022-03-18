@@ -1,23 +1,25 @@
 #include <iostream>
 #include <string>
 
-std::string ReverseStringIterative(std::string str);
-void ReverseStringRecursive(std::string str);
+using namespace std;
+
+string ReverseStringIterative(string str);
+string ReverseStringRecursive(string str);
 
 int main() {
-  std::string result = ReverseStringIterative("hey");
+  //string result = ReverseStringIterative("miaooo!");
+  string result = ReverseStringRecursive("miaooo!");
 
-  std::cout << result << std::endl;
+  cout << result << endl;
 
   return 0;
 }
 
-std::string ReverseStringIterative(std::string str) {
+string ReverseStringIterative(string str) {
   int front {0};
   int back {(int)str.length() - 1};
 
   while (front < back) {
-    //do something
     char temp = str[back];
     str[back] = str[front];
     str[front] = temp;
@@ -29,6 +31,35 @@ std::string ReverseStringIterative(std::string str) {
   return str;
 }
 
-void ReverseStringRecursive(std::string str) {
-  return;
+/*string ReverseStringRecursive(string str) {
+  int front {0};
+  int back {(int)str.length()};
+
+  if (str.length() < 2) {
+    char temp = str[back];
+    str[back] = str[front];
+    str[front] = temp;
+    return str;
+  }
+
+  if (front >= back) {
+    char temp = str[back];
+    str[back] = str[front];
+    str[front] = temp;
+
+    return ReverseStringRecursive(str.substr(front + 1,back - 1));
+  }
+
+  return str;
+}*/
+
+string ReverseStringRecursive(string str) {
+  int front {0};
+  int back {(int)str.length()};
+
+  if (str.length() < 2) {
+    return str;
+  }
+
+  return str[back] + ReverseStringRecursive(str.substr(1, str.length() - 2)) + str[front];
 }
