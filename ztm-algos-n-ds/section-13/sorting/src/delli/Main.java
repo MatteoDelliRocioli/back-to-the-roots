@@ -15,16 +15,19 @@ public class Main {
 
   public static void bubbleSort(char[] arr) {
     for (int i = 0; i < arr.length; i++) {
-      if (arr[i] > arr[i + 1]) {
-        System.out.println("i: " + arr[i]);
-        System.out.println("j: " + arr[i + 1]);
+      for (int j = 0; j < arr.length; j++) {
 
-        char temp = arr[i + 1];
-        arr[i + 1] = arr[i];
-        arr[i] = temp;
+        if (j == arr.length -1) {
+          break;
+        }
 
-        if (i < arr.length -1) {
-          i++;
+        if (arr[j] > arr[j + 1]) {
+          System.out.println("j: " + arr[j]);
+          System.out.println("j + 1: " + arr[j + 1]);
+
+          char temp = arr[j + 1];
+          arr[j + 1] = arr[j];
+          arr[j] = temp;
         }
       }
     }
