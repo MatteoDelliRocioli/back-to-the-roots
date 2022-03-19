@@ -6,3 +6,4 @@ main.exe
 .idea
 .idea/*
 *.iml
+*.class
