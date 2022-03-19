@@ -3,3 +3,6 @@ main.exe
 *.exe
 *.gch
 .vscode
+.idea
+.idea/*
+*.iml
