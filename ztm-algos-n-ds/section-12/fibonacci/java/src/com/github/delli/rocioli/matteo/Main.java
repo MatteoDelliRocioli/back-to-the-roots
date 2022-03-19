@@ -11,7 +11,7 @@ public class Main {
 
   public static void main(String[] args) {
     System.out.println(fibonacciIterative(10));
-    fibonacciRecursive(6);
+    System.out.println(fibonacciRecursive(10));
   }
 
   public static int fibonacciIterative(int index) {
@@ -22,7 +22,7 @@ public class Main {
     int parent = 1;
     int grandParent = 0;
 
-    int i = 2;
+    int i = 1;
     int current = 0;
     while (index > i) {
       current = grandParent + parent;
@@ -35,6 +35,10 @@ public class Main {
   }
 
   public static int fibonacciRecursive(int index) {
-    return 0;
+    if (index < 2) {
+      return index;
+    }
+
+    return fibonacciRecursive(index - 1) + fibonacciRecursive(index - 2);
   }
 }
