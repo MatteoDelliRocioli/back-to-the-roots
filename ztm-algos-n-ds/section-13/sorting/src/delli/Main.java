@@ -1,5 +1,7 @@
 package delli;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Main {
 
@@ -11,7 +13,41 @@ public class Main {
     javaSort(numbers);*/
 
     //bubbleSort(letters);
-    selectionSort(numbers);
+    //selectionSort(numbers);
+    insertionSort(numbers);
+  }
+
+  /**
+  * The main iteration picks the next element in the collection and the inner
+  * iteration loops back in the already seen elements to swap the current one
+  * with the element wich is immediately Iterates through the collection
+  *
+  */
+  public static void insertionSort(int[] numbers) {
+    List<Integer> result = new ArrayList<>();
+    for (int i = 0; i < numbers.length; i++) {
+      int current = numbers[i];
+      if (result.isEmpty()) {
+        result.add(current);
+        continue;
+      }
+
+      for (int j = 0; j < result.size(); j++) {
+        if (current > result.get(j)) {
+          if (j == result.size() -1) {
+            result.add(current);
+            break;
+          }
+          continue;
+        }
+
+        result.add(j, current);
+        break;
+      }
+    }
+    for (int x : result) {
+     System.out.println(x);
+    }
   }
 
   /**
