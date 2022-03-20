@@ -14,7 +14,75 @@ public class Main {
 
     //bubbleSort(letters);
     //selectionSort(numbers);
-    insertionSort(numbers);
+    //insertionSort(numbers);
+    int[] result = mergeSort(numbers);
+
+    for (int x : result) {
+      System.out.println(x);
+    }
+  }
+  public static int[] mergeSort(int[] numbers) {
+    int inLength = numbers.length;
+
+    if (inLength < 2) {
+      return numbers;
+    }
+
+    int midRange = inLength / 2;
+
+    int[] leftArr = Arrays.copyOfRange(numbers, 0, inLength - midRange);
+    int[] rightArr = Arrays.copyOfRange(numbers, inLength - midRange, inLength);
+
+    //recursive case
+    if (inLength != 1 && inLength > 0) {
+      leftArr = mergeSort(leftArr);
+      rightArr = mergeSort(rightArr);
+    }
+
+    //merge
+    int i = 0;
+    int j = 0;
+    int z = 0;
+    boolean finishedLeftArr = false;
+    boolean finishedRightArr = false;
+    int[] result = new int[inLength];
+    //base case
+    while (z < inLength) {
+      if (finishedLeftArr && !finishedRightArr) {
+        result[z] = rightArr[j];
+        j++;
+        z++;
+        continue;
+      }
+      if (finishedRightArr && !finishedLeftArr) {
+        result[z] = leftArr[i];
+        i++;
+        z++;
+        continue;
+      }
+
+      if (leftArr[i] < rightArr[j]) {
+        result[z] = leftArr[i];
+        if (i + 1 < leftArr.length) {
+          i++;
+        }
+        else {
+          finishedLeftArr = true;
+        }
+      }
+      else {
+        result[z] = rightArr[j];
+        if (j + 1 < rightArr.length) {
+          j++;
+        }
+        else {
+          finishedRightArr = true;
+        }
+      }
+      z++;
+    }
+
+    return result;
   }
 
   /**
