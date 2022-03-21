@@ -57,7 +57,6 @@ public class Main {
         //search for higher
         if (numbers[i] > pivot) {
           left = new int[] {i, numbers[i]};
-          //startingLeft = i;
           break;
         }
       }
@@ -66,7 +65,6 @@ public class Main {
         //search for lower
         if (numbers[j] < pivot) {
           right = new int[] {j, numbers[j]};
-          //startingRight = j;
           break;
         }
       }
@@ -75,21 +73,6 @@ public class Main {
         isPivotSorted = true;
         continue;
       }
-
-//      if (left != null && right == null) {
-//        //swap the pivot and return;
-//        int temp = left[1];
-//        numbers[left[0]] = pivot;
-//        numbers[numbers.length - 1] = temp;
-//
-//        isPivotSorted = true;
-//        pivotPosition = left[0];
-//      }
-
-//      if (left[0] == Integer.MIN_VALUE && right[0] == Integer.MIN_VALUE) {
-//        isPivotSorted = true;
-//        break;
-//      }
 
       if (left[0] >= right[0]) {
         //we should swap left with pivot
