@@ -7,3 +7,4 @@ main.exe
 .idea/*
 *.iml
 *.class
+*/out/*
