@@ -18,7 +18,6 @@ public class Main {
     //int[] result = mergeSort(numbers);
     int[] result = quickSort(numbers);
 
-
     for (int x : result) {
       System.out.println(x);
     }
@@ -37,11 +36,90 @@ public class Main {
     // array recursively to do the same again and again
 
     //We stop when we have sorted arrays of 2 or 3 elements
+    if (numbers.length < 2) {
+      return numbers;
+    }
 
-    int pivot = numbers[numbers.length - 1];
-    
+    int pivotPosition = numbers.length - 1;
+    int pivot = numbers[pivotPosition];
+    //search for the first element greater than the pivot starting from the left
 
-    return numbers;
+    //search for the first lower element than the pivot starting from the right
+
+    boolean isPivotSorted = false;
+    int startingLeft = 0;
+    int startingRight = numbers.length - 2;
+    while(!isPivotSorted) {
+      int[] left = null;
+      int[] right = null;
+
+      for (int i = startingLeft; i < numbers.length - 1; i++) {
+        //search for higher
+        if (numbers[i] > pivot) {
+          left = new int[] {i, numbers[i]};
+          //startingLeft = i;
+          break;
+        }
+      }
+
+      for (int j = startingRight; j >= 0; j--) {
+        //search for lower
+        if (numbers[j] < pivot) {
+          right = new int[] {j, numbers[j]};
+          //startingRight = j;
+          break;
+        }
+      }
+
+      if (left == null || right == null) {
+        isPivotSorted = true;
+        continue;
+      }
+
+//      if (left != null && right == null) {
+//        //swap the pivot and return;
+//        int temp = left[1];
+//        numbers[left[0]] = pivot;
+//        numbers[numbers.length - 1] = temp;
+//
+//        isPivotSorted = true;
+//        pivotPosition = left[0];
+//      }
+
+//      if (left[0] == Integer.MIN_VALUE && right[0] == Integer.MIN_VALUE) {
+//        isPivotSorted = true;
+//        break;
+//      }
+
+      if (left[0] >= right[0]) {
+        //we should swap left with pivot
+        int temp = left[1];
+        numbers[left[0]] = pivot;
+        numbers[numbers.length - 1] = temp;
+
+        isPivotSorted = true;
+        pivotPosition = left[0];
+      }
+      else {
+        //swap left and rigth
+        int temp = left[1];
+        numbers[left[0]] = numbers[right[0]];
+        numbers[right[0]] = temp;
+
+        //then we should keep searching
+      }
+    }
+
+    //Recursion
+    int[] leftSide = quickSort(Arrays.copyOfRange(numbers, 0, pivotPosition));
+    int[] rightSide = quickSort(Arrays.copyOfRange(numbers, pivotPosition, numbers.length));
+
+    int[] result = new int[leftSide.length + rightSide.length];
+
+    System.arraycopy(leftSide, 0, result, 0, pivotPosition);
+    System.arraycopy(rightSide, 0, result, pivotPosition, rightSide.length);
+
+    return result;
   }
 
 
