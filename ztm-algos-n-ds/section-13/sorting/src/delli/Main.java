@@ -15,12 +15,36 @@ public class Main {
     //bubbleSort(letters);
     //selectionSort(numbers);
     //insertionSort(numbers);
-    int[] result = mergeSort(numbers);
+    //int[] result = mergeSort(numbers);
+    int[] result = quickSort(numbers);
+
 
     for (int x : result) {
       System.out.println(x);
     }
   }
+
+  public static int[] quickSort(int[] numbers) {
+    //pick the pivot as the last element in the array (there are other ways to
+    // decide the pivot but that is out of this scope)
+    //make sure that all the elements on the left of the pivot are lower and
+    // right elements are greater -> that is, compared to the pivot, pick the
+    // first greater element from the left and the first lower element from the
+    // right, swap them and if the item from right is lower in index of item
+    // from left then we have to stop and swap the item from left with the pivot
+
+    //once the pivot is ok, we split the right part and the left part of the
+    // array recursively to do the same again and again
+
+    //We stop when we have sorted arrays of 2 or 3 elements
+
+    int pivot = numbers[numbers.length - 1];
+    
+
+    return numbers;
+  }
+
+
   public static int[] mergeSort(int[] numbers) {
     int inLength = numbers.length;
 
@@ -88,8 +112,7 @@ public class Main {
   /**
   * The main iteration picks the next element in the collection and the inner
   * iteration loops back in the already seen elements to swap the current one
-  * with the element wich is immediately Iterates through the collection
-  *
+  * with the first lower element
   */
   public static void insertionSort(int[] numbers) {
     List<Integer> result = new ArrayList<>();
