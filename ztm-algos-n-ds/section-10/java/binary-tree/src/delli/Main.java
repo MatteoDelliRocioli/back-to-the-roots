@@ -18,11 +18,16 @@ public class Main {
     tree.findNode(10);
 
     tree.addChild(10);
+    tree.addChild(11);
     tree.addChild(1);
     tree.addChild(2);
     tree.addChild(60);
     tree.addChild(70);
 
-    tree.findNode(70);
+    tree.findNode(10);
+
+    tree.removeChild(10);
+
+    tree.findNode(10);
   }
 }

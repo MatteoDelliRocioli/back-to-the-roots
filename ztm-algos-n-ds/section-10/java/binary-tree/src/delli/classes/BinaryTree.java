@@ -3,14 +3,8 @@ package delli.classes;
 import delli.interfaces.BinaryTreeDataStructure;
 
 public class BinaryTree implements BinaryTreeDataStructure {
-  /*public void Insert(int data, Node current);
-  bool LookUp(int data, Node* current = NULL);
-  void Remove(int data, Node* current = NULL, Node* parent = NULL);
-
-  Node* root;
-
-  private:
-  int FindNodeWithSmallestData(Node* current, Node* parent);*/
+  /*
+  void Remove(int data, Node* current = NULL, Node* parent = NULL);*/
   Node root = null;
   public BinaryTree(int rootValue) {
     root = new Node(rootValue);
@@ -56,6 +50,81 @@ public class BinaryTree implements BinaryTreeDataStructure {
 
   public void removeChild(int value) {
     System.out.println(String.format("removing value: %d",value));
+    removeChild(value, null, null);
+  }
+
+  public void removeChild(int value, Node current, Node parent) {
+
+    if (current == null) {
+      System.out.println(String.format("removing value: %d",value));
+      current = parent = root;
+    }
+
+    Node left = current.children[0];
+    Node right = current.children[1];
+
+    if (current.value == value && left == null && right == null) {
+      if (parent.children[0] == current) {
+        parent.children[0] = null;
+      }
+      else {
+        parent.children[1] = null;
+      }
+      current = null;
+      return;
+    }
+
+    //left branched
+    if (current.value == value && left != null && right == null) {
+      parent.children[0] = left;
+      current = null;
+      return;
+    }
+
+    //right branched
+    if (current.value == value && right != null && left == null) {
+      parent.children[1] = right;
+      current = null;
+      return;
+    }
+
+    // both branches
+    if (current.value == value && left != null && right != null) {
+      // pick the node with the smallest value in the right branch and swap it
+      // with current then you can delete the smallest node from its original
+      // position
+      boolean foundSmallest = false;
+      Node smallest = null;
+
+      while(!foundSmallest ||
+          (smallest.children[0] != null && smallest.children[1] != null)) {
+        if (smallest == null) {
+          smallest = current.children[1];
+        }
+
+        if (smallest.children[0] == null) {
+          foundSmallest = true;
+          continue;
+        }
+
+        smallest = smallest.children[0];
+      }
+
+      removeChild(value, current, current);
+//      Node temp = smallest;
+//      current.value = smallest.value;
+//      smallest = null;
+    }
+
+    if (left != null && value < current.value) {
+      removeChild(value, left, current);
+      return;
+    }
+
+    if (right != null && value > current.value) {
+      removeChild(value, right, current);
+      return;
+    }
   }
 
   public Node findNode(int value) {
