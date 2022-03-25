@@ -53,8 +53,14 @@ public class BinaryTree implements BinaryTreeDataStructure {
     removeChild(value, null, null);
   }
 
-  public void removeChild(int value, Node current, Node parent) {
+  private int pickSmallestValue(Node current) {
+    if (current.children[0] != null) {
+      return pickSmallestValue(current.children[0]);
+    }
+    return current.value;
+  }
 
+  public Node removeChild(int value, Node current, Node parent) {
     if (current == null) {
       System.out.println(String.format("removing value: %d",value));
       current = parent = root;
@@ -71,21 +77,21 @@ public class BinaryTree implements BinaryTreeDataStructure {
         parent.children[1] = null;
       }
       current = null;
-      return;
+      return current;
     }
 
     //left branched
     if (current.value == value && left != null && right == null) {
       parent.children[0] = left;
       current = null;
-      return;
+      return current;
     }
 
     //right branched
     if (current.value == value && right != null && left == null) {
       parent.children[1] = right;
       current = null;
-      return;
+      return current;
     }
 
     // both branches
@@ -93,38 +99,32 @@ public class BinaryTree implements BinaryTreeDataStructure {
       // pick the node with the smallest value in the right branch and swap it
       // with current then you can delete the smallest node from its original
       // position
-      boolean foundSmallest = false;
-      Node smallest = null;
 
-      while(!foundSmallest ||
-          (smallest.children[0] != null && smallest.children[1] != null)) {
-        if (smallest == null) {
-          smallest = current.children[1];
-        }
-
-        if (smallest.children[0] == null) {
-          foundSmallest = true;
-          continue;
-        }
-
-        smallest = smallest.children[0];
-      }
-
-      removeChild(value, current, current);
-//      Node temp = smallest;
-//      current.value = smallest.value;
-//      smallest = null;
+      // take smallest
+      int min = pickSmallestValue(current.children[1]);
+      // swap values
+      current.value = min;
+      // delete smallest, root is swapped node -> right
+      return removeChild(min, current.children[1], current.children[1]);
     }
 
     if (left != null && value < current.value) {
-      removeChild(value, left, current);
-      return;
+      return removeChild(value, left, current);
     }
 
     if (right != null && value > current.value) {
-      removeChild(value, right, current);
-      return;
+      return removeChild(value, right, current);
     }
+
+    return current;
+  }
+
+  private int minValue(Node node) {
+
+    if(node.children[0] != null) {
+      return minValue(node.children[0]);
+    }
+    return node.value;
   }
 
   public Node findNode(int value) {
