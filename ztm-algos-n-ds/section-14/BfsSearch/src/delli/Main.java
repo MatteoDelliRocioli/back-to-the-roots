@@ -32,7 +32,26 @@ public class Main {
 //
 //    tree.findNode(10);
 
-    List<Integer> result = tree.dfsSearch();
+    String lineSeparator = System.lineSeparator();
+    System.out.println(
+      "    50" + lineSeparator +
+      "   / \\" + lineSeparator +
+      "  10 60" + lineSeparator +
+      " / \\   \\" + lineSeparator +
+      "1  11   70" + lineSeparator +
+      " \\" + lineSeparator +
+      "  2" + lineSeparator
+    );
+
+
+    List<Integer> result01 = tree.dfsSearch();
+    for (int x : result01) {
+      System.out.println(x);
+    }
+
+    System.out.println("//-------------------------------------------------//");
+
+    List<Integer> result = tree.bfsSearch();
     for (int x : result) {
       System.out.println(x);
     }

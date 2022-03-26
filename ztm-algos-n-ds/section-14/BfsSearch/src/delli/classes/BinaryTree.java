@@ -3,7 +3,9 @@ package delli.classes;
 import delli.interfaces.BinaryTreeDataStructure;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class BinaryTree implements BinaryTreeDataStructure {
   /*
@@ -169,7 +171,6 @@ public class BinaryTree implements BinaryTreeDataStructure {
     return null;
   }
 
-  @Override
   public List<Integer> dfsSearch() {
     return dfsSearch(root);
   }
@@ -194,6 +195,34 @@ public class BinaryTree implements BinaryTreeDataStructure {
       if (temp != null && !temp.isEmpty()) {
         result.addAll(temp);
       }
+    }
+
+    return result;
+  }
+
+  public List<Integer> bfsSearch() {
+    Queue<Node> queue = new LinkedList<>();
+    List<Integer> result = new ArrayList<>();
+    queue.add(root);
+    return bfsSearch(root, queue, result);
+  }
+
+  public List<Integer> bfsSearch(
+      Node current, Queue<Node> queue, List<Integer> result) {
+    //for each level, we check for children
+    // we add those children to the queue
+
+    if (!queue.isEmpty()) {
+      Node first = queue.remove();
+
+      if (first.children[0] != null) {
+        queue.add(first.children[0]);
+      }
+      if (first.children[1] != null) {
+        queue.add(first.children[1]);
+      }
+      result.add(first.value);
+      return bfsSearch(queue.peek(), queue, result);
     }
 
     return result;

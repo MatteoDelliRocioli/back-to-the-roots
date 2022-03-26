@@ -2,7 +2,9 @@ package delli.interfaces;
 
 import delli.classes.Node;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 public interface BinaryTreeDataStructure {
   void addChild(int value);
@@ -14,4 +16,7 @@ public interface BinaryTreeDataStructure {
 
   List<Integer> dfsSearch();
   List<Integer> dfsSearch(Node current);
+  List<Integer> bfsSearch();
+  List<Integer> bfsSearch(
+      Node current, Queue<Node> queue, List<Integer> result);
 }
