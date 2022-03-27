@@ -8,11 +8,13 @@ public class Solution {
       return true;
     }
 
-    if (root.left != null && root.left.val == root.val) {
+    if (root.left != null && (root.left.val == root.val ||
+        root.left.val > root.val)) {
       return false;
     }
 
-    if (root.right != null && root.right.val == root.val) {
+    if (root.right != null && root.right.val == root.val ||
+        root.right.val < root.val) {
       return false;
     }
 
@@ -90,7 +92,7 @@ public class Solution {
       lowerBound = root.val;
     }
     if (root.right != null) {
-      if (root.left.val == root.val) {
+      if (root.right.val == root.val) {
         return false;
       }
       if (root.right.val > lowerBound && root.right.val < upperBound) {
@@ -104,7 +106,7 @@ public class Solution {
 
     if (root.left != null) {
       upperBound = root.val;
-      if (root.right.val == root.val) {
+      if (root.left.val == root.val) {
         return false;
       }
       if (root.left.val > lowerBound && root.left.val < upperBound) {
