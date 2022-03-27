@@ -17,25 +17,29 @@ public class Main {
 
   public static void main(String[] args) {
 
-//    Tree tree = new Tree(50);
-    Tree tree = new Tree(5);
+    Tree tree = new Tree(50);
+//    Tree tree = new Tree(32);
 
 //    tree.root.left = new TreeNode(70);
 //    tree.root.right = new TreeNode(10);
 
-//    tree.addNode(10);
-//    tree.addNode(11);
-//    tree.addNode(1);
-//    tree.addNode(2);
-//    tree.addNode(60);
-//    tree.addNode(70);
+    tree.addNode(10);
+    tree.addNode(11);
+    tree.addNode(1);
+    tree.addNode(2);
+    tree.addNode(60);
+    tree.addNode(70);
 
 //    tree.root.left = new TreeNode(4);
 //    tree.root.right = new TreeNode(6);
 //    tree.root.right.left = new TreeNode(3);
 //    tree.root.right.right = new TreeNode(7);
 
-    tree.root.right = new TreeNode(-1);
+//    tree.root.right = new TreeNode(47);
+//    tree.root.right.right = new TreeNode(56);
+//    tree.root.left = new TreeNode(26);
+//    tree.root.left.left = new TreeNode(19);
+//    tree.root.left.left.right = new TreeNode(27);
 
     Solution solution = new Solution();
     boolean result = solution.isValidBST(tree.root);
