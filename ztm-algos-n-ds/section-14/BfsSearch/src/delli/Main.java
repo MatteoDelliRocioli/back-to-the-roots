@@ -44,13 +44,31 @@ public class Main {
     );
 
 
-    List<Integer> result01 = tree.dfsSearch();
+    System.out.println("DFS preOrder");
+    List<Integer> result01 = tree.dfsSearchPreOrder();
     for (int x : result01) {
       System.out.println(x);
     }
 
     System.out.println("//-------------------------------------------------//");
 
+    System.out.println("DFS inOrder");
+    List<Integer> result02 = tree.dfsSearchInOrder();
+    for (int x : result02) {
+      System.out.println(x);
+    }
+
+    System.out.println("//-------------------------------------------------//");
+
+    System.out.println("DFS postsOrder");
+    List<Integer> result03 = tree.dfsSearchPostOrder();
+    for (int x : result03) {
+      System.out.println(x);
+    }
+
+    System.out.println("//-------------------------------------------------//");
+
+    System.out.println("BFS");
     List<Integer> result = tree.bfsSearch();
     for (int x : result) {
       System.out.println(x);

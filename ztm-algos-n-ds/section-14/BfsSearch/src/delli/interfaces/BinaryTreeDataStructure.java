@@ -14,8 +14,12 @@ public interface BinaryTreeDataStructure {
   Node findNode(int value, Node current);
   Node findNode(int value);
 
-  List<Integer> dfsSearch();
-  List<Integer> dfsSearch(Node current);
+  List<Integer> dfsSearchPreOrder();
+  List<Integer> dfsSearchPostOrder();
+  List<Integer> dfsSearchInOrder();
+  List<Integer> dfsSearchPreOrder(Node current);
+  List<Integer> dfsSearchPostOrder(Node current);
+  List<Integer> dfsSearchInOrder(Node current);
   List<Integer> bfsSearch();
   List<Integer> bfsSearch(
       Node current, Queue<Node> queue, List<Integer> result);

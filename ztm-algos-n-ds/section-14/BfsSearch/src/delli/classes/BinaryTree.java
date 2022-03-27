@@ -171,11 +171,13 @@ public class BinaryTree implements BinaryTreeDataStructure {
     return null;
   }
 
-  public List<Integer> dfsSearch() {
-    return dfsSearch(root);
+  //DFS
+
+  public List<Integer> dfsSearchPreOrder() {
+    return dfsSearchPreOrder(root);
   }
 
-  public List<Integer> dfsSearch(Node current) {
+  public List<Integer> dfsSearchPreOrder(Node current) {
     if (current == null) {
       return null;
     }
@@ -184,14 +186,14 @@ public class BinaryTree implements BinaryTreeDataStructure {
     result.add(current.value);
 
     if (current.children[0] != null) {
-      List<Integer> temp = dfsSearch(current.children[0]);
+      List<Integer> temp = dfsSearchPreOrder(current.children[0]);
       if (temp != null && !temp.isEmpty()) {
         result.addAll(temp);
       }
     }
 
     if (current.children[1] != null) {
-      List<Integer> temp = dfsSearch(current.children[1]);
+      List<Integer> temp = dfsSearchPreOrder(current.children[1]);
       if (temp != null && !temp.isEmpty()) {
         result.addAll(temp);
       }
@@ -200,6 +202,67 @@ public class BinaryTree implements BinaryTreeDataStructure {
     return result;
   }
 
+  public List<Integer> dfsSearchPostOrder() {
+    return dfsSearchPostOrder(root);
+  }
+
+  public List<Integer> dfsSearchPostOrder(Node current) {
+    if (current == null) {
+      return null;
+    }
+
+    List<Integer> result = new ArrayList<>();
+
+    if (current.children[0] != null) {
+      List<Integer> temp = dfsSearchPostOrder(current.children[0]);
+      if (temp != null && !temp.isEmpty()) {
+        result.addAll(temp);
+      }
+    }
+
+    if (current.children[1] != null) {
+      List<Integer> temp = dfsSearchPostOrder(current.children[1]);
+      if (temp != null && !temp.isEmpty()) {
+        result.addAll(temp);
+      }
+    }
+
+    result.add(current.value);
+
+    return result;
+  }
+
+  public List<Integer> dfsSearchInOrder() {
+    return dfsSearchInOrder(root);
+  }
+
+  public List<Integer> dfsSearchInOrder(Node current) {
+    if (current == null) {
+      return null;
+    }
+
+    List<Integer> result = new ArrayList<>();
+
+    if (current.children[0] != null) {
+      List<Integer> temp = dfsSearchInOrder(current.children[0]);
+      if (temp != null && !temp.isEmpty()) {
+        result.addAll(temp);
+      }
+    }
+
+    result.add(current.value);
+
+    if (current.children[1] != null) {
+      List<Integer> temp = dfsSearchInOrder(current.children[1]);
+      if (temp != null && !temp.isEmpty()) {
+        result.addAll(temp);
+      }
+    }
+
+    return result;
+  }
+
+  //BFS
   public List<Integer> bfsSearch() {
     Queue<Node> queue = new LinkedList<>();
     List<Integer> result = new ArrayList<>();
