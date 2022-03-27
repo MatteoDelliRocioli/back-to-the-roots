@@ -1,0 +1,57 @@
+node created with value: 50
+no node found with value: 10
+adding value: 10
+node created with value: 10
+adding value: 11
+node created with value: 11
+adding value: 1
+node created with value: 1
+adding value: 2
+node created with value: 2
+adding value: 60
+node created with value: 60
+adding value: 70
+node created with value: 70
+    50
+   / \
+  10 60
+ / \   \
+1  11   70
+ \
+  2
+
+DFS preOrder
+50
+10
+1
+2
+11
+60
+70
+//-------------------------------------------------//
+DFS inOrder
+1
+2
+10
+11
+50
+60
+70
+//-------------------------------------------------//
+DFS postsOrder
+2
+1
+11
+10
+70
+60
+50
+//-------------------------------------------------//
+BFS
+50
+10
+60
+1
+11
+70
+2
