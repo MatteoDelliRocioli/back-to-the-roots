@@ -5,49 +5,110 @@ public class Solution {
     // current.val > current.left.val
     // current.val < current.right.val
     if (root == null) {
-      return false;
+      return true;
     }
 
-    return iterateTree(root);
+    return check(root);
   }
 
-  public boolean iterateTree(TreeNode current) {
-    if (!isBST(current)) {
-      return false;
+  //We can use DFS to solve this problem since we have to make sure that each
+  // node in the tree is greater than its first parent if on the right side, and
+  // must be lesser than its parent if on the left side
+
+  // plus all the elements on the right subtree have to be greater than its root
+  // and all the nodes from the left subtree have to be lesser than its root
+
+  public boolean check(TreeNode root) {
+
+    int upperBound = Integer.MAX_VALUE;
+    int lowerBound = Integer.MIN_VALUE;
+
+    if (root.left != null) {
+      boolean result = checkLeft(root.left, root.val, lowerBound);
+
+      if (!result) {
+        return result;
+      }
     }
 
-    if (current.left != null) {
-      iterateTree(current.left);
-    }
-
-    if (current.right != null) {
-      iterateTree(current.right);
+    if (root.right != null) {
+      return checkRight(root.right, upperBound, root.val);
     }
 
     return true;
   }
 
-  public boolean isBST(TreeNode current) {
-    if (current == null) {
-      return false;
+  public boolean checkLeft(TreeNode root, int upperBound, int lowerBound) {
+    //always update upperbound
+    if (root.left != null && root.right != null) {
+      upperBound = root.val;
+    }
+    if (root.left != null) {
+      if (root.left.val == root.val) {
+        return false;
+      }
+
+      if (root.left.val < upperBound && root.left.val > lowerBound) {
+        //ok, keep searching
+        checkLeft(root.left, upperBound, lowerBound);
+      }
+      else {
+        return false;
+      }
     }
 
-    if (current.left != null && current.val < current.left.val) {
-      return false;
-    }
+    //if go right than update lowerbound
+    if (root.right != null) {
+      lowerBound = root.val;
 
-    if (current.right != null && current.val > current.right.val) {
-      return false;
-    }
-
-    if (current.left != null && current.val == current.left.val) {
-      return false;
-    }
-
-    if (current.right != null && current.val == current.right.val) {
-      return false;
+      if (root.right.val == root.val) {
+        return false;
+      }
+      if (root.right.val < upperBound && root.right.val > lowerBound) {
+        //ok keep searching
+        checkLeft(root.right, upperBound, lowerBound);
+      }
+      else {
+        return false;
+      }
     }
 
     return true;
   }
+
+  public boolean checkRight(TreeNode root, int upperBound, int lowerBound) {
+    //lowerBound has to be updated always
+    if (root.left != null && root.right != null) {
+      lowerBound = root.val;
+    }
+    if (root.right != null) {
+      if (root.left.val == root.val) {
+        return false;
+      }
+      if (root.right.val > lowerBound && root.right.val < upperBound) {
+        //good, keep searching
+        checkRight(root.right, upperBound, lowerBound);
+      }
+      else {
+        return false;
+      }
+    }
+
+    if (root.left != null) {
+      upperBound = root.val;
+      if (root.right.val == root.val) {
+        return false;
+      }
+      if (root.left.val > lowerBound && root.left.val < upperBound) {
+        //ok, keep searching
+        checkRight(root.right, upperBound, lowerBound);
+      }
+      else {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
 }

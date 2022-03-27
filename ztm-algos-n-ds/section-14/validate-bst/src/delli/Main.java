@@ -30,11 +30,10 @@ public class Main {
 //    tree.addNode(60);
 //    tree.addNode(70);
 
-    tree.addNode(4);
-    tree.addNode(6);
-    tree.addNode(3);
-    tree.addNode(7);
-
+    tree.root.left = new TreeNode(4);
+    tree.root.right = new TreeNode(6);
+    tree.root.right.left = new TreeNode(3);
+    tree.root.right.right = new TreeNode(7);
 
     Solution solution = new Solution();
     boolean result = solution.isValidBST(tree.root);
