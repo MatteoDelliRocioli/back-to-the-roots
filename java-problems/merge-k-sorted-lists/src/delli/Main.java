@@ -28,12 +28,12 @@ public class Main {
     ListNode l2_01 = new ListNode(6);
     l2.next = l2_01;
 
-    ListNode[] l3 = new ListNode[] {};
-//    ListNode l3 = new ListNode(1);
-//    ListNode l3_01 = new ListNode(3);
-//    ListNode l3_02 = new ListNode(4);
-//    l3.next = l3_01;
-//    l3_01.next = l3_02;
+//    ListNode[] l3 = new ListNode[] {};
+    ListNode l3 = new ListNode(1);
+    ListNode l3_01 = new ListNode(3);
+    ListNode l3_02 = new ListNode(4);
+    l3.next = l3_01;
+    l3_01.next = l3_02;
 
     ListNode[] lists = new ListNode[] {l1, l2, l3};
 
