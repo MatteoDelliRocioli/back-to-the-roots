@@ -7,6 +7,9 @@ import java.util.Map;
 
 public class Main {
 
+  /**
+   * https://leetcode.com/problems/merge-k-sorted-lists/
+   * */
   public static void main(String[] args) {
     Main main = new Main();
 
@@ -25,11 +28,12 @@ public class Main {
     ListNode l2_01 = new ListNode(6);
     l2.next = l2_01;
 
-    ListNode l3 = new ListNode(1);
-    ListNode l3_01 = new ListNode(3);
-    ListNode l3_02 = new ListNode(4);
-    l3.next = l3_01;
-    l3_01.next = l3_02;
+    ListNode[] l3 = new ListNode[] {};
+//    ListNode l3 = new ListNode(1);
+//    ListNode l3_01 = new ListNode(3);
+//    ListNode l3_02 = new ListNode(4);
+//    l3.next = l3_01;
+//    l3_01.next = l3_02;
 
     ListNode[] lists = new ListNode[] {l1, l2, l3};
 
@@ -43,23 +47,19 @@ public class Main {
     //maybe sorting lists first?
 
     ListNode root = null;
+    myLists.removeIf(x -> x == null);
 
     while (!myLists.isEmpty()) {
-      if (myLists.get(0) == null) {
-        break;
-      }
+      ListNode currentListHead = myLists.get(0);
 
-      int min = myLists.get(0).val;
+      int min = currentListHead.val;
       Map<Integer, Integer> listPositionAndHeadValue = new HashMap<>();
       listPositionAndHeadValue.put(0, min);
 
       for (int i = 0; i < myLists.size(); i++) {
         ListNode current = myLists.get(i);
-        if (current == null) {
-          continue;
-        }
 
-        if (current.val < min) {
+        if (current!= null && current.val < min) {
           min = current.val;
           listPositionAndHeadValue.clear();
           listPositionAndHeadValue.put(i, min);
