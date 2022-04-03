@@ -1,9 +1,6 @@
 package delli;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
 
@@ -37,7 +34,30 @@ public class Main {
 
     ListNode[] lists = new ListNode[] {l1, l2, l3};
 
-    return mergeKLists(lists);
+//    return mergeKLists(lists);
+    return mergeKLists_w_priorityQueue(lists);
+  }
+
+  public ListNode mergeKLists_w_priorityQueue(ListNode[] lists) {
+    ListNode result = new ListNode();
+    ListNode current = result;
+    PriorityQueue<ListNode> pq =
+        new PriorityQueue<>((l1, l2)-> l1.val - l2.val);
+    for(ListNode list: lists){
+      if ( list != null) pq.offer(list);
+    }
+
+    while(!pq.isEmpty()){
+      ListNode node = pq.poll();
+      current.next = node;
+
+      node = node.next;
+      if( node != null) pq.offer(node);
+      current = current.next;
+
+    }
+
+    return result.next;
   }
 
   public ListNode mergeKLists(ListNode[] lists) {
