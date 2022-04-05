@@ -1,5 +1,6 @@
 package delli;
 
+import javax.xml.stream.events.Characters;
 import java.util.*;
 
 public class Main {
@@ -19,6 +20,36 @@ public class Main {
     String[] input = new String[] {"eat","tea","tan","ate","nat","bat"};
 
     return groupAnagrams(input);
+  }
+
+  public List<List<String>> groupAnagrams(String[] strs) {
+    List<List<String>> result = new ArrayList<>();
+    Map<String, List<String>> map = new HashMap<>();
+
+    for (int i = 0; i < strs.length; i++) {
+      String key = getKey(strs[i]);
+      List<String> list = new ArrayList<>();
+      list.add(strs[i]);
+      if (map.isEmpty()) {
+        map.put(key, list);
+      }
+      else {
+        if (map.containsKey(key)) {
+          map.get(key).add(strs[i]);
+        }
+        else {
+          map.put(key, list);
+        }
+      }
+    }
+
+    return new ArrayList<>(map.values());
+  }
+
+  public static String getKey(String input) {
+    char[] chars = input.toCharArray();
+    Arrays.sort(chars);
+    return String.valueOf(chars);
   }
 
   public List<List<String>> groupAnagrams_firstAttempt(String[] strs) {
