@@ -1,5 +1,6 @@
 package delli;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,9 +21,12 @@ public class Main {
 
     Main main = new Main();
 
-    char[][] board = new char[][] {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
+//    char[][] board = new char[][] {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
 //    String word = "ABCCED";
-    String word = "SEE";
+//    char[][] board = new char[][] {{'C','A','A'},{'A','A','A'},{'B','C','D'}};
+//    String word = "AAB";
+    char[][] board = new char[][] {{'A','B','C','E'},{'S','F','E','S'},{'A','D','E','E'}};
+    String word = "ABCESEEEFS";
 
     System.out.println(main.exist(board, word));
   }
@@ -33,7 +37,9 @@ public class Main {
 
     for (int i = 0; i < columnLength; i++) {
       for (int j = 0; j < rowLength; j++) {
-        if (board[i][j] == word.charAt(0) && searchingWord(board, i, j, word, 0)) { //find word first char
+
+        if (board[i][j] == word.charAt(0) &&
+          searchingWord(board, i, j, word, 0)) { //find word first char
 //          System.out.println(String.format("found char: %c", word.charAt(0)));
           //look for neighbours
           return true;
@@ -65,10 +71,12 @@ public class Main {
     // going in the for directions (DFS) till we navigated all the board or we
     // found the word
     boolean result =
-      searchingWord(board, column + 1, row, word, count + 1) ||
-        searchingWord(board, column - 1, row, word, count + 1) ||
-        searchingWord(board, column, row + 1, word, count + 1) ||
-        searchingWord(board, column, row - 1, word, count + 1);
+      searchingWord(board, column - 1, row, word, count + 1) ||
+        searchingWord(board, column, row - 1, word, count + 1) ||
+        searchingWord(board, column + 1, row, word, count + 1) ||
+        searchingWord(board, column, row + 1, word, count + 1);
+
+    board[column][row] = word.charAt(count);
 
     return result;
   }
