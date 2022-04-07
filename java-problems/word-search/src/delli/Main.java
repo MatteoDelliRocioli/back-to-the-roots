@@ -21,7 +21,8 @@ public class Main {
     Main main = new Main();
 
     char[][] board = new char[][] {{'A','B','C','E'},{'S','F','C','S'},{'A','D','E','E'}};
-    String word = "ABCCED";
+//    String word = "ABCCED";
+    String word = "SEE";
 
     System.out.println(main.exist(board, word));
   }
@@ -32,17 +33,18 @@ public class Main {
 
     for (int i = 0; i < columnLength; i++) {
       for (int j = 0; j < rowLength; j++) {
-        if (board[i][j] == word.charAt(0)) { //find word first char
+        if (board[i][j] == word.charAt(0) && searchingWord(board, i, j, word, 0)) { //find word first char
 //          System.out.println(String.format("found char: %c", word.charAt(0)));
           //look for neighbours
-          return searchingWord(board, i, j, word, 0);
+          return true;
         }
       }
     }
     return false;
   }
 
-  public static boolean searchingWord(char[][] board, int column, int row, String word, int count) {
+  public static boolean searchingWord(
+    char[][] board, int column, int row, String word, int count) {
 
     // word found, return true
     if (word.length() == count) {
