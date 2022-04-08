@@ -50,9 +50,7 @@ public class Main {
     public void put(int key, int value) {
       CacheEntry entry = new CacheEntry(key, value);
       if (map.size() < capacity) {
-        if (map.containsKey(key)) {
-          list.remove(map.get(key));
-        }
+        list.remove(map.get(key));
       }
       else { //delete least entry
         if (map.containsKey(key)) {
