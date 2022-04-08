@@ -29,69 +29,59 @@ public class Main {
   }
 
   class LRUCache {
-
-//    Queue<Integer> accessedKeys = new LinkedList<>(); // FIFO data structure
-    List<Integer> accessedKeys = new ArrayList<>(); // use it like a FIFO data structure
-    HashMap<Integer, Integer> map = null;
     int capacity = 0;
+    Map<Integer, CacheEntry> map = new HashMap<>();
+    LinkedList<CacheEntry> list = new LinkedList<>();
 
     public LRUCache(int capacity) {
-      map = new HashMap<>(capacity);
       this.capacity = capacity;
     }
 
     public int get(int key) {
       if (map.containsKey(key)) {
-        updateAccessedKeys(key);
-        return map.get(key);
+        CacheEntry entry = map.get(key);
+        list.remove(entry);
+        list.add(entry);
+        return entry.value;
       }
       return -1;
     }
 
     public void put(int key, int value) {
-      //if exists
-      if (map.containsKey(key)) {
-        updateAccessedKeys(key);
-        map.put(key, value);
-      }
-      //does not exist
-      else {
-        //if empty places available
-        if (capacity > accessedKeys.size()) {
-          accessedKeys.add(key);
-          map.put(key, value);
+      CacheEntry entry = new CacheEntry(key, value);
+      if (map.size() < capacity) {
+        if (map.containsKey(key)) {
+          list.remove(map.get(key));
         }
-        //else the capacity is reached
+      }
+      else { //delete least entry
+        if (map.containsKey(key)) {
+          list.remove(map.get(key));
+        }
         else {
-          //remove least accessed key from map and update accessed list
-          int leastKey = accessedKeys.get(0);
-          map.remove(leastKey);
-          map.put(key, value);
-          upsertAccessedKeys(leastKey, key);
-          //updateAccessedKeys(key);
+          var least = list.removeFirst();
+          map.remove(least.key);
         }
       }
+      list.add(entry);
+      map.put(key, list.getLast());
     }
 
-    private void updateAccessedKeys(int key){
-      if (accessedKeys.contains(key)) {
-        var temp = accessedKeys.remove(accessedKeys.indexOf(key));
-        accessedKeys.add(temp);
-      }
-      else {
-        accessedKeys.add(key);
-      }
-    }
+    class CacheEntry {
+      Integer key = null;
+      Integer value = null;
 
-    private void upsertAccessedKeys(int leastKey, int newKey) {
-      accessedKeys.remove(accessedKeys.indexOf(leastKey));
-      accessedKeys.add(newKey);
+      CacheEntry(int key, int value) {
+        this.key = key;
+        this.value = value;
+      }
     }
   }
-  /**
-   * Your LRUCache object will be instantiated and called as such:
-   * LRUCache obj = new LRUCache(capacity);
-   * int param_1 = obj.get(key);
-   * obj.put(key,value);
-   */
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
 }
