@@ -8,7 +8,15 @@ public class Main {
     System.out.println(rangeBitwiseAnd(left, right));
   }
 
+  //brian kernighan's algorithm
   public static int rangeBitwiseAnd(int left, int right) {
+    while (right > left) {
+      right = right & right - 1;
+    }
+    return left & right;
+  }
+
+  public static int rangeBitwiseAnd_bruteforceApproach(int left, int right) {
     int result = left;
 
     for (int i = left; i <= right; i++) {
