@@ -32,6 +32,34 @@ public class Main {
    * The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
    * */
   public static void main(String[] args) {
-    //your code here
+    System.out.println(maxProduct(new int[] {-3, -4}));
+  }
+
+  // Bruteforce solution, TLE
+  // time complexity: O(n^2) -> two nested for loops
+  // space complexity: O(1) -> only few variables with single updating value
+  public static int maxProduct(int[] nums) {
+    int maxProduct = nums[0];
+    for (int i = 0; i < nums.length; i++) {
+      int tempProduct = nums[i];
+
+      // System.out.println("tempProduct_before: " + tempProduct);
+      for (int x = i + 1; x < nums.length; x++) {
+        tempProduct *= nums[x];
+
+        // System.out.println("nums[x]: " + nums[x]);
+        // System.out.println("tempProduct: " + tempProduct);
+
+        if (tempProduct > maxProduct) {
+          maxProduct = tempProduct;
+        }
+      }
+
+      if (nums[i] > maxProduct) {
+        maxProduct = nums[i];
+      }
+    }
+
+    return maxProduct;
   }
 }
