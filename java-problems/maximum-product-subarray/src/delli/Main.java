@@ -32,13 +32,39 @@ public class Main {
    * The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
    * */
   public static void main(String[] args) {
-    System.out.println(maxProduct(new int[] {-3, -4}));
+    System.out.println(maxSubArray(new int[] {-3, -4}));
+  }
+
+  // Kadane's algorithm
+  // We take note only of sums of subarrays that are positive
+  // Once the sum is negative, reset to 0 (zero)
+  // If the current element is greater than the max, re-assign max
+  public static int maxSubArray(int[] nums) {
+    int max = Integer.MIN_VALUE;
+    int currentMax = 0;
+
+    for (int i = 0; i < nums.length; i++) {
+      currentMax += nums[i];
+
+      if (nums[i] > max) {
+        max = nums[i];
+      }
+
+      if (currentMax < 0) {
+        currentMax = 0;
+        continue;
+      }
+
+      max = Math.max(currentMax, max);
+    }
+
+    return max;
   }
 
   // Bruteforce solution, TLE
   // time complexity: O(n^2) -> two nested for loops
   // space complexity: O(1) -> only few variables with single updating value
-  public static int maxProduct(int[] nums) {
+  public static int maxProduct_bruteForce(int[] nums) {
     int maxProduct = nums[0];
     for (int i = 0; i < nums.length; i++) {
       int tempProduct = nums[i];
