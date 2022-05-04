@@ -36,6 +36,15 @@ public class Main {
   }
 
   /**
+   * A first naive solution would be to iterate all the elements for each single
+   * element trying to build and compare each possible subarray product
+   *
+   * Whether this approach is correct it is not efficient and would take O(n^2)
+   * time complexity, O(1) space complexity
+   */
+  //
+
+  /**
    * Using dynamic programming, taking note of the maxProduct and minProduct
    * till the current index
    * time complexity: O(n) -> iterating at most 1 time through the array
