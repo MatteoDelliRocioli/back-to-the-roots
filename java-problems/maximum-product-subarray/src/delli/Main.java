@@ -32,8 +32,30 @@ public class Main {
    * The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
    * */
   public static void main(String[] args) {
-//    System.out.println(maxSubArray(new int[] {-3, -4}));
-
+    System.out.println(solve(new int[] {1,-2, -3, -7}));
   }
 
+  /**
+   * Using dynamic programming, taking note of the maxProduct and minProduct
+   * till the current index
+   * time complexity: O(n) -> iterating at most 1 time through the array
+   * space complexity: O(1) -> saving only single values in variables
+   * */
+  public static int solve(int[] nums) {
+    int max = nums[0];
+    int min = max;
+    int result = max;
+
+    for (int i = 1; i < nums.length; i++) {
+      int n = nums[i];
+
+      int temp = max * n;
+
+      max = Math.max(temp, Math.max(min * n, n));
+      min = Math.min(temp, Math.min(min * n, n));
+
+      result = Math.max(max, result);
+    }
+    return result;
+  }
 }
