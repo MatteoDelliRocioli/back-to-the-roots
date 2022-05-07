@@ -10,6 +10,33 @@ public class Main {
     System.out.println(Arrays.toString(result));
   }
 
+  public static int[] productExceptSelf_Optimized(int[] nums) {
+    int length = nums.length;
+    int[] prefix = new int[length]; // left to right
+    int[] suffix = new int[length]; // right to left
+    int[] result = new int[length];
+
+    // Populate prefix
+    prefix[0] = 1;
+    for (int i = 1; i < length; i++) {
+      prefix[i] = prefix[i - 1] * nums[i - 1];
+    }
+
+    // Populate suffix
+    suffix[length - 1] = 1;
+    for (int i = length - 2; i >= 0; i--) {
+      suffix[i] = suffix[i + 1] * nums[i + 1];
+    }
+
+    // Build result
+    for (int i = 0; i < nums.length; i++) {
+      result[i] = prefix[i] * suffix[i];
+    }
+
+    return result;
+  }
+
+
   /**
    * Naive method
    * Saving all the products from left to right and all the products form right
