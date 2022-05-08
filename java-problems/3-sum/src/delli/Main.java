@@ -10,6 +10,10 @@ public class Main {
     threeSum(new int[] {[-2,0,1,1,2]});
   }
 
+  /**
+   * Time complexity: O(N^2)
+   * Space complexity: O(N)
+   * */
   public static List<List<Integer>> threeSum(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
 
@@ -34,6 +38,9 @@ public class Main {
         prevFirst = first;
         continue;
       }
+      else {
+        prevFirst = first;
+      }
 
       while (left < right) {
         int leftVal = nums[left];
@@ -49,7 +56,16 @@ public class Main {
           newTriplet.add(leftVal);
           newTriplet.add(rightVal);
           result.add(newTriplet);
+          // left++;
+          // right--;
+          while (left < right && leftVal == nums[left + 1]) {
+            left++;
+          }
           left++;
+
+          while (right > i && rightVal == nums[right - 1]) {
+            right--;
+          }
           right--;
         }
         else { // keep searching for triplets, update the pointers
