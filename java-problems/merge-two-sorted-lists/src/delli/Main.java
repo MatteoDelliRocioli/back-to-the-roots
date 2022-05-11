@@ -9,6 +9,28 @@ public class Main {
     main.helper();
   }
 
+  /**
+   * recursive approach
+   * time complexity: O(n + m)
+   * space complexity: O(n + m)
+   */
+  public ListNode mergeTwoLists (ListNode l1, ListNode l2) {
+    if (l1 == null) {
+      return l2;
+    }
+    else if (l2 == null) {
+      return l1;
+    }
+    else if (l1.val < l2.val) {
+      l1.next = mergeTwoLists(l1.next, l2);
+      return l1;
+    }
+    else {
+      l2.next = mergeTwoLists(l1, l2.next);
+      return l2;
+    }
+  }
+
   public void helper() {
     this.mergeTwoLists(new ListNode(), new ListNode());
   }
@@ -17,7 +39,7 @@ public class Main {
    * We are copying the elements into a new linkedList so the resulting space
    * complexity: O(n) and the time complexity is O(n) as well
    * */
-  public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+  public ListNode mergeTwoLists_01(ListNode list1, ListNode list2) {
     if (list1 == null && list2 == null) {
       return null;
     }
