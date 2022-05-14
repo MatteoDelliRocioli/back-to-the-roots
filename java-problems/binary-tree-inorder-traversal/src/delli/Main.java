@@ -14,6 +14,41 @@ public class Main {
   public void helper() {
     inorderTraversal(new TreeNode());
   }
+
+
+  // iterative
+  public List<Integer> inorderTraversal_iterative(TreeNode root) {
+    List<Integer> result = new ArrayList<>();
+    LinkedList<TreeNode> stack = new LinkedList<>();
+
+    if (root == null) {
+      return result;
+    }
+
+    TreeNode current = root;
+
+    while (current != null || !stack.isEmpty()) {
+
+      // try to go as left as you can
+      while (current != null) {
+        stack.add(current);
+        current = current.left;
+      }
+
+      current = stack.pollLast();
+
+      if (current != null) {
+        result.add(current.val);
+
+        // if we assign null here, the code will try
+        // to poll from the stack of nodes
+        current = current.right;
+      }
+    }
+
+    return result;
+  }
+
   public List<Integer> inorderTraversal(TreeNode root) {
     List<Integer> result = new ArrayList<>();
     return doTraversal(root, result);
