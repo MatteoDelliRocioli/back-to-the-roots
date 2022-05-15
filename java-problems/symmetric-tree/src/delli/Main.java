@@ -11,11 +11,37 @@ public class Main {
   }
 
   /**
+   * recursive approach where we compare each node to its counterpart in the other
+   * subtree
+   *
+   * time complexity: O(n) because we will have to iterate through all the nodes
+   * space complexity: O(h) where h is the depth of one of the two subtrees or
+   * the smallest one if they are different in size
+   * */
+  public boolean isSymmetric(TreeNode root) {
+    return solve(root, root);
+  }
+
+  public boolean solve(TreeNode left, TreeNode right) {
+    if (left == null && right == null) { // the two nodes are identical, true
+      return true;
+    }
+
+    if (left == null || right == null) { // if we got here it means that only one of the two is null
+      return false;
+    }
+
+    return left.val == right.val &&  // both values of the current nodes have to be equal
+        solve(left.left, right.right) && // as well as their children
+        solve(left.right, right.left);
+  }
+
+  /**
    * Solve by using BFS and comparing each level but one in reverse order
    * time complexity: O(n^2)
    * space complexity: O(n + m)
    * */
-  public boolean isSymmetric(TreeNode root) {
+  /*public boolean isSymmetric(TreeNode root) {
     List<List<Integer>> leftResult = new ArrayList<>();
     List<List<Integer>> rightResult = new ArrayList<>();
 
@@ -58,7 +84,7 @@ public class Main {
     if (node.right != null) {
       populateList(result, node.right, level + 1);
     }
-  }
+  }*/
 
   public class TreeNode {
     int val;
