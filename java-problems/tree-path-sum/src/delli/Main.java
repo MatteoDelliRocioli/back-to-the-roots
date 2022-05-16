@@ -13,6 +13,22 @@ public class Main {
     hasPathSum(new TreeNode(), 22);
   }
 
+  // recursive approach enhanced
+  public boolean solve_01(TreeNode node, int targetSum, int currentSum) {
+    if (node == null) {
+      return false;
+    }
+
+    currentSum += node.val;
+
+    if (node.left == null && node.right == null) {
+      return currentSum == targetSum;
+    }
+
+    return solve_01(node.right, targetSum, currentSum) ||
+        solve_01(node.left, targetSum, currentSum);
+  }
+
   // recursive approach
   /**
    * time complexity: O(n), possibly iterating all the nodes
