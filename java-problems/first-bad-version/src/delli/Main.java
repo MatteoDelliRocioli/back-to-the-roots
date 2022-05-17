@@ -62,4 +62,39 @@ public class Main {
     }
   }
 
+  /**
+   * updated version of recursive approach
+   * */
+
+  /**
+   * public class Solution extends VersionControl {
+   *   public int firstBadVersion(int n) {
+   *     if (super.isBadVersion(1)) {
+   *       return 1;
+   *     }
+   *
+   *     if (super.isBadVersion(n) && !super.isBadVersion(n - 1)) {
+   *       return n;
+   *     }
+   *
+   *     return helper(1, n);
+   *   }
+   *
+   *   public int helper(int left, int right) {
+   *     if (left - right < 4) {
+   *       for (int i = left; i < right; i++) {
+   *         if (!super.isBadVersion(i - 1) && super.isBadVersion(i))
+   *           return i;
+   *       }
+   *     }
+   *
+   *     if (super.isBadVersion(left) | super.isBadVersion(right / 2)) {
+   *       return helper(left, right/2);
+   *     }
+   *
+   *     return helper(right /2, right);
+   *   }
+   * }
+   * */
+
 }
