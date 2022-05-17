@@ -17,6 +17,25 @@ public class Main {
    * First implementation, works fine but gives TLE, too inefficient
    * */
   public class Solution extends VersionControl {
+
+    /**
+     * Final solution, very similar in logic to my first solution,
+     * it is just optimized in efficiency
+     * */
+    public int firstBadVersionFinal(int n) {
+      int left = 1;
+      int right = n;
+      while (left < right) {
+        int mid = left + (right - left) / 2;
+        if (super.isBadVersion(mid)) {
+          right = mid;
+        } else {
+          left = mid + 1;
+        }
+      }
+      return left;
+    }
+
     public int firstBadVersion(int n) {
       if (super.isBadVersion(1)) {
         return 1;
