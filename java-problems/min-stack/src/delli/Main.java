@@ -3,6 +3,58 @@ package delli;
 public class Main {
 
   public static void main(String[] args) {
+    Main main = new Main();
+    main.helper();
+  }
+
+  public void helper() {
+    MinStack stack = new MinStack();
+    stack.getMin();
+  }
+
+  /**
+   * time complexity: O(1) for each operation
+   * space complexity: O(n) due to the fact that we have to store n nodes as many
+   *  node are to be pushed in our stack
+   * */
+  class MinStack {
+    class Node {
+      int val;
+      int min;
+      Node next;
+
+      Node (int val, int min, Node next) {
+        this.val = val;
+        this.min = min;
+        this.next = next;
+      }
+    }
+
+    Node head;
+
+    public MinStack() {
+
+    }
+
+    public void push(int val) {
+      int min = head != null ? head.min : val;
+
+      Node node = new Node(val, Math.min(val, min), head);
+
+      head = node;
+    }
+
+    public void pop() {
+      head = head.next;
+    }
+
+    public int top() {
+      return head.val;
+    }
+
+    public int getMin() {
+      return head.min;
+    }
   }
 
 /**
