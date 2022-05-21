@@ -14,6 +14,26 @@ public class Main {
     reverseList(new ListNode());
   }
 
+  public ListNode reverseListOptimized(ListNode head) {
+    if (head == null || head.next == null) {
+      return head;
+    }
+    ListNode prev, curr;
+
+    prev = head;
+
+    curr = prev.next;
+    prev.next = null;
+
+    while (curr != null) {
+      ListNode temp = curr.next;
+      curr.next = prev;
+      curr = temp;
+    }
+
+    return prev;
+  }
+
   /**
    * My approach tries to reverse the linked list in-place using pointers to nodes
    *
