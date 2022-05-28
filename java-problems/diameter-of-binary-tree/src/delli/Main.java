@@ -13,26 +13,22 @@ public class Main {
   int diameter = 0;
 
   public int diameterOfBinaryTree(TreeNode root) {
-    if (root == null) {
-      return 0;
-    }
-
-    traverse(root);
+    helper(root);
 
     return diameter;
   }
 
-  public int traverse(TreeNode root) {
+  public int helper(TreeNode root) {
     if (root == null) {
       return 0;
     }
 
-    int left = traverse(root.left);
-    int right = traverse(root.right);
+    int leftHeight = helper(root.left);
+    int rightHeight = helper(root.right);
 
-    diameter = Math.max(diameter, left + right);
+    diameter = Math.max(diameter, (leftHeight + rightHeight));
 
-    return Math.max(left, right) + 1;
+    return Math.max(leftHeight, rightHeight) + 1;
   }
 
   public class TreeNode {
