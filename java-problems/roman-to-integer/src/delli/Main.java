@@ -7,6 +7,11 @@ public class Main {
     main.romanToInt("XX");
   }
 
+  /**
+   * time complexity: O(n) since we are going to iterate through all the chars of the
+   *    input string
+   * space complexity: O(1) since we are using only singly valued variables
+   * */
   public int romanToInt(String s) {
     int current = 0;
     int sum = 0;
