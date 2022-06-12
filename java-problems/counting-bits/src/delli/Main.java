@@ -8,7 +8,9 @@ public class Main {
   /**
    * https://leetcode.com/problems/counting-bits/
    *
-   *
+   *  time complexity: O(n^2) because for each number we are going to re-do the same process of
+   *    countinh the bits
+   *  space complexity: O(n) since we are only using an array of size n+1
    * */
   public int[] countBits(int n) {
     int[] res = new int[n+1];
